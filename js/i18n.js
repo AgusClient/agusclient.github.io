@@ -20,7 +20,7 @@ const translations = {
     "preloader.status": "CARGANDO CLIENTE",
 
     // Hero
-    "hero.badge": "CLIENTX30 // CLIENTE COMPETITIVO PARA DDNET",
+    "hero.badge": "ACLIENT // CLIENTE COMPETITIVO PARA DDNET",
     "hero.title1": "MENOS LATENCIA.",
     "hero.title2": "MÁS PRECISIÓN.",
     "hero.desc": "AClient lleva DDNet al siguiente nivel: motores de Fast Input, Race Stats en vivo con ranking animado, herramientas de práctica, editor de assets y un menú pensado para jugadores competitivos.",
@@ -189,7 +189,7 @@ const translations = {
     "preloader.status": "CARREGANDO CLIENTE",
 
     // Hero
-    "hero.badge": "CLIENTX30 // CLIENTE COMPETITIVO PARA DDNET",
+    "hero.badge": "ACLIENT // CLIENTE COMPETITIVO PARA DDNET",
     "hero.title1": "MENOS LATÊNCIA.",
     "hero.title2": "MAIS PRECISÃO.",
     "hero.desc": "O AClient leva o DDNet ao próximo nível: motores de Fast Input, Race Stats ao vivo com ranking animado, ferramentas de treino, editor de assets e um menu pensado para jogadores competitivos.",
@@ -358,7 +358,7 @@ const translations = {
     "preloader.status": "LOADING CLIENT",
 
     // Hero
-    "hero.badge": "CLIENTX30 // COMPETITIVE CLIENT FOR DDNET",
+    "hero.badge": "ACLIENT // COMPETITIVE CLIENT FOR DDNET",
     "hero.title1": "LESS LATENCY.",
     "hero.title2": "MORE PRECISION.",
     "hero.desc": "AClient elevates DDNet to the next level: Fast Input engines, live Race Stats with animated ranking, practice tools, asset editor, and a menu engineered for competitive players.",
