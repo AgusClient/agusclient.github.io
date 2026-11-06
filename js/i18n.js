@@ -13,6 +13,7 @@ const translations = {
     "nav.sound_lab": "Fast Input",
     "nav.gallery": "Galería",
     "nav.specs": "Módulos",
+    "nav.credits": "Créditos",
     "nav.download": "Download",
 
     // Preloader
@@ -28,7 +29,7 @@ const translations = {
     "hero.hint_rotate": "Girar en 360°",
     "hero.hud1_label": "Fast Input",
     "hero.hud1_unit": "motores",
-    "hero.hud1_sub": "aX30, Fast, Mejor, Saiko, Delta, F y Cloud",
+    "hero.hud1_sub": "aX30, Fast, Best, Saiko, Delta, F y Cloud",
     "hero.hud2_label": "Race Stats",
     "hero.hud2_unit": "criterios",
     "hero.hud2_sub": "Ranking en vivo estilo F1 con destellos",
@@ -121,7 +122,7 @@ const translations = {
     "modules.title": "TODO LO QUE INCLUYE",
     "modules.spec1_title": "Fast Input",
     "modules.spec1_badge": "7 motores",
-    "modules.spec1_desc": "aX30, Fast, Mejor, Saiko, Delta, F y Cloud. Margen y offset de predicción, compensación adaptativa, interpolación y sub-tick aiming, con control independiente para otros tees y repredicción de hook.",
+    "modules.spec1_desc": "aX30, Fast, Best, Saiko, Delta, F y Cloud. Margen y offset de predicción, compensación adaptativa, interpolación y sub-tick aiming, con control independiente para otros tees y repredicción de hook.",
     "modules.spec2_title": "Race Stats & HUD",
     "modules.spec2_badge": "8 criterios",
     "modules.spec2_desc": "Detección de saves (hammer y hook), ranking animado estilo F1, HUD configurable en escala, posición y opacidad, e historial con auto-guardado.",
@@ -144,6 +145,18 @@ const translations = {
     "modules.spec8_badge": "Sonido a tu gusto",
     "modules.spec8_desc": "Cambiá los sonidos del juego por los que prefieras.",
 
+    // Credits
+    "credits.eyebrow": "AGRADECIMIENTOS // COMUNIDAD",
+    "credits.title": "CRÉDITOS Y RECONOCIMIENTO",
+    "credits.desc": "AClient se construye gracias a innovaciones y desarrollos de la comunidad de DDNet y teeworlds.",
+    "credits.nova_badge": "Live HUD",
+    "credits.nova_desc": "Creador original del overlay de estadísticas en vivo que contabiliza freezes, muertes y saques en tiempo real durante la carrera.",
+    "credits.bestclient_badge": "Graphic Suite",
+    "credits.bestclient_desc": "Creadores del editor de assets integrado con lienzo dual y modos de fusión HSLA (TeeLike, Screen, Multiply y Overlay).",
+    "credits.ddnet_badge": "Core Engine",
+    "credits.ddnet_desc": "Motor base oficial de DDNet sobre el que se apoya toda la física de juego, conectividad y seguridad de red.",
+    "credits.tclient_badge": "Competitive Mod",
+    "credits.tclient_desc": "Inspiración y base modular para configuraciones competitivas avanzadas, integraciones y utilidades de práctica.",
     // CTA
     "cta.title": "PROBÁ ACLIENT EN TU PRÓXIMA CARRERA",
     "cta.desc": "Todo el poder de DDNet con las herramientas que te faltaban. Sumate a la comunidad y mantenete al tanto de las novedades.",
@@ -169,6 +182,7 @@ const translations = {
     "nav.sound_lab": "Fast Input",
     "nav.gallery": "Galeria",
     "nav.specs": "Módulos",
+    "nav.credits": "Créditos",
     "nav.download": "Download",
 
     // Preloader
@@ -300,6 +314,18 @@ const translations = {
     "modules.spec8_badge": "Som ao seu gosto",
     "modules.spec8_desc": "Altere os sons do jogo para os que você preferir.",
 
+    // Credits
+    "credits.eyebrow": "AGRADECIMENTOS // COMUNIDADE",
+    "credits.title": "CRÉDITOS E RECONHECIMENTO",
+    "credits.desc": "O AClient é construído graças às inovações e desenvolvimentos da comunidade de DDNet e teeworlds.",
+    "credits.nova_badge": "Live HUD",
+    "credits.nova_desc": "Criador original do overlay de estatísticas em tempo real que contabiliza freezes, mortes e saques durante a corrida.",
+    "credits.bestclient_badge": "Graphic Suite",
+    "credits.bestclient_desc": "Criadores do editor de assets integrado com tela dupla e modos de mesclagem HSLA (TeeLike, Screen, Multiply e Overlay).",
+    "credits.ddnet_badge": "Core Engine",
+    "credits.ddnet_desc": "Motor base oficial do DDNet no qual toda a física do jogo, conectividade e segurança de rede se apoiam.",
+    "credits.tclient_badge": "Competitive Mod",
+    "credits.tclient_desc": "Inspiração e base modular para configurações competitivas avançadas, integrações e ferramentas de treino.",
     // CTA
     "cta.title": "EXPERIMENTE O ACLIENT NA SUA PRÓXIMA CORRIDA",
     "cta.desc": "Todo o poder do DDNet com as ferramentas que faltavam. Junte-se à comunidade e fique por dentro das novidades.",
@@ -325,6 +351,7 @@ const translations = {
     "nav.sound_lab": "Fast Input",
     "nav.gallery": "Gallery",
     "nav.specs": "Modules",
+    "nav.credits": "Credits",
     "nav.download": "Download",
 
     // Preloader
@@ -456,6 +483,18 @@ const translations = {
     "modules.spec8_badge": "Custom soundscape",
     "modules.spec8_desc": "Customize game sounds and sound effects to your exact preference.",
 
+    // Credits
+    "credits.eyebrow": "ACKNOWLEDGEMENTS // COMMUNITY",
+    "credits.title": "CREDITS & ATTRIBUTION",
+    "credits.desc": "AClient is built on the shoulders of innovators across the DDNet and teeworlds competitive communities.",
+    "credits.nova_badge": "Live HUD",
+    "credits.nova_desc": "Original author of the real-time race stats overlay tracking freezes, deaths, and rescues (saques) during runs.",
+    "credits.bestclient_badge": "Graphic Suite",
+    "credits.bestclient_desc": "Creators of the integrated asset editor featuring dual canvas workflows and HSLA blend modes (TeeLike, Screen, Multiply, Overlay).",
+    "credits.ddnet_badge": "Core Engine",
+    "credits.ddnet_desc": "Official DDNet core engine powering the movement physics, high-tick netcode, and competitive fairness.",
+    "credits.tclient_badge": "Competitive Mod",
+    "credits.tclient_desc": "Inspiration and architectural base for advanced competitive cvars, client tooling, and practice features.",
     // CTA
     "cta.title": "TRY ACLIENT IN YOUR NEXT RUN",
     "cta.desc": "All the power of DDNet with the competitive edge you were missing. Join the community and stay tuned for releases.",

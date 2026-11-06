@@ -42,12 +42,15 @@ class LuxurySceneManager {
 
     this.renderer = new THREE.WebGLRenderer({
       canvas: this.heroCanvas,
-      antialias: true,
+      antialias: false,
       alpha: true,
       powerPreference: 'high-performance'
     });
-    this.renderer.setSize(window.innerWidth, window.innerHeight);
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+    const heroRect = this.heroCanvas.parentElement.getBoundingClientRect();
+    const w = heroRect.width || window.innerWidth;
+    const h = heroRect.height || window.innerHeight;
+    this.renderer.setSize(w, h, false);
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1));
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
     this.renderer.toneMappingExposure = 1.25;
 
@@ -156,9 +159,13 @@ class LuxurySceneManager {
   setupHeroEvents() {
     window.addEventListener('resize', () => {
       if (!this.camera || !this.renderer) return;
-      this.camera.aspect = window.innerWidth / window.innerHeight;
+      const heroRect = this.heroCanvas.parentElement.getBoundingClientRect();
+      const w = heroRect.width || window.innerWidth;
+      const h = heroRect.height || window.innerHeight;
+      this.camera.aspect = w / h;
       this.camera.updateProjectionMatrix();
-      this.renderer.setSize(window.innerWidth, window.innerHeight);
+      this.renderer.setSize(w, h, false);
+      this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1));
 
       if (window.innerWidth > 992) {
         this.artifactGroup.position.x = 1.5;

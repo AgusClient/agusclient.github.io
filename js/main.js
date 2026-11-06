@@ -219,16 +219,29 @@ document.addEventListener('DOMContentLoaded', () => {
   const waveCanvas = document.getElementById('waveCanvas');
   if (waveCanvas) {
     const ctx = waveCanvas.getContext('2d');
-    let waveWidth = waveCanvas.width = waveCanvas.offsetWidth;
-    let waveHeight = waveCanvas.height = waveCanvas.offsetHeight;
+    let waveWidth = waveCanvas.width = Math.min(waveCanvas.offsetWidth || 800, 1400);
+    let waveHeight = waveCanvas.height = waveCanvas.offsetHeight || 240;
     let waveStep = 0;
     let waveFreqMod = 0.012;
     let waveAmpMod = 45;
+    let waveVisible = false;
 
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(([en]) => {
+        waveVisible = en.isIntersecting;
+      }).observe(waveCanvas);
+    } else {
+      waveVisible = true;
+    }
+
+    let resizeTimer;
     window.addEventListener('resize', () => {
-      if (!waveCanvas) return;
-      waveWidth = waveCanvas.width = waveCanvas.offsetWidth;
-      waveHeight = waveCanvas.height = waveCanvas.offsetHeight;
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (!waveCanvas) return;
+        waveWidth = waveCanvas.width = Math.min(waveCanvas.offsetWidth || 800, 1400);
+        waveHeight = waveCanvas.height = waveCanvas.offsetHeight || 240;
+      }, 100);
     });
 
     waveCanvas.addEventListener('mousemove', (e) => {
@@ -242,6 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function drawWaves() {
       requestAnimationFrame(drawWaves);
+      if (!waveVisible || document.hidden) return;
       ctx.clearRect(0, 0, waveWidth, waveHeight);
 
       // Wave 1: Primary Cyan/Violet gradient wave
