@@ -1858,3 +1858,21 @@ a.btn-reserve-vip { text-decoration: none; }
 .lang-name { flex: 1; }
 .lang-check { font-size: 0.8rem; color: var(--accent-primary); opacity: 0; }
 .lang-option.active .lang-check { opacity: 1; }
+
+/* ===== GITHUB BUTTON ===== */
+.btn-github-nav {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 8px 12px; border-radius: 100px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-main); transition: all var(--transition-fast);
+  text-decoration: none;
+}
+.btn-github-nav:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--border-hover);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+}
+.btn-github-nav svg { display: block; }
