@@ -1807,7 +1807,19 @@ code { font-family: var(--font-mono); font-size: 0.9em; color: var(--accent-prim
 .gameskin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
 .gameskin-text { color: var(--text-muted); font-size: 1.1rem; line-height: 1.7; margin-top: 1.25rem; max-width: 440px; }
 .gameskin-frame { max-width: 520px; width: 100%; justify-self: center; }
-.gameskin-frame img { height: auto; width: 100%; max-height: none; object-fit: contain; image-rendering: pixelated; }
+.gameskin-frame img {
+  height: auto;
+  width: 100%;
+  max-height: none;
+  object-fit: contain;
+  image-rendering: auto;
+  filter: none;
+  transform: none;
+}
+.gameskin-frame:hover img {
+  transform: none;
+  filter: none;
+}
 a.btn-reserve-vip { text-decoration: none; }
 @media (max-width: 1024px) { .gameskin-grid { grid-template-columns: 1fr; } }
 
