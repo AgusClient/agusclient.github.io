@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AClient // Cliente competitivo para DDNet</title>
+  <meta name="description" content="AClient (Clientx30): cliente competitivo y de práctica avanzada para DDNet con Fast Input, Race Stats en vivo, editor de assets y más.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="assets/images/logo.png">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+
+  <div class="noise-overlay" aria-hidden="true"></div>
+  <div class="ambient-light-container" aria-hidden="true">
+    <div class="ambient-orb ambient-orb-1"></div>
+    <div class="ambient-orb ambient-orb-2"></div>
+    <div class="ambient-orb ambient-orb-3"></div>
+  </div>
+  <div class="mouse-spotlight" aria-hidden="true"></div>
+
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true">
+  </div>
+
+  <!-- PRELOADER -->
+  <aside class="preloader" id="preloader">
+    <div class="preloader-header">
+      <div class="preloader-brand"><img src="assets/images/logo.png" alt="" class="preloader-logo"> ACLIENT</div>
+      <div class="preloader-status" data-i18n="preloader.status">CARGANDO CLIENTE</div>
+    </div>
+
+    <div class="preloader-center">
+      <div class="preloader-counter" id="preloader-counter">00</div>
+      <div class="preloader-tagline">COMPETITIVE DDNET CLIENT</div>
+    </div>
+
+    <div class="preloader-bottom">
+      <div class="preloader-progress-track">
+        <div class="preloader-progress-bar" id="preloader-bar"></div>
+      </div>
+      <div class="preloader-footer">
+        <span>CLIENTX30</span>
+        <span>FAST INPUT // RACE STATS // ASSETS</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="https://github.com/AgusClient/AClient" class="brand-logo" target="_blank" rel="noopener noreferrer">
+        <div class="logo-symbol"><img src="assets/images/logo.png" alt="AClient"></div>
+        <span class="logo-text">ACLIENT</span>
+        <span class="logo-badge">DDNET</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#sound-lab" class="nav-link" data-i18n="nav.sound_lab">Fast Input</a></li>
+          <li><a href="#anatomy" class="nav-link" data-i18n="nav.anatomy">Race Stats</a></li>
+          <li><a href="#gameskin" class="nav-link" data-i18n="nav.gameskin">GameSkin</a></li>
+          <li><a href="#philosophy" class="nav-link" data-i18n="nav.philosophy">Visión</a></li>
+          <li><a href="#modtools" class="nav-link" data-i18n="nav.modtools">Mod Tools</a></li>
+          <li><a href="#gallery" class="nav-link" data-i18n="nav.gallery">Galería</a></li>
+          <li><a href="#specs" class="nav-link" data-i18n="nav.specs">Módulos</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- SELECTOR DE IDIOMA -->
+        <div class="lang-dropdown">
+          <button type="button" class="lang-toggle-btn" id="langToggleBtn" aria-expanded="false" aria-label="Cambiar idioma">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lang-globe-icon">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <span class="current-lang-code" id="currentLangCode">ES</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="lang-chevron-icon">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="lang-menu" id="langMenu" role="menu">
+            <button type="button" class="lang-option active" data-lang="es" role="menuitem">
+              <span class="lang-flag">🇪🇸</span>
+              <span class="lang-name">Español</span>
+              <span class="lang-check">✓</span>
+            </button>
+            <button type="button" class="lang-option" data-lang="pt" role="menuitem">
+              <span class="lang-flag">🇧🇷</span>
+              <span class="lang-name">Português</span>
+              <span class="lang-check">✓</span>
+            </button>
+            <button type="button" class="lang-option" data-lang="en" role="menuitem">
+              <span class="lang-flag">🇺🇸</span>
+              <span class="lang-name">English</span>
+              <span class="lang-check">✓</span>
+            </button>
+          </div>
+        </div>
+
+        <a href="https://github.com/AgusClient/AClient" class="btn-primary-glow" target="_blank" rel="noopener noreferrer">
+          <span class="btn-pill-icon"></span>
+          <span data-i18n="nav.download">Download</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero-section" id="hero">
+      <div class="hero-canvas-container">
+        <canvas id="webgl-canvas"></canvas>
+      </div>
+
+      <div class="hero-drag-hint">
+        <div class="hint-icon-circle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5">
+            <path d="M21 12a9 9 0 1 1-6.219-8.56"></path>
+            <polyline points="21 3 21 9 15 9"></polyline>
+          </svg>
+        </div>
+        <span class="hint-text" data-i18n="hero.hint_rotate">Girar en 360°</span>
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-meta-badge">
+          <span class="dot"></span>
+          <span data-i18n="hero.badge">CLIENTX30 // CLIENTE COMPETITIVO PARA DDNET</span>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="title-line">
+            <span class="char-reveal" data-i18n="hero.title1">MENOS LATENCIA.</span>
+          </span>
+          <span class="title-line">
+            <span class="char-reveal gradient-text" data-i18n="hero.title2">MÁS PRECISIÓN.</span>
+          </span>
+        </h1>
+
+        <p class="hero-description" data-i18n="hero.desc">
+          AClient lleva DDNet al siguiente nivel: motores de Fast Input, Race Stats en vivo con ranking animado, herramientas de práctica, editor de assets y un menú pensado para jugadores competitivos.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#anatomy" class="btn-secondary-outline">
+            <span data-i18n="hero.btn_racestats">Ver Race Stats</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+          </a>
+        </div>
+
+        <div class="hero-hud-bar">
+          <div class="hud-item">
+            <span class="hud-label" data-i18n="hero.hud1_label">Fast Input</span>
+            <div class="hud-value">7<span data-i18n="hero.hud1_unit">motores</span></div>
+            <span class="hud-detail" data-i18n="hero.hud1_sub">aX30, Fast, Mejor, Saiko, Delta, F y Cloud</span>
+          </div>
+
+          <div class="hud-item">
+            <span class="hud-label" data-i18n="hero.hud2_label">Race Stats</span>
+            <div class="hud-value">8<span data-i18n="hero.hud2_unit">criterios</span></div>
+            <span class="hud-detail" data-i18n="hero.hud2_sub">Ranking en vivo estilo F1 con destellos</span>
+          </div>
+
+          <div class="hud-item">
+            <span class="hud-label" data-i18n="hero.hud3_label">Editor de Assets</span>
+            <div class="hud-value">4<span data-i18n="hero.hud3_unit">fusiones</span></div>
+            <span class="hud-detail" data-i18n="hero.hud3_sub">TeeLike, Screen, Multiply y Overlay</span>
+          </div>
+
+          <div class="hud-item">
+            <span class="hud-label" data-i18n="hero.hud4_label">Configuración</span>
+            <div class="hud-value">ac_<span data-i18n="hero.hud4_unit">propia</span></div>
+            <span class="hud-detail" data-i18n="hero.hud4_sub">settings_aclient.cfg aislado en AppData</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAST INPUT -->
+    <section class="section-wrapper" id="sound-lab">
+      <div class="sound-lab-wrapper">
+        <div class="section-header">
+          <div class="section-eyebrow">Fast Input</div>
+          <h2 class="section-title" data-i18n="input.title">SIETE MOTORES, TU ELECCIÓN</h2>
+          <p style="color: var(--text-muted); margin-top: 1rem; max-width: 640px;" data-i18n="input.desc">
+            Mové el cursor sobre la señal para jugar con la forma de la onda y elegí un motor para ver cómo cambia su ritmo. Es una ilustración: cada motor ajusta cuán rápido responde tu input.
+          </p>
+        </div>
+
+        <canvas id="waveCanvas" class="wave-canvas"></canvas>
+
+        <div class="sound-lab-controls">
+          <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted);">
+            <span data-i18n="input.control_label">MODO DE FAST INPUT:</span>
+          </div>
+
+          <div class="synth-triggers">
+            <button class="tone-button" data-freq="330" data-wave="0.008"><span>aX30</span></button>
+            <button class="tone-button" data-freq="392" data-wave="0.010"><span>Fast</span></button>
+            <button class="tone-button" data-freq="440" data-wave="0.012"><span>Mejor</span></button>
+            <button class="tone-button" data-freq="494" data-wave="0.015"><span>Saiko</span></button>
+            <button class="tone-button" data-freq="587" data-wave="0.018"><span>Delta</span></button>
+            <button class="tone-button" data-freq="659" data-wave="0.021"><span>F</span></button>
+            <button class="tone-button" data-freq="784" data-wave="0.025"><span>Cloud</span></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RACE STATS con hotspots -->
+    <section class="section-wrapper" id="anatomy">
+      <div class="section-header" style="text-align: center; max-width: 800px; margin: 0 auto 3rem auto;">
+        <div class="section-eyebrow" style="justify-content: center;" data-i18n="stats.eyebrow">Race Stats</div>
+        <h2 class="section-title" data-i18n="stats.title">ANALIZÁ CADA CARRERA</h2>
+        <p style="color: var(--text-muted); margin-top: 1rem; font-size: 1.05rem;" data-i18n="stats.desc">
+          Tocá los puntos de pulso para ver qué hace cada parte del panel.
+        </p>
+      </div>
+
+      <div class="anatomy-stage">
+        <div class="stage-glow-backdrop"></div>
+
+        <div class="stage-frame">
+          <img src="assets/images/race-stats.png" alt="Panel Race Stats de AClient" class="stage-product-image">
+
+          <div class="hotspot-pin" style="top: 56%; left: 30%;">
+            <div class="hotspot-button"><div class="hotspot-inner-dot"></div></div>
+            <div class="hotspot-tooltip">
+              <div class="tooltip-tag" data-i18n="stats.pin1_tag">HISTORIAL</div>
+              <div class="tooltip-title" data-i18n="stats.pin1_title">Logs guardados</div>
+              <p class="tooltip-desc" data-i18n="stats.pin1_desc">Cada carrera queda registrada con mapa, equipo, tiempo y motivo del guardado (Auto, Finish). Abrila cuando quieras.</p>
+            </div>
+          </div>
+
+          <div class="hotspot-pin" style="top: 30%; left: 66%;">
+            <div class="hotspot-button"><div class="hotspot-inner-dot"></div></div>
+            <div class="hotspot-tooltip">
+              <div class="tooltip-tag" data-i18n="stats.pin2_tag">TABLA EN VIVO</div>
+              <div class="tooltip-title" data-i18n="stats.pin2_title">Stats por jugador</div>
+              <p class="tooltip-desc" data-i18n="stats.pin2_desc">Freezes, hammer, muertes, eficiencia, balance y tiempo de cada tee, ordenables según 8 criterios.</p>
+            </div>
+          </div>
+
+          <div class="hotspot-pin" style="top: 24%; left: 14%;">
+            <div class="hotspot-button"><div class="hotspot-inner-dot"></div></div>
+            <div class="hotspot-tooltip">
+              <div class="tooltip-tag" data-i18n="stats.pin3_tag">PERSISTENCIA</div>
+              <div class="tooltip-title" data-i18n="stats.pin3_title">Auto-guardado</div>
+              <p class="tooltip-desc" data-i18n="stats.pin3_desc">Guardá antes de /kill o /team, al terminar el mapa, o solo al finalizar. Con duración mínima y límite de logs configurables.</p>
+            </div>
+          </div>
+
+          <div class="hotspot-pin" style="top: 15%; left: 80%;">
+            <div class="hotspot-button"><div class="hotspot-inner-dot"></div></div>
+            <div class="hotspot-tooltip">
+              <div class="tooltip-tag" data-i18n="stats.pin4_tag">COMPARTIR</div>
+              <div class="tooltip-title" data-i18n="stats.pin4_title">Export PNG</div>
+              <p class="tooltip-desc" data-i18n="stats.pin4_desc">Exportá el resultado de la carrera como imagen para compartirlo con tu equipo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GAMESKIN OTHERS -->
+    <section class="section-wrapper" id="gameskin" style="padding-top: 40px; padding-bottom: 60px;">
+      <div class="gameskin-grid">
+        <div>
+          <div class="section-eyebrow" data-i18n="gameskin.eyebrow">GameSkinOthers</div>
+          <h2 class="section-title" data-i18n="gameskin.title">LAS SKINS DE LOS DEMÁS</h2>
+          <p class="gameskin-text" data-i18n="gameskin.desc">Mirá las skins que tienen los demás jugadores.</p>
+        </div>
+        <div class="visual-card-frame gameskin-frame">
+          <img src="assets/images/gameskin-others.png" alt="akisi y agusx30 con sus skins" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee-container" aria-hidden="true">
+      <div class="marquee-track">
+        <div class="marquee-item">
+          <span class="marquee-text highlight">FAST INPUT</span>
+          <span class="marquee-separator"></span>
+          <span class="marquee-text">RACE STATS EN VIVO</span>
+          <span class="marquee-separator"></span>
+          <span class="marquee-text highlight">FAST PRACTICE</span>
+          <span class="marquee-separator"></span>
+          <span class="marquee-text">EDITOR DE ASSETS</span>
+          <span class="marquee-separator"></span>
+          <span class="marquee-text highlight">SILENT TYPING</span>
+          <span class="marquee-separator"></span>
+          <span class="marquee-text">PERFILES DDNET + KOG</span>
+          <span class="marquee-separator"></span>
+        </div>
+        <div class="marquee-item">
+          <span class="marquee-text highlight">FAST INPUT</span>
+          <span class="marquee-separator"></span>
+          <span class="marquee-text">RACE STATS EN VIVO</span>
+          <span class="marquee-separator"></span>
+          <span class="marquee-text highlight">FAST PRACTICE</span>
+          <span class="marquee-separator"></span>
+          <span class="marquee-text">EDITOR DE ASSETS</span>
+          <span class="marquee-separator"></span>
+          <span class="marquee-text highlight">SILENT TYPING</span>
+          <span class="marquee-separator"></span>
+          <span class="marquee-text">PERFILES DDNET + KOG</span>
+          <span class="marquee-separator"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- VISIÓN -->
+    <section class="section-wrapper" id="philosophy">
+      <div class="philosophy-grid">
+        <div class="philosophy-sticky-content">
+          <div class="section-header">
+            <div class="section-eyebrow" data-i18n="vision.eyebrow">Por qué AClient</div>
+            <h2 class="section-title" data-i18n="vision.title">HECHO PARA QUIEN JUEGA EN SERIO</h2>
+          </div>
+
+          <p class="philosophy-text-lead" data-i18n-html="vision.lead">
+            Un cliente construido sobre DDNet y TClient que <span class="highlight">pone los datos y el control en tus manos</span>: input, estadísticas, práctica y personalización.
+          </p>
+
+          <p class="philosophy-body" data-i18n-html="vision.body">
+            Cada módulo responde a una necesidad real de las carreras: reaccionar con menos retraso, entender cómo corrió cada tee, practicar sin fricción y mantener tu configuración ordenada en un dominio propio, con compatibilidad hacia atrás para tus configs <code>tc_*</code>.
+          </p>
+
+          <div class="philosophy-badges">
+            <span class="glass-chip" data-i18n="vision.chip1">Basado en DDNet / TClient</span>
+            <span class="glass-chip" data-i18n="vision.chip2">Configuración ac_ aislada</span>
+            <span class="glass-chip" data-i18n="vision.chip3">Scripts ChaiScript</span>
+          </div>
+        </div>
+
+        <div class="philosophy-visual-stack">
+
+          <div class="visual-card-frame">
+            <img src="assets/images/fast-input.png" alt="Panel de Fast Input de AClient" loading="lazy">
+            <div class="visual-card-caption">
+              <div>
+                <div class="caption-title" data-i18n="vision.card_title">Panel de Entrada</div>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;" data-i18n="vision.card_sub">Modos, offsets, interpolación y sub-tick aiming</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MOD TOOLS -->
+    <section class="section-wrapper" id="modtools" style="padding-top: 60px; padding-bottom: 60px;">
+      <div class="section-header" style="max-width: 820px;">
+        <div class="section-eyebrow" data-i18n="mod.eyebrow">Mod Tools</div>
+        <h2 class="section-title" data-i18n="mod.title">MODERACIÓN SIN FRICCIÓN</h2>
+        <p style="color: var(--text-muted); margin-top: 1rem; font-size: 1.05rem;" data-i18n="mod.desc">
+          Herramientas para moderadores integradas en el cliente: acciones rápidas sobre cualquier jugador y presets listos para sancionar.
+        </p>
+      </div>
+
+      <div class="philosophy-grid">
+        <div>
+          <div class="visual-card-frame">
+            <img src="assets/images/player-menu.png" alt="Menú contextual de jugador con acciones de moderación" loading="lazy">
+            <div class="visual-card-caption">
+              <div>
+                <div class="caption-title" data-i18n="mod.card1_title">Menú de jugador</div>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;" data-i18n="mod.card1_sub">Clic en un jugador y actuás al instante</p>
+              </div>
+            </div>
+          </div>
+          <ul class="mod-list">
+            <li data-i18n="mod.card1_li1">Asistir, copiar skin y abrir su perfil en DDNet, DDNet Web o KoG Web</li>
+            <li data-i18n-html="mod.card1_li2">Sección de moderación con <strong>Mutear ID</strong>, <strong>Kickear</strong> y <strong>Banear</strong></li>
+            <li data-i18n="mod.card1_li3">Todo desde el mismo menú, sin escribir comandos</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="visual-card-frame">
+            <img src="assets/images/mod-menu.png" alt="Pestaña Mod con presets de kick, mute y ban" loading="lazy">
+            <div class="visual-card-caption">
+              <div>
+                <div class="caption-title" data-i18n="mod.card2_title">Pestaña Mod</div>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;" data-i18n="mod.card2_sub">Presets editables para cada sanción</p>
+              </div>
+            </div>
+          </div>
+          <ul class="mod-list">
+            <li data-i18n="mod.card2_li1">Grabación automática de una demo de 3 minutos al sancionar (kick o ban)</li>
+            <li data-i18n-html="mod.card2_li2">Presets de <strong>Kick</strong>, <strong>Mute</strong> (duraciones y razones) y <strong>Ban</strong> (duraciones en minutos y razones)</li>
+            <li data-i18n="mod.card2_li3">Opción para moderar a tu Dummy (modo pruebas) y acceso directo al canal de Discord</li>
+            <li data-i18n="mod.card2_li4">Restablecer valores por defecto con un clic</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERÍA -->
+    <section class="section-wrapper" id="gallery">
+      <div class="section-header">
+        <div class="section-eyebrow" data-i18n="gallery.eyebrow">En acción</div>
+        <h2 class="section-title" data-i18n="gallery.title">GALERÍA</h2>
+      </div>
+
+      <div class="gallery-bento-grid">
+        <div class="bento-card bento-card-large">
+          <img src="assets/images/perfiles.png" alt="Perfiles de equipo y mapas incompletos" class="bento-img" loading="lazy">
+          <div class="bento-overlay">
+            <span class="bento-tag" data-i18n="gallery.card1_tag">PERFILES</span>
+            <h3 class="bento-title" data-i18n="gallery.card1_title">Equipos y mapas pendientes</h3>
+            <p class="bento-desc" data-i18n="gallery.card1_desc">Buscá jugadores en DDNet o KoG, detectá tu equipo y mirá qué mapas les faltan en común, filtrados por dificultad.</p>
+          </div>
+        </div>
+
+        <div class="bento-card bento-card-tall">
+          <img src="assets/images/player-menu.png" alt="Menú contextual de jugador" class="bento-img" loading="lazy" style="object-position: 62% 50%;">
+          <div class="bento-overlay">
+            <span class="bento-tag" data-i18n="gallery.card2_tag">JUGADORES</span>
+            <h3 class="bento-title" data-i18n="gallery.card2_title">Menú rápido</h3>
+            <p class="bento-desc" data-i18n="gallery.card2_desc">Asistir, copiar skin, abrir perfiles en DDNet y KoG, y acciones de moderación en un clic.</p>
+          </div>
+        </div>
+
+        <div class="bento-card bento-card-medium">
+          <img src="assets/images/mod-menu.png" alt="Pestaña Mod con presets" class="bento-img" loading="lazy">
+          <div class="bento-overlay">
+            <span class="bento-tag" data-i18n="gallery.card3_tag">MODERACIÓN</span>
+            <h3 class="bento-title" data-i18n="gallery.card3_title">Presets de kick, mute y ban</h3>
+            <p class="bento-desc" data-i18n="gallery.card3_desc">Razones y duraciones listas para usar, con grabación automática de demo al sancionar.</p>
+          </div>
+        </div>
+
+        <div class="bento-card bento-card-medium">
+          <img src="assets/images/race-stats.png" alt="Race Stats" class="bento-img" loading="lazy">
+          <div class="bento-overlay">
+            <span class="bento-tag">RACE STATS</span>
+            <h3 class="bento-title" data-i18n="gallery.card4_title">Resultados de cada run</h3>
+            <p class="bento-desc" data-i18n="gallery.card4_desc">Compará jugadores en una sola tabla y exportala como imagen.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MÓDULOS -->
+    <section class="section-wrapper" id="specs">
+      <div class="section-header">
+        <div class="section-eyebrow" data-i18n="modules.eyebrow">Módulos</div>
+        <h2 class="section-title" data-i18n="modules.title">TODO LO QUE INCLUYE</h2>
+      </div>
+
+      <div class="specs-container">
+        <div class="spec-tile">
+          <span class="spec-num">// 01</span>
+          <h3 class="spec-title" data-i18n="modules.spec1_title">Fast Input</h3>
+          <div class="spec-value-badge" data-i18n="modules.spec1_badge">7 motores</div>
+          <p class="spec-body" data-i18n="modules.spec1_desc">aX30, Fast, Mejor, Saiko, Delta, F y Cloud. Margen y offset de predicción, compensación adaptativa, interpolación y sub-tick aiming, con control independiente para otros tees y repredicción de hook.</p>
+        </div>
+
+        <div class="spec-tile">
+          <span class="spec-num">// 02</span>
+          <h3 class="spec-title" data-i18n="modules.spec2_title">Race Stats &amp; HUD</h3>
+          <div class="spec-value-badge" data-i18n="modules.spec2_badge">8 criterios</div>
+          <p class="spec-body" data-i18n="modules.spec2_desc">Detección de saves (hammer y hook), ranking animado estilo F1, HUD configurable en escala, posición y opacidad, e historial con auto-guardado.</p>
+        </div>
+
+        <div class="spec-tile">
+          <span class="spec-num">// 03</span>
+          <h3 class="spec-title" data-i18n="modules.spec3_title">Fast Practice &amp; Equipos</h3>
+          <div class="spec-value-badge" data-i18n="modules.spec3_badge">Ghost 0–100%</div>
+          <p class="spec-body" data-i18n="modules.spec3_desc">Modo fantasma regulable, auto /spec al original, auto team lock con retardo configurable y atajos /invite all e /invite friends.</p>
+        </div>
+
+        <div class="spec-tile">
+          <span class="spec-num">// 04</span>
+          <h3 class="spec-title" data-i18n="modules.spec4_title">Editor de Game Assets</h3>
+          <div class="spec-value-badge" data-i18n="modules.spec4_badge">HSLA + 4 fusiones</div>
+          <p class="spec-body" data-i18n="modules.spec4_desc">Lienzo dual donante/resultado para Entities, Game, HUD, Particles, Emoticons y Extras. Reescalado bilineal, colorización y exportación PNG con recarga en caliente.</p>
+        </div>
+
+        <div class="spec-tile">
+          <span class="spec-num">// 05</span>
+          <h3 class="spec-title" data-i18n="modules.spec5_title">Chat &amp; Alertas</h3>
+          <div class="spec-value-badge" data-i18n="modules.spec5_badge">Silent Typing</div>
+          <p class="spec-body" data-i18n="modules.spec5_desc">Ocultá tu burbuja al escribir o las ajenas, controlá el echo local y recibí avisos en segundo plano al descongelarte o si tu tee se mueve estando AFK.</p>
+        </div>
+
+        <div class="spec-tile">
+          <span class="spec-num">// 06</span>
+          <h3 class="spec-title" data-i18n="modules.spec6_title">Integraciones</h3>
+          <div class="spec-value-badge" data-i18n="modules.spec6_badge">Discord + ChaiScript</div>
+          <p class="spec-body" data-i18n-html="modules.spec6_desc">Discord Rich Presence con mapa y estado, scripts .chai para macros, personalización estética (trails, rainbow, mascotas) y configuración propia <code>ac_</code>.</p>
+        </div>
+      
+        <div class="spec-tile">
+          <span class="spec-num">// 07</span>
+          <h3 class="spec-title" data-i18n="modules.spec7_title">Skin Stealer</h3>
+          <div class="spec-value-badge" data-i18n="modules.spec7_badge">Copiar skins</div>
+          <p class="spec-body" data-i18n="modules.spec7_desc">Copiá la skin de cualquier jugador con un clic.</p>
+        </div>
+
+        <div class="spec-tile">
+          <span class="spec-num">// 08</span>
+          <h3 class="spec-title" data-i18n="modules.spec8_title">Sonidos del juego</h3>
+          <div class="spec-value-badge" data-i18n="modules.spec8_badge">Sonido a tu gusto</div>
+          <p class="spec-body" data-i18n="modules.spec8_desc">Cambiá los sonidos del juego por los que prefieras.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section-wrapper" id="reserve">
+      <div class="reservation-banner">
+        <div>
+          <div class="reservation-eyebrow">
+            <span class="btn-pill-icon"></span>
+            <span>CLIENTX30</span>
+          </div>
+          <h2 class="reservation-title" data-i18n="cta.title">PROBÁ ACLIENT EN TU PRÓXIMA CARRERA</h2>
+          <p class="reservation-text" data-i18n="cta.desc">
+            Todo el poder de DDNet con las herramientas que te faltaban. Sumate a la comunidad y mantenete al tanto de las novedades.
+          </p>
+
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <div class="glass-chip">DDNet</div>
+            <div class="glass-chip">Discord Rich Presence</div>
+            <div class="glass-chip">Configs tc_* compatibles</div>
+          </div>
+        </div>
+
+        <div class="allocation-box">
+          <div class="allocation-header">
+            <span>CLIENTE</span>
+            <span style="color: var(--accent-primary);" data-i18n="cta.box_sub">COMPETITIVO</span>
+          </div>
+
+          <div class="allocation-count">AClient</div>
+
+          <a class="btn-reserve-vip" href="https://github.com/AgusClient/AClient" target="_blank" rel="noopener noreferrer">
+            <span>Download</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" id="footer">
+    <div class="section-wrapper" style="padding-top: 0; padding-bottom: 0;">
+      <div class="footer-massive-text">ACLIENT</div>
+
+      <div class="footer-top">
+        <div style="max-width: 380px;">
+          <div class="brand-logo" style="margin-bottom: 1.5rem;">
+            <div class="logo-symbol"><img src="assets/images/logo.png" alt="AClient"></div>
+            <span class="logo-text">ACLIENT</span>
+          </div>
+          <p style="color: var(--text-dim); font-size: 0.9rem; line-height: 1.7;">
+            Cliente competitivo y de práctica avanzada para DDNet, creado por y para la comunidad.
+          </p>
+        </div>
+
+        <div class="footer-links-grid">
+          <div>
+            <div class="footer-col-title" data-i18n="footer.col1">Explorar</div>
+            <ul class="footer-nav-list">
+              <li><a href="#hero" data-i18n="footer.nav_home">Inicio</a></li>
+              <li><a href="#sound-lab" data-i18n="nav.sound_lab">Fast Input</a></li>
+              <li><a href="#anatomy" data-i18n="nav.anatomy">Race Stats</a></li>
+              <li><a href="#gameskin" data-i18n="nav.gameskin">GameSkin</a></li>
+              <li><a href="#philosophy" data-i18n="nav.philosophy">Visión</a></li>
+              <li><a href="#modtools" data-i18n="nav.modtools">Mod Tools</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="footer-col-title" data-i18n="footer.col2">Funciones</div>
+            <ul class="footer-nav-list">
+              <li><a href="#sound-lab">Fast Input</a></li>
+              <li><a href="#gallery">Galería</a></li>
+              <li><a href="#specs">Módulos</a></li>
+              <li><a href="https://github.com/AgusClient/AClient" target="_blank" rel="noopener noreferrer" data-i18n="footer.get_aclient">Obtener AClient</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="footer-col-title" data-i18n="footer.col3">Comunidad</div>
+            <ul class="footer-nav-list">
+              <li><a href="#">Discord</a></li>
+              <li><a href="#">DDNet</a></li>
+              <li><a href="#">Créditos</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div data-i18n="footer.bottom">AClient · Proyecto de la comunidad, basado en DDNet y TClient.</div>
+
+        <div class="footer-status-pill">
+          <span class="status-dot"></span>
+          <span data-i18n="footer.clock">HORA LOCAL:</span> <span id="live-time">--:--:--</span></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/audio.js"></script>
+  <script src="js/three-scene.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
