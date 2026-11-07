@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://agusclient.github.io/sitemap.xml
