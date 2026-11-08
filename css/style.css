@@ -1983,3 +1983,70 @@ a.btn-reserve-vip { text-decoration: none; }
   color: var(--text-muted);
   flex-grow: 1;
 }
+
+/* ===== HERO OPEN SOURCE BUTTON ===== */
+.btn-hero-opensource {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 36px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.03));
+  border: 1.5px solid var(--border-glow);
+  border-radius: 100px;
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 0 30px var(--accent-glow), 0 10px 25px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all 0.3s var(--ease-out-expo);
+}
+
+.btn-hero-opensource::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transition: left 0.7s ease;
+}
+
+.btn-hero-opensource:hover {
+  transform: translateY(-3px) scale(1.03);
+  border-color: var(--accent-primary);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.08));
+  box-shadow: 0 0 45px var(--accent-glow), 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+.btn-hero-opensource:hover::before {
+  left: 100%;
+}
+
+.btn-hero-opensource .btn-github-icon {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+  transition: transform 0.3s ease;
+}
+
+.btn-hero-opensource:hover .btn-github-icon {
+  transform: rotate(-10deg) scale(1.1);
+}
+
+.btn-hero-opensource .btn-arrow-icon {
+  transition: transform 0.3s ease;
+  color: var(--accent-primary);
+}
+
+.btn-hero-opensource:hover .btn-arrow-icon {
+  transform: translate(3px, -3px);
+  color: #ffffff;
+}
