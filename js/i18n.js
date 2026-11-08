@@ -20,12 +20,13 @@ const translations = {
     "preloader.status": "CARGANDO CLIENTE",
 
     // Hero
-    "hero.badge": "ACLIENT // CLIENTE COMPETITIVO PARA DDNET",
+    "hero.badge": "ACLIENT // CÓDIGO ABIERTO · CLIENTE COMPETITIVO PARA DDNET",
     "hero.title1": "MENOS LATENCIA.",
     "hero.title2": "MÁS PRECISIÓN.",
     "hero.desc": "AClient lleva DDNet al siguiente nivel: motores de Fast Input, Race Stats en vivo con ranking animado, herramientas de práctica, editor de assets y un menú pensado para jugadores competitivos.",
     "hero.theme_label": "TEMA DE LA WEB:",
     "hero.btn_racestats": "Ver Race Stats",
+    "hero.btn_github": "Código Abierto",
     "hero.hint_rotate": "Girar en 360°",
     "hero.hud1_label": "Fast Input",
     "hero.hud1_unit": "motores",
@@ -72,7 +73,8 @@ const translations = {
     "vision.title": "HECHO PARA QUIEN JUEGA EN SERIO",
     "vision.lead": "Un cliente construido sobre DDNet y TClient que <span class=\"highlight\">pone los datos y el control en tus manos</span>: input, estadísticas, práctica y personalización.",
     "vision.body": "Cada módulo responde a una necesidad real de las carreras: reaccionar con menos retraso, entender cómo corrió cada tee, practicar sin fricción y mantener tu configuración ordenada en un dominio propio, con compatibilidad hacia atrás para tus configs <code>tc_*</code>.",
-    "vision.chip1": "Basado en DDNet / TClient",
+    "vision.chip1": "100% Código Abierto (Open Source)",
+    "vision.chip_base": "Basado en DDNet / TClient",
     "vision.chip2": "Configuración ac_ aislada",
     "vision.chip3": "Scripts ChaiScript",
     "vision.card_title": "Panel de Entrada",
@@ -169,7 +171,7 @@ const translations = {
     "footer.col3": "Comunidad",
     "footer.nav_home": "Inicio",
     "footer.get_aclient": "Obtener AClient",
-    "footer.bottom": "AClient · Proyecto de la comunidad, basado en DDNet y TClient.",
+    "footer.bottom": "AClient · Proyecto de código abierto de la comunidad, basado en DDNet y TClient.",
     "footer.clock": "HORA LOCAL:"
   },
 
@@ -189,12 +191,13 @@ const translations = {
     "preloader.status": "CARREGANDO CLIENTE",
 
     // Hero
-    "hero.badge": "ACLIENT // CLIENTE COMPETITIVO PARA DDNET",
+    "hero.badge": "ACLIENT // CÓDIGO ABERTO · CLIENTE COMPETITIVO PARA DDNET",
     "hero.title1": "MENOS LATÊNCIA.",
     "hero.title2": "MAIS PRECISÃO.",
     "hero.desc": "O AClient leva o DDNet ao próximo nível: motores de Fast Input, Race Stats ao vivo com ranking animado, ferramentas de treino, editor de assets e um menu pensado para jogadores competitivos.",
     "hero.theme_label": "TEMA DO SITE:",
     "hero.btn_racestats": "Ver Race Stats",
+    "hero.btn_github": "Código Aberto",
     "hero.hint_rotate": "Girar em 360°",
     "hero.hud1_label": "Fast Input",
     "hero.hud1_unit": "motores",
@@ -241,7 +244,8 @@ const translations = {
     "vision.title": "FEITO PARA QUEM JOGA A SÉRIO",
     "vision.lead": "Um cliente construído sobre DDNet e TClient que <span class=\"highlight\">coloca os dados e o controle nas suas mãos</span>: input, estatísticas, treino e personalização.",
     "vision.body": "Cada módulo atende a uma necessidade real de corrida: reagir com menos atraso, entender o desempenho de cada tee, treinar sem atrito e manter sua configuração organizada em um domínio próprio, compatível com configs <code>tc_*</code>.",
-    "vision.chip1": "Baseado em DDNet / TClient",
+    "vision.chip1": "100% Código Aberto (Open Source)",
+    "vision.chip_base": "Baseado em DDNet / TClient",
     "vision.chip2": "Configuração ac_ isolada",
     "vision.chip3": "Scripts ChaiScript",
     "vision.card_title": "Painel de Entrada",
@@ -338,7 +342,7 @@ const translations = {
     "footer.col3": "Comunidade",
     "footer.nav_home": "Início",
     "footer.get_aclient": "Obter AClient",
-    "footer.bottom": "AClient · Projeto comunitário, baseado em DDNet e TClient.",
+    "footer.bottom": "AClient · Projeto de código aberto comunitário, baseado em DDNet e TClient.",
     "footer.clock": "HORA LOCAL:"
   },
 
@@ -358,12 +362,13 @@ const translations = {
     "preloader.status": "LOADING CLIENT",
 
     // Hero
-    "hero.badge": "ACLIENT // COMPETITIVE CLIENT FOR DDNET",
+    "hero.badge": "ACLIENT // OPEN SOURCE · COMPETITIVE CLIENT FOR DDNET",
     "hero.title1": "LESS LATENCY.",
     "hero.title2": "MORE PRECISION.",
     "hero.desc": "AClient elevates DDNet to the next level: Fast Input engines, live Race Stats with animated ranking, practice tools, asset editor, and a menu engineered for competitive players.",
     "hero.theme_label": "WEB THEME:",
     "hero.btn_racestats": "View Race Stats",
+    "hero.btn_github": "Open Source",
     "hero.hint_rotate": "Rotate in 360°",
     "hero.hud1_label": "Fast Input",
     "hero.hud1_unit": "engines",
@@ -410,7 +415,8 @@ const translations = {
     "vision.title": "BUILT FOR SERIOUS PLAYERS",
     "vision.lead": "A client crafted on DDNet and TClient that <span class=\"highlight\">puts telemetry and control in your hands</span>: input, stats, practice, and visual customization.",
     "vision.body": "Every module solves a real racing demand: lower input latency, analyze team performance, practice friction-free, and keep your config cleanly isolated in a dedicated domain with backward compatibility for <code>tc_*</code> binds.",
-    "vision.chip1": "Based on DDNet / TClient",
+    "vision.chip1": "100% Open Source",
+    "vision.chip_base": "Based on DDNet / TClient",
     "vision.chip2": "Isolated ac_ configuration",
     "vision.chip3": "ChaiScript engine",
     "vision.card_title": "Input Panel",
@@ -507,7 +513,7 @@ const translations = {
     "footer.col3": "Community",
     "footer.nav_home": "Home",
     "footer.get_aclient": "Get AClient",
-    "footer.bottom": "AClient · Community project based on DDNet and TClient.",
+    "footer.bottom": "AClient · Community open-source project based on DDNet and TClient.",
     "footer.clock": "LOCAL TIME:"
   }
 };
