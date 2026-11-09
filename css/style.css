@@ -2050,3 +2050,69 @@ a.btn-reserve-vip { text-decoration: none; }
   transform: translate(3px, -3px);
   color: #ffffff;
 }
+
+/* ===== HERO KO-FI BUTTON ===== */
+.btn-hero-kofi {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 36px;
+  background: linear-gradient(135deg, rgba(255, 94, 91, 0.16), rgba(255, 94, 91, 0.04));
+  border: 1.5px solid rgba(255, 94, 91, 0.4);
+  border-radius: 100px;
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all 0.3s var(--ease-out-expo);
+}
+
+.btn-hero-kofi::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 94, 91, 0.35), transparent);
+  transition: left 0.7s ease;
+}
+
+.btn-hero-kofi:hover {
+  transform: translateY(-3px) scale(1.03);
+  border-color: #ff5e5b;
+  background: linear-gradient(135deg, rgba(255, 94, 91, 0.28), rgba(255, 94, 91, 0.1));
+  box-shadow: 0 0 45px rgba(255, 94, 91, 0.45), 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+.btn-hero-kofi:hover::before {
+  left: 100%;
+}
+
+.btn-hero-kofi .btn-kofi-icon {
+  width: 22px;
+  height: 22px;
+  fill: #ff5e5b;
+  transition: transform 0.3s ease;
+}
+
+.btn-hero-kofi:hover .btn-kofi-icon {
+  transform: rotate(-10deg) scale(1.15);
+}
+
+.btn-hero-kofi .btn-arrow-icon {
+  transition: transform 0.3s ease;
+  color: #ff5e5b;
+}
+
+.btn-hero-kofi:hover .btn-arrow-icon {
+  transform: translate(3px, -3px);
+  color: #ffffff;
+}
