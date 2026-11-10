@@ -32,7 +32,7 @@ const translations = {
     "hero.hint_rotate": "Girar en 360°",
     "hero.hud1_label": "Fast Input",
     "hero.hud1_unit": "motores",
-    "hero.hud1_sub": "aX30, Fast, Best, Saiko, Delta, F y Cloud",
+    "hero.hud1_sub": "aX30, Fast, Mejor, Saiko, Delta, F y Cloud",
     "hero.hud2_label": "Race Stats",
     "hero.hud2_unit": "criterios",
     "hero.hud2_sub": "Ranking en vivo estilo F1 con destellos",
@@ -80,7 +80,7 @@ const translations = {
     "vision.chip2": "Configuración ac_ aislada",
     "vision.chip3": "Scripts ChaiScript",
     "vision.card_title": "Panel de Entrada",
-    "vision.card_sub": "Modos, offsets, interpolación y sub-tick aiming",
+    "vision.card_sub": "Modos, offsets, compensación adaptativa, filtro de bordes e interpolación",
 
     // Race Stats
     "stats.eyebrow": "Race Stats",
@@ -104,6 +104,7 @@ const translations = {
     "input.title": "SIETE MOTORES, TU ELECCIÓN",
     "input.desc": "Mové el cursor sobre la señal para jugar con la forma de la onda y elegí un motor para ver cómo cambia su ritmo. Es una ilustración: cada motor ajusta cuán rápido responde tu input.",
     "input.control_label": "MODO DE FAST INPUT:",
+    "input.btn_best": "Mejor",
 
     // Gallery
     "gallery.eyebrow": "En acción",
@@ -126,7 +127,7 @@ const translations = {
     "modules.title": "TODO LO QUE INCLUYE",
     "modules.spec1_title": "Fast Input",
     "modules.spec1_badge": "7 motores",
-    "modules.spec1_desc": "aX30, Fast, Best, Saiko, Delta, F y Cloud. Margen y offset de predicción, compensación adaptativa, interpolación y sub-tick aiming, con control independiente para otros tees y repredicción de hook.",
+    "modules.spec1_desc": "aX30, Fast, Mejor, Saiko, Delta, F y Cloud. Margen y offset de predicción, compensación adaptativa inteligente, filtro de seguridad de bordes, interpolación (HE, 1:1, Cúbica), sub-tick aiming y control para otros tees.",
     "modules.spec2_title": "Race Stats & HUD",
     "modules.spec2_badge": "8 criterios",
     "modules.spec2_desc": "Detección de saves (hammer y hook), ranking animado estilo F1, HUD configurable en escala, posición y opacidad, e historial con auto-guardado.",
@@ -253,7 +254,7 @@ const translations = {
     "vision.chip2": "Configuração ac_ isolada",
     "vision.chip3": "Scripts ChaiScript",
     "vision.card_title": "Painel de Entrada",
-    "vision.card_sub": "Modos, offsets, interpolação e sub-tick aiming",
+    "vision.card_sub": "Modos, offsets, compensação adaptativa, filtro de bordas e interpolação",
 
     // Race Stats
     "stats.eyebrow": "Race Stats",
@@ -277,6 +278,7 @@ const translations = {
     "input.title": "SETE MOTORES, SUA ESCOLHA",
     "input.desc": "Mova o cursor sobre o sinal para modular a onda e selecione um motor para ver a frequência mudar. É uma ilustração: cada motor ajusta a rapidez de resposta do seu input.",
     "input.control_label": "MODO DE FAST INPUT:",
+    "input.btn_best": "Melhor",
 
     // Gallery
     "gallery.eyebrow": "Em ação",
@@ -299,7 +301,7 @@ const translations = {
     "modules.title": "TUDO O QUE ESTÁ INCLUSO",
     "modules.spec1_title": "Fast Input",
     "modules.spec1_badge": "7 motores",
-    "modules.spec1_desc": "aX30, Fast, Melhor, Saiko, Delta, F e Cloud. Margem e offset de predição, compensação adaptativa, interpolação e sub-tick aiming, com controle para outros tees e repredição de hook.",
+    "modules.spec1_desc": "aX30, Fast, Melhor, Saiko, Delta, F e Cloud. Margem e offset de predição, compensação adaptativa inteligente, filtro de segurança de bordas, interpolação (HE, 1:1, Cúbica), sub-tick aiming e controle para outros tees.",
     "modules.spec2_title": "Race Stats & HUD",
     "modules.spec2_badge": "8 critérios",
     "modules.spec2_desc": "Detecção de saves (hammer e hook), ranking animado estilo F1, HUD configurável em escala, posição e opacidade, e histórico com auto-salvamento.",
@@ -426,7 +428,7 @@ const translations = {
     "vision.chip2": "Isolated ac_ configuration",
     "vision.chip3": "ChaiScript engine",
     "vision.card_title": "Input Panel",
-    "vision.card_sub": "Modes, offsets, interpolation, and sub-tick aiming",
+    "vision.card_sub": "Modes, offsets, adaptive compensation, edge safety filter, and interpolation",
 
     // Race Stats
     "stats.eyebrow": "Race Stats",
@@ -450,6 +452,7 @@ const translations = {
     "input.title": "SEVEN ENGINES, YOUR CHOICE",
     "input.desc": "Move your cursor across the signal to modulate the wave and select an engine to observe frequency changes. An interactive visualization of input responsiveness.",
     "input.control_label": "FAST INPUT ENGINE:",
+    "input.btn_best": "Best",
 
     // Gallery
     "gallery.eyebrow": "In action",
@@ -472,7 +475,7 @@ const translations = {
     "modules.title": "EVERYTHING INCLUDED",
     "modules.spec1_title": "Fast Input",
     "modules.spec1_badge": "7 engines",
-    "modules.spec1_desc": "aX30, Fast, Best, Saiko, Delta, F, and Cloud. Prediction margin & offset, adaptive smart compensation, interpolation, sub-tick aiming, independent others' control, and hook reprediction.",
+    "modules.spec1_desc": "aX30, Fast, Best, Saiko, Delta, F, and Cloud. Prediction margin & offset, smart adaptive compensation, boundary safety filter, interpolation (HE, 1:1, Cubic), sub-tick aiming, and independent others' control.",
     "modules.spec2_title": "Race Stats & HUD",
     "modules.spec2_badge": "8 criteria",
     "modules.spec2_desc": "Dual hammer & hook save detection, F1-style animated position ladder, configurable scale, position, and opacity, plus persistent auto-save logging.",
