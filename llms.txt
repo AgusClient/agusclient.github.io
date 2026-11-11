@@ -1,0 +1,33 @@
+# AClient
+
+> Cliente competitivo de código abierto para DDNet (DDraceNetwork) y Teeworlds, creado por AgusClient. Incluye Fast Input de 8 motores (incluyendo aX30 y aXv2), GameSkins Compartidas, Entities Remotas, Hook Glow, Race Stats en vivo, editor integrado de assets HSLA y utilidades de práctica y moderación.
+
+## Características Principales
+
+- **Assets Compartidos y Hook Glow (Pionero en DDNet / Teeworlds)**: Primer cliente en sincronizar en la nube GameSkins individuales por jugador (`GameSkinOthers`) y capas de Entities Remotas dinámicas en tiempo real, junto con efecto Hook Glow personalizable.
+- **Fast Input (8 motores)**: Motores `aX30`, `aXv2`, `Fast`, `Mejor`, `Saiko`, `Delta`, `F` y `Cloud`, con margen y offset de predicción, compensación adaptativa inteligente, filtro de seguridad de bordes, interpolación (`HE`, `1:1`, `Cúbica`) y `sub-tick aiming`.
+- **Race Stats HUD**: Overlay en vivo estilo F1 con 8 criterios ordenables, detección de saves (hammer/hook), historial con auto-guardado y exportación en PNG.
+- **Editor de Game Assets**: Lienzo dual doador/resultado con fusión HSLA (`TeeLike`, `Screen`, `Multiply`, `Overlay`) para Entities, Game, HUD, Particles, Emoticons y Extras.
+- **Mod Tools y Práctica**: Menú contextual de jugador, presets de `Kick`, `Mute` y `Ban` con grabación automática de demo de 3 minutos, Fast Practice con fantasma configurable (`0–100%`), Silent Typing, soporte ChaiScript (`.chai`) y configuración aislada `ac_` compatible con binds `tc_*`.
+
+## Secciones del Sitio Web
+
+- [Inicio](https://agusclient.github.io/#hero): Presentación principal, resumen de módulos y métricas clave.
+- [GameSkins Compartidas & Hook Glow](https://agusclient.github.io/#gameskin): Innovación visual pionera en DDNet/Teeworlds con sincronización en vivo.
+- [Fast Input](https://agusclient.github.io/#sound-lab): Visualizador interactivo de los 8 motores de respuesta (aX30, aXv2, Fast, Mejor, Saiko, Delta, F, Cloud).
+- [Race Stats](https://agusclient.github.io/#anatomy): Anatomía interactiva del panel de estadísticas de carrera.
+- [Visión](https://agusclient.github.io/#philosophy): Arquitectura abierta basada en DDNet y TClient con configuración aislada `ac_`.
+- [Mod Tools](https://agusclient.github.io/#modtools): Herramientas y presets de moderación rápida dentro del cliente.
+- [Galería](https://agusclient.github.io/#gallery): Capturas de perfiles de equipo, menú de jugador, presets mod y Race Stats.
+- [Módulos](https://agusclient.github.io/#specs): Detalle completo de los 10 módulos incluidos.
+- [Créditos](https://agusclient.github.io/#credits): Reconocimientos a desarrolladores y proyectos base de la comunidad DDNet y Teeworlds.
+
+## Descarga y Enlaces Oficiales
+
+- [Descargar AClient (DDNet.exe)](https://github.com/AgusClient/AClient/releases/latest/download/DDNet.exe): Descarga directa del ejecutable más reciente para Windows.
+- [Último Release en GitHub (v2.7.5)](https://github.com/AgusClient/AClient/releases/latest): Notas de versión y archivos publicados.
+- [Código Fuente en GitHub](https://github.com/AgusClient/AClient): Repositorio oficial de código abierto.
+- [Comunidad en Discord](https://discord.com/channels/1569059640598069340/1569063377375068304): Canal oficial de la comunidad y soporte.
+- [Ko-fi (AgusClient)](https://ko-fi.com/agusx30): Apoyo voluntario al proyecto.
+- [Sitemap XML](https://agusclient.github.io/sitemap.xml): Mapa del sitio e imágenes indexables.
+- [DDNet Oficial](https://ddnet.org/): Proyecto base oficial DDraceNetwork.
