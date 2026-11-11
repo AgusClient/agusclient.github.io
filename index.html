@@ -3,14 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AClient // Cliente competitivo para DDNet</title>
+  <title>AClient // Cliente Competitivo para DDNet · Fast Input &amp; Race Stats</title>
 
   <!-- SEO Primario -->
-  <meta name="description" content="AClient (Clientx30): cliente competitivo y de práctica avanzada para DDNet. Fast Input optimizado, Race Stats en vivo, editor de assets y herramientas de moderación.">
-  <meta name="keywords" content="AClient, Clientx30, DDNet, DDraceNetwork, Teeworlds, Fast Input, Race Stats, GameSkin, DDNet client, DDNet mod, cliente competitivo, Teeworlds mod, DDrace">
+  <meta name="description" content="AClient: cliente competitivo para DDNet y Teeworlds con Fast Input (8 motores incl. aXv2), GameSkins compartidas, Entities remotas, Hook Glow y Race Stats.">
+  <meta name="keywords" content="AClient, Clientx30, DDNet, DDraceNetwork, Teeworlds, Fast Input, aXv2, aX30, GameSkins compartidas, GameSkinOthers, Entities remotas, Hook Glow, Race Stats, DDNet client, DDNet mod, cliente competitivo DDNet, TClient">
   <meta name="author" content="AgusClient">
+  <meta name="application-name" content="AClient">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <link rel="canonical" href="https://agusclient.github.io/">
+  <link rel="alternate" hreflang="es" href="https://agusclient.github.io/">
+  <link rel="alternate" hreflang="x-default" href="https://agusclient.github.io/">
 
   <!-- Tema del Navegador -->
   <meta name="theme-color" content="#8b5cf6">
@@ -19,21 +23,26 @@
   <!-- Open Graph / Facebook / Discord / WhatsApp -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://agusclient.github.io/">
-  <meta property="og:title" content="AClient // Cliente competitivo para DDNet">
-  <meta property="og:description" content="AClient (Clientx30): cliente competitivo y de práctica avanzada para DDNet. Fast Input, Race Stats en vivo, editor de assets y herramientas exclusivas.">
+  <meta property="og:title" content="AClient // Cliente Competitivo para DDNet · Fast Input &amp; Race Stats">
+  <meta property="og:description" content="Cliente competitivo para DDNet y Teeworlds con Fast Input (8 motores incl. aXv2), GameSkins compartidas, Entities remotas, Hook Glow y Race Stats en vivo.">
   <meta property="og:image" content="https://agusclient.github.io/assets/images/race-stats.png">
-  <meta property="og:image:alt" content="AClient - Cliente competitivo para DDNet">
+  <meta property="og:image:secure_url" content="https://agusclient.github.io/assets/images/race-stats.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="575">
+  <meta property="og:image:alt" content="Panel Race Stats, Fast Input y módulos de AClient para DDNet">
   <meta property="og:site_name" content="AClient">
   <meta property="og:locale" content="es_ES">
-  <meta property="og:locale:alternate" content="en_US">
   <meta property="og:locale:alternate" content="pt_BR">
+  <meta property="og:locale:alternate" content="en_US">
 
   <!-- Twitter / X Cards -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://agusclient.github.io/">
-  <meta name="twitter:title" content="AClient // Cliente competitivo para DDNet">
-  <meta name="twitter:description" content="AClient: cliente competitivo y de práctica avanzada para DDNet. Fast Input, Race Stats en vivo y editor de assets integrado.">
+  <meta name="twitter:title" content="AClient // Cliente Competitivo para DDNet · Fast Input &amp; Race Stats">
+  <meta name="twitter:description" content="Fast Input (8 motores incl. aXv2), GameSkins compartidas, Entities remotas, Hook Glow y Race Stats en vivo para DDNet y Teeworlds.">
   <meta name="twitter:image" content="https://agusclient.github.io/assets/images/race-stats.png">
+  <meta name="twitter:image:alt" content="Panel Race Stats, Fast Input y módulos de AClient para DDNet">
 
   <!-- Favicon e Iconos Móviles -->
   <link rel="icon" type="image/png" href="assets/images/logo.png">
@@ -43,25 +52,68 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "AClient",
-    "alternateName": ["Clientx30", "AClient DDNet"],
-    "applicationCategory": "GameApplication",
-    "operatingSystem": "Windows 64-bit",
-    "description": "Cliente competitivo y de práctica avanzada para DDNet con Fast Input, Race Stats en vivo, editor de assets integrado y utilidades mod.",
-    "url": "https://agusclient.github.io/",
-    "image": "https://agusclient.github.io/assets/images/logo.png",
-    "screenshot": "https://agusclient.github.io/assets/images/race-stats.png",
-    "author": {
-      "@type": "Person",
-      "name": "AgusClient",
-      "url": "https://github.com/AgusClient"
-    },
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    }
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://agusclient.github.io/#website",
+        "url": "https://agusclient.github.io/",
+        "name": "AClient",
+        "alternateName": ["Clientx30", "AClient DDNet"],
+        "inLanguage": ["es", "pt", "en"]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://agusclient.github.io/#software",
+        "name": "AClient",
+        "alternateName": ["Clientx30", "AClient DDNet"],
+        "applicationCategory": "GameApplication",
+        "applicationSubCategory": "DDNet Competitive Client",
+        "operatingSystem": "Windows 64-bit",
+        "softwareVersion": "2.7.5",
+        "isAccessibleForFree": true,
+        "inLanguage": ["es", "pt", "en"],
+        "description": "Cliente competitivo de código abierto para DDNet y Teeworlds con Fast Input (8 motores incl. aXv2 y aX30), GameSkins compartidas, Entities remotas, Hook Glow, Race Stats en vivo y editor de assets.",
+        "url": "https://agusclient.github.io/",
+        "mainEntityOfPage": {
+          "@id": "https://agusclient.github.io/#website"
+        },
+        "downloadUrl": "https://github.com/AgusClient/AClient/releases/latest/download/DDNet.exe",
+        "releaseNotes": "https://github.com/AgusClient/AClient/releases/latest",
+        "image": "https://agusclient.github.io/assets/images/logo.png",
+        "screenshot": [
+          "https://agusclient.github.io/assets/images/race-stats.png",
+          "https://agusclient.github.io/assets/images/fast-input.png",
+          "https://agusclient.github.io/assets/images/gameskin-others.png",
+          "https://agusclient.github.io/assets/images/perfiles.png",
+          "https://agusclient.github.io/assets/images/player-menu.png",
+          "https://agusclient.github.io/assets/images/mod-menu.png"
+        ],
+        "featureList": [
+          "Fast Input con 8 motores (aX30, aXv2, Fast, Mejor, Saiko, Delta, F y Cloud)",
+          "GameSkins Compartidas (GameSkinOthers) en la nube",
+          "Entities Remotas y Dinámicas en tiempo real",
+          "Hook Glow personalizable",
+          "Race Stats HUD en vivo con ranking animado",
+          "Editor integrado de Game Assets con modos HSLA",
+          "Fast Practice con fantasma configurable y herramientas de moderación"
+        ],
+        "sameAs": [
+          "https://github.com/AgusClient/AClient",
+          "https://ko-fi.com/aclient",
+          "https://discord.com/channels/1569059640598069340/1569063377375068304"
+        ],
+        "author": {
+          "@type": "Person",
+          "name": "AgusClient",
+          "url": "https://github.com/AgusClient"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    ]
   }
   </script>
 
@@ -310,7 +362,7 @@
         </div>
 
         <div class="visual-card-frame gameskin-frame">
-          <img src="assets/images/gameskin-others.png" alt="akisi y agusx30 con sus skins personalizadas" loading="lazy">
+          <img src="assets/images/gameskin-others.png" alt="Demostración de GameSkins compartidas y Entities remotas en AClient con akisi y agusx30" loading="lazy">
           <div class="visual-card-caption">
             <div>
               <div class="caption-title" data-i18n="gameskin.caption_title">Sincronización en Tiempo Real</div>
@@ -566,7 +618,7 @@
         </div>
 
         <div class="bento-card bento-card-medium">
-          <img src="assets/images/race-stats.png" alt="Race Stats" class="bento-img" loading="lazy">
+          <img src="assets/images/race-stats.png" alt="Panel Race Stats en vivo de AClient con métricas y exportación" class="bento-img" loading="lazy">
           <div class="bento-overlay">
             <span class="bento-tag">RACE STATS</span>
             <h3 class="bento-title" data-i18n="gallery.card4_title">Resultados de cada run</h3>
@@ -768,9 +820,9 @@
             <div class="footer-col-title" data-i18n="footer.col1">Explorar</div>
             <ul class="footer-nav-list">
               <li><a href="#hero" data-i18n="footer.nav_home">Inicio</a></li>
+              <li><a href="#gameskin" data-i18n="nav.gameskin">GameSkin &amp; Glow</a></li>
               <li><a href="#sound-lab" data-i18n="nav.sound_lab">Fast Input</a></li>
               <li><a href="#anatomy" data-i18n="nav.anatomy">Race Stats</a></li>
-              <li><a href="#gameskin" data-i18n="nav.gameskin">GameSkin</a></li>
               <li><a href="#philosophy" data-i18n="nav.philosophy">Visión</a></li>
               <li><a href="#modtools" data-i18n="nav.modtools">Mod Tools</a></li>
             </ul>
@@ -791,7 +843,7 @@
             <div class="footer-col-title" data-i18n="footer.col3">Comunidad</div>
             <ul class="footer-nav-list">
               <li><a href="https://discord.com/channels/1569059640598069340/1569063377375068304" target="_blank" rel="noopener noreferrer">Discord</a></li>
-              <li><a href="#">DDNet</a></li>
+              <li><a href="https://ddnet.org/" target="_blank" rel="noopener noreferrer">DDNet</a></li>
               <li><a href="#credits" data-i18n="nav.credits">Créditos</a></li>
             </ul>
           </div>
@@ -803,7 +855,7 @@
 
         <div class="footer-status-pill">
           <span class="status-dot"></span>
-          <span data-i18n="footer.clock">HORA LOCAL:</span> <span id="live-time">--:--:--</span></span>
+          <span data-i18n="footer.clock">HORA LOCAL:</span> <span id="live-time">--:--:--</span>
         </div>
       </div>
     </div>

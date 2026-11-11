@@ -5,9 +5,13 @@
 
 const translations = {
   es: {
+    // Meta
+    "meta.title": "AClient // Cliente Competitivo para DDNet · Fast Input & Race Stats",
+    "meta.description": "AClient: cliente competitivo para DDNet y Teeworlds con Fast Input (8 motores incl. aXv2), GameSkins compartidas, Entities remotas, Hook Glow y Race Stats.",
+
     // Nav
     "nav.modtools": "Mod Tools",
-    "nav.gameskin": "GameSkin",
+    "nav.gameskin": "GameSkin & Glow",
     "nav.philosophy": "Visión",
     "nav.anatomy": "Race Stats",
     "nav.sound_lab": "Fast Input",
@@ -66,7 +70,6 @@ const translations = {
     "mod.card2_li4": "Restablecer valores por defecto con un clic",
 
     // GameSkin Others
-    "nav.gameskin": "GameSkin & Glow",
     "gameskin.eyebrow": "Innovación y Estética Visual",
     "gameskin.title": "ASSETS COMPARTIDOS Y HOOK GLOW",
     "gameskin.lead": "Históricamente en Teeworlds y DDNet, las armas, ganchos y entities fueron siempre texturas locales estáticas. <span class=\"highlight\">AClient es el primer cliente en la historia del juego en implementar GameSkins Compartidos y Entities Remotas</span> en tiempo real, sumando además efectos como Hook Glow.",
@@ -201,9 +204,13 @@ const translations = {
   },
 
   pt: {
+    // Meta
+    "meta.title": "AClient // Cliente Competitivo para DDNet · Fast Input & Race Stats",
+    "meta.description": "AClient: cliente competitivo para DDNet e Teeworlds com Fast Input (8 motores incl. aXv2), GameSkins compartilhadas, Entities remotas, Hook Glow e Race Stats.",
+
     // Nav
     "nav.modtools": "Mod Tools",
-    "nav.gameskin": "GameSkin",
+    "nav.gameskin": "GameSkin & Glow",
     "nav.philosophy": "Visão",
     "nav.anatomy": "Race Stats",
     "nav.sound_lab": "Fast Input",
@@ -262,7 +269,6 @@ const translations = {
     "mod.card2_li4": "Restaurar valores padrão com um clique",
 
     // GameSkin Others
-    "nav.gameskin": "GameSkin & Glow",
     "gameskin.eyebrow": "Inovação e Estética Visual",
     "gameskin.title": "ASSETS COMPARTILHADOS E HOOK GLOW",
     "gameskin.lead": "Historicamente no Teeworlds e DDNet, armas, ganchos e entities sempre foram texturas locais estáticas. <span class=\"highlight\">O AClient é o primeiro cliente na história do jogo a implementar GameSkins Compartilhadas e Entities Remotas</span> em tempo real, além de efeitos como Hook Glow.",
@@ -361,6 +367,12 @@ const translations = {
     "modules.spec8_title": "Sons do jogo",
     "modules.spec8_badge": "Som ao seu gosto",
     "modules.spec8_desc": "Altere os sons do jogo para os que você preferir.",
+    "modules.spec9_title": "GameSkins & Entities Remotas",
+    "modules.spec9_badge": "Pioneiro AClient",
+    "modules.spec9_desc": "Primeiro cliente no Teeworlds/DDNet a sincronizar armas e ganchos individuais ao vivo e camadas de entities remotas dinâmicas.",
+    "modules.spec10_title": "Hook Glow",
+    "modules.spec10_badge": "Glow Dinâmico",
+    "modules.spec10_desc": "Brilho luminoso e halo configurável no traçado do gancho, melhorando a visibilidade e a estética em cada disparo.",
 
     // Credits
     "credits.eyebrow": "AGRADECIMENTOS // COMUNIDADE",
@@ -391,9 +403,13 @@ const translations = {
   },
 
   en: {
+    // Meta
+    "meta.title": "AClient // Competitive Client for DDNet · Fast Input & Race Stats",
+    "meta.description": "AClient: competitive client for DDNet and Teeworlds featuring Fast Input (8 engines incl. aXv2), shared GameSkins, remote Entities, Hook Glow, and live Race Stats.",
+
     // Nav
     "nav.modtools": "Mod Tools",
-    "nav.gameskin": "GameSkin",
+    "nav.gameskin": "GameSkin & Glow",
     "nav.philosophy": "Vision",
     "nav.anatomy": "Race Stats",
     "nav.sound_lab": "Fast Input",
@@ -452,9 +468,24 @@ const translations = {
     "mod.card2_li4": "Reset to default values with one click",
 
     // GameSkin Others
-    "gameskin.eyebrow": "GameSkinOthers",
-    "gameskin.title": "OTHER PLAYERS' SKINS",
-    "gameskin.desc": "See the skins and weapon visuals other players are using.",
+    "gameskin.eyebrow": "Visual Innovation & Aesthetics",
+    "gameskin.title": "SHARED ASSETS & HOOK GLOW",
+    "gameskin.lead": "Historically in Teeworlds and DDNet, weapons, hooks, and entities were always static local textures. <span class=\"highlight\">AClient is the first client in the game's history to implement Shared GameSkins and Remote Entities</span> in real time, alongside visual effects like Hook Glow.",
+    "gameskin.chip1": "DDNet / Teeworlds Pioneer",
+    "gameskin.chip2": "Cloud GameSkins",
+    "gameskin.chip3": "Live Remote Entities",
+    "gameskin.chip4": "Dynamic Hook Glow",
+    "gameskin.f1_badge": "Created & Innovated by AClient",
+    "gameskin.f1_title": "Shared GameSkins (GameSkinOthers)",
+    "gameskin.f1_desc": "Where every player previously had to see the exact same local texture, AClient introduced cloud synchronization: each tee displays their own custom weapons, hook, and hammer live in-game with hot-reloaded downloads.",
+    "gameskin.f2_badge": "First Client to Implement It",
+    "gameskin.f2_title": "Remote & Dynamic Entities",
+    "gameskin.f2_desc": "Real-time entity layer synchronization across players. Allows entities and tiles to react interactively and collaboratively based on each tee's hook and actions on the server.",
+    "gameskin.f3_badge": "Competitive Visual Effect",
+    "gameskin.f3_title": "Customizable Hook Glow",
+    "gameskin.f3_desc": "Luminous glow and dynamic halo along the hook trajectory. Enhances visual tracking of fast hooks during races and tight saves with adjustable palette and intensity.",
+    "gameskin.caption_title": "Real-Time Synchronization",
+    "gameskin.caption_sub": "See the custom skins and assets of every player connected to AClient",
 
     // Vision
     "vision.eyebrow": "Why AClient",
@@ -535,6 +566,12 @@ const translations = {
     "modules.spec8_title": "In-Game Audio",
     "modules.spec8_badge": "Custom soundscape",
     "modules.spec8_desc": "Customize game sounds and sound effects to your exact preference.",
+    "modules.spec9_title": "Shared GameSkins & Remote Entities",
+    "modules.spec9_badge": "AClient Pioneer",
+    "modules.spec9_desc": "First client in Teeworlds/DDNet to synchronize per-player custom weapons and hooks live alongside dynamic remote entity layers.",
+    "modules.spec10_title": "Hook Glow",
+    "modules.spec10_badge": "Dynamic Glow",
+    "modules.spec10_desc": "Configurable luminous glow and halo along the hook trajectory, improving clarity and visual polish on every shot.",
 
     // Credits
     "credits.eyebrow": "ACKNOWLEDGEMENTS // COMMUNITY",
@@ -623,6 +660,16 @@ class I18nManager {
     document.documentElement.lang = lang;
     const dict = translations[lang];
     if (!dict) return;
+
+    if (dict['meta.title']) {
+      document.title = dict['meta.title'];
+    }
+    if (dict['meta.description']) {
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) {
+        metaDesc.setAttribute('content', dict['meta.description']);
+      }
+    }
 
     // Update current lang indicator
     const currentCode = document.getElementById('currentLangCode');
