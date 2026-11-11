@@ -1,14 +1,14 @@
 /**
- * Three.js 3D Interactive Scene for AETHER Showcase
- * Handles Hero 3D Artifact and Sandbox 3D Model with physically based rendering (PBR)
+ * Three.js 3D Interactive Scene for AClient Showcase
+ * Deferred hardware-accelerated hero 3D artifact (skips mobile, reduced-motion,
+ * save-data, and software rasterizers to keep main-thread TBT near zero).
  */
 
 class LuxurySceneManager {
   constructor() {
     this.heroCanvas = document.getElementById('webgl-canvas');
-    this.sandboxCanvas = document.getElementById('sandbox-canvas');
-    
-    // Theme colors mapping for 3D lights and materials
+    if (!this.heroCanvas) return;
+
     this.themeColors = {
       default: { primary: 0x8b5cf6, secondary: 0xec4899, metal: 0x1a1a24 },
       fuchsia: { primary: 0xf43f5e, secondary: 0xa855f7, metal: 0x22121b },
@@ -18,26 +18,80 @@ class LuxurySceneManager {
 
     this.currentTheme = 'default';
     this.heroVisible = true;
-    this.sandboxVisible = false;
-    const watch = (el, key) => {
-      if (!el || !('IntersectionObserver' in window)) return;
-      new IntersectionObserver(([en]) => { this[key] = en.isIntersecting; }).observe(el);
+    this.rafId = null;
+    this.initialized = false;
+
+    if (!this.shouldEnable3D()) {
+      this.heroCanvas.style.display = 'none';
+      return;
+    }
+
+    const scheduleInit = () => {
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(() => this.loadAndInit(), { timeout: 1200 });
+      } else {
+        setTimeout(() => this.loadAndInit(), 50);
+      }
     };
-    watch(this.heroCanvas, 'heroVisible');
-    watch(this.sandboxCanvas, 'sandboxVisible');
-    this.initHeroScene();
-    if (this.sandboxCanvas) {
-      this.initSandboxScene();
+
+    if (document.readyState === 'complete') {
+      scheduleInit();
+    } else {
+      window.addEventListener('load', scheduleInit, { once: true });
     }
   }
 
-  /* --- 1. HERO 3D EXPERIENCE --- */
-  initHeroScene() {
-    if (!this.heroCanvas) return;
+  shouldEnable3D() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false;
+    if (window.matchMedia('(max-width: 991px), (pointer: coarse)').matches) return false;
+    if (navigator.connection && navigator.connection.saveData) return false;
 
-    // 1. Scene, Camera, Renderer
+    try {
+      const probe = document.createElement('canvas');
+      const gl = probe.getContext('webgl2') || probe.getContext('webgl');
+      if (!gl) return false;
+
+      const dbg = gl.getExtension('WEBGL_debug_renderer_info');
+      const renderer = dbg ? String(gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL) || '') : '';
+      const loseCtx = gl.getExtension('WEBGL_lose_context');
+      if (loseCtx) loseCtx.loseContext();
+
+      if (/swiftshader|llvmpipe|softpipe|software|microsoft basic render/i.test(renderer)) {
+        return false;
+      }
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  loadAndInit() {
+    if (window.THREE) {
+      this.initHeroScene();
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+    script.async = true;
+    script.crossOrigin = 'anonymous';
+    script.onload = () => this.initHeroScene();
+    script.onerror = () => {
+      this.heroCanvas.style.display = 'none';
+    };
+    document.head.appendChild(script);
+  }
+
+  initHeroScene() {
+    if (!this.heroCanvas || !window.THREE || this.initialized) return;
+    this.initialized = true;
+
     this.scene = new THREE.Scene();
-    this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
+    const heroRect = this.heroCanvas.parentElement.getBoundingClientRect();
+    const w = heroRect.width || window.innerWidth;
+    const h = heroRect.height || window.innerHeight;
+
+    this.camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 100);
     this.camera.position.set(0, 0, 7.5);
 
     this.renderer = new THREE.WebGLRenderer({
@@ -46,72 +100,61 @@ class LuxurySceneManager {
       alpha: true,
       powerPreference: 'high-performance'
     });
-    const heroRect = this.heroCanvas.parentElement.getBoundingClientRect();
-    const w = heroRect.width || window.innerWidth;
-    const h = heroRect.height || window.innerHeight;
     this.renderer.setSize(w, h, false);
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1));
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.25));
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
     this.renderer.toneMappingExposure = 1.25;
 
-    // 2. Lighting Setup (Photographic Luxury Studio)
-    this.ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+    this.ambientLight = new THREE.AmbientLight(0xffffff, 0.65);
     this.scene.add(this.ambientLight);
 
-    // Dynamic Colored Rim Lights
     this.keyLight = new THREE.DirectionalLight(0xffffff, 2.2);
     this.keyLight.position.set(5, 6, 4);
     this.scene.add(this.keyLight);
 
-    this.accentLight1 = new THREE.PointLight(this.themeColors.default.primary, 4.5, 20);
+    const activeTheme = this.themeColors[this.currentTheme] || this.themeColors.default;
+
+    this.accentLight1 = new THREE.PointLight(activeTheme.primary, 4.5, 20);
     this.accentLight1.position.set(-5, -2, 3);
     this.scene.add(this.accentLight1);
 
-    this.accentLight2 = new THREE.PointLight(this.themeColors.default.secondary, 3.5, 20);
+    this.accentLight2 = new THREE.PointLight(activeTheme.secondary, 3.5, 20);
     this.accentLight2.position.set(4, -4, -2);
     this.scene.add(this.accentLight2);
 
-    // 3. Flagship 3D Core Object (Acoustic Sculptural Form)
     this.artifactGroup = new THREE.Group();
 
-    // Central Core: Precision Metallic Torus Knot
-    const coreGeometry = new THREE.TorusKnotGeometry(1.6, 0.48, 120, 24, 2, 3);
-    this.coreMaterial = new THREE.MeshPhysicalMaterial({
-      color: 0x1c1e28,
-      metalness: 0.95,
-      roughness: 0.18,
-      clearcoat: 1.0,
-      clearcoatRoughness: 0.08,
-      reflectivity: 1.0,
-      envMapIntensity: 2.0
+    const coreGeometry = new THREE.TorusKnotGeometry(1.6, 0.48, 80, 16, 2, 3);
+    this.coreMaterial = new THREE.MeshStandardMaterial({
+      color: activeTheme.metal,
+      metalness: 0.92,
+      roughness: 0.18
     });
     this.coreMesh = new THREE.Mesh(coreGeometry, this.coreMaterial);
     this.artifactGroup.add(this.coreMesh);
 
-    // Outer Gyroscope Rings (Titanium & Polished Glass Orbitals)
-    const ringGeo1 = new THREE.TorusGeometry(2.6, 0.04, 32, 120);
+    const ringGeo1 = new THREE.TorusGeometry(2.6, 0.04, 10, 72);
     const ringMat1 = new THREE.MeshStandardMaterial({
       color: 0xffffff,
       metalness: 0.95,
-      roughness: 0.1
+      roughness: 0.12
     });
     this.ring1 = new THREE.Mesh(ringGeo1, ringMat1);
     this.ring1.rotation.x = Math.PI / 3;
     this.artifactGroup.add(this.ring1);
 
-    const ringGeo2 = new THREE.TorusGeometry(3.1, 0.025, 32, 120);
+    const ringGeo2 = new THREE.TorusGeometry(3.1, 0.025, 10, 72);
     const ringMat2 = new THREE.MeshStandardMaterial({
       color: 0x8892b0,
       metalness: 0.8,
-      roughness: 0.2
+      roughness: 0.22
     });
     this.ring2 = new THREE.Mesh(ringGeo2, ringMat2);
     this.ring2.rotation.y = Math.PI / 4;
     this.ring2.rotation.x = -Math.PI / 6;
     this.artifactGroup.add(this.ring2);
 
-    // Micro Quantum Particle Cloud
-    const particleCount = 280;
+    const particleCount = 160;
     const particleGeo = new THREE.BufferGeometry();
     const particlePos = new Float32Array(particleCount * 3);
 
@@ -127,8 +170,8 @@ class LuxurySceneManager {
 
     particleGeo.setAttribute('position', new THREE.BufferAttribute(particlePos, 3));
     this.particleMaterial = new THREE.PointsMaterial({
-      color: this.themeColors.default.primary,
-      size: 0.04,
+      color: activeTheme.primary,
+      size: 0.045,
       transparent: true,
       opacity: 0.65,
       blending: THREE.AdditiveBlending
@@ -136,246 +179,134 @@ class LuxurySceneManager {
     this.particleCloud = new THREE.Points(particleGeo, this.particleMaterial);
     this.artifactGroup.add(this.particleCloud);
 
-    // Center artifact slightly to the right for heroic layout balance on desktop
-    if (window.innerWidth > 992) {
-      this.artifactGroup.position.set(1.5, 0, 0);
-    } else {
-      this.artifactGroup.position.set(0, 0, 0);
-    }
-
+    this.artifactGroup.position.set(window.innerWidth > 992 ? 1.5 : 0, 0, 0);
     this.scene.add(this.artifactGroup);
 
-    // 4. Mouse Tracking & Drag Interaction
     this.targetRotationX = 0;
     this.targetRotationY = 0;
     this.mouse = { x: 0, y: 0 };
     this.isDragging = false;
     this.previousMousePosition = { x: 0, y: 0 };
 
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(([en]) => {
+        this.heroVisible = en.isIntersecting;
+        if (this.heroVisible) this.startLoop();
+      }).observe(this.heroCanvas);
+    }
+
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden && this.heroVisible) this.startLoop();
+    });
+
     this.setupHeroEvents();
-    this.animateHero();
+    this.renderer.render(this.scene, this.camera);
+    this.heroCanvas.classList.add('ready');
+    this.startLoop();
   }
 
   setupHeroEvents() {
+    let resizeTimer;
     window.addEventListener('resize', () => {
-      if (!this.camera || !this.renderer) return;
-      const heroRect = this.heroCanvas.parentElement.getBoundingClientRect();
-      const w = heroRect.width || window.innerWidth;
-      const h = heroRect.height || window.innerHeight;
-      this.camera.aspect = w / h;
-      this.camera.updateProjectionMatrix();
-      this.renderer.setSize(w, h, false);
-      this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1));
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (!this.camera || !this.renderer) return;
+        const heroRect = this.heroCanvas.parentElement.getBoundingClientRect();
+        const w = heroRect.width || window.innerWidth;
+        const h = heroRect.height || window.innerHeight;
+        this.camera.aspect = w / h;
+        this.camera.updateProjectionMatrix();
+        this.renderer.setSize(w, h, false);
+        this.artifactGroup.position.x = window.innerWidth > 992 ? 1.5 : 0;
+      }, 120);
+    }, { passive: true });
 
-      if (window.innerWidth > 992) {
-        this.artifactGroup.position.x = 1.5;
-      } else {
-        this.artifactGroup.position.x = 0;
-      }
-    });
+    const canvas = this.heroCanvas;
 
-    // Mouse Move Parallax
     window.addEventListener('mousemove', (e) => {
       this.mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
       this.mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
 
-      if (!this.isDragging) {
+      if (this.isDragging) {
+        const deltaX = e.clientX - this.previousMousePosition.x;
+        const deltaY = e.clientY - this.previousMousePosition.y;
+        this.artifactGroup.rotation.y += deltaX * 0.008;
+        this.artifactGroup.rotation.x += deltaY * 0.008;
+        this.previousMousePosition = { x: e.clientX, y: e.clientY };
+      } else {
         this.targetRotationY = this.mouse.x * 0.45;
         this.targetRotationX = -this.mouse.y * 0.35;
       }
-    });
+    }, { passive: true });
 
-    // 3D Canvas Click & Drag Rotation
-    const canvas = this.heroCanvas;
     canvas.addEventListener('mousedown', (e) => {
       this.isDragging = true;
-      this.previousMousePosition = { x: e.clientX, y: e.clientY };
-    });
-
-    window.addEventListener('mousemove', (e) => {
-      if (!this.isDragging) return;
-      const deltaX = e.clientX - this.previousMousePosition.x;
-      const deltaY = e.clientY - this.previousMousePosition.y;
-
-      this.artifactGroup.rotation.y += deltaX * 0.008;
-      this.artifactGroup.rotation.x += deltaY * 0.008;
-
       this.previousMousePosition = { x: e.clientX, y: e.clientY };
     });
 
     window.addEventListener('mouseup', () => {
       this.isDragging = false;
     });
+  }
 
-    // Touch support for mobile 3D interaction
-    canvas.addEventListener('touchstart', (e) => {
-      if (e.touches.length === 1) {
-        this.isDragging = true;
-        this.previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  startLoop() {
+    if (this.rafId !== null) return;
+    const tick = () => {
+      if (!this.heroVisible || document.hidden) {
+        this.rafId = null;
+        return;
       }
-    }, { passive: true });
+      this.rafId = requestAnimationFrame(tick);
 
-    window.addEventListener('touchmove', (e) => {
-      if (!this.isDragging || e.touches.length !== 1) return;
-      const deltaX = e.touches[0].clientX - this.previousMousePosition.x;
-      const deltaY = e.touches[0].clientY - this.previousMousePosition.y;
+      const time = performance.now() * 0.001;
+      if (!this.isDragging) {
+        this.artifactGroup.rotation.y += (this.targetRotationY - this.artifactGroup.rotation.y) * 0.05 + 0.0025;
+        this.artifactGroup.rotation.x += (this.targetRotationX - this.artifactGroup.rotation.x) * 0.05;
+      }
 
-      this.artifactGroup.rotation.y += deltaX * 0.008;
-      this.artifactGroup.rotation.x += deltaY * 0.008;
+      if (this.ring1) {
+        this.ring1.rotation.z += 0.006;
+        this.ring1.rotation.x += 0.004;
+      }
+      if (this.ring2) {
+        this.ring2.rotation.y -= 0.005;
+        this.ring2.rotation.z -= 0.003;
+      }
+      if (this.particleCloud) {
+        this.particleCloud.rotation.y += 0.0015;
+      }
 
-      this.previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-    }, { passive: true });
-
-    window.addEventListener('touchend', () => {
-      this.isDragging = false;
-    });
+      this.artifactGroup.position.y = Math.sin(time * 1.5) * 0.12;
+      this.renderer.render(this.scene, this.camera);
+    };
+    this.rafId = requestAnimationFrame(tick);
   }
 
-  animateHero() {
-    requestAnimationFrame(() => this.animateHero());
-    if (!this.heroVisible || document.hidden) return;
-
-    const time = performance.now() * 0.001;
-
-    // Autonomous slow majestic floating rotation
-    if (!this.isDragging) {
-      this.artifactGroup.rotation.y += (this.targetRotationY - this.artifactGroup.rotation.y) * 0.05 + 0.0025;
-      this.artifactGroup.rotation.x += (this.targetRotationX - this.artifactGroup.rotation.x) * 0.05;
-    }
-
-    // Secondary kinetic movements
-    if (this.ring1) {
-      this.ring1.rotation.z += 0.006;
-      this.ring1.rotation.x += 0.004;
-    }
-    if (this.ring2) {
-      this.ring2.rotation.y -= 0.005;
-      this.ring2.rotation.z -= 0.003;
-    }
-    if (this.particleCloud) {
-      this.particleCloud.rotation.y += 0.0015;
-    }
-
-    // Gentle vertical levitation oscillation
-    this.artifactGroup.position.y = Math.sin(time * 1.5) * 0.12;
-
-    this.renderer.render(this.scene, this.camera);
-  }
-
-  /* --- 2. SWITCH 3D FINISH & COLOR THEME --- */
   setTheme(themeName) {
-    const config = this.themeColors[themeName] || this.themeColors.default;
     this.currentTheme = themeName;
+    if (!this.initialized || !window.THREE) return;
 
-    // Smooth transition of lights and materials
-    if (window.gsap) {
-      // Accent Light 1
-      const col1 = new THREE.Color(config.primary);
-      gsap.to(this.accentLight1.color, {
-        r: col1.r, g: col1.g, b: col1.b, duration: 0.8
-      });
+    const config = this.themeColors[themeName] || this.themeColors.default;
+    const targets = [
+      [this.accentLight1.color, new THREE.Color(config.primary)],
+      [this.accentLight2.color, new THREE.Color(config.secondary)],
+      [this.particleMaterial.color, new THREE.Color(config.primary)],
+      [this.coreMaterial.color, new THREE.Color(config.metal)]
+    ];
 
-      // Accent Light 2
-      const col2 = new THREE.Color(config.secondary);
-      gsap.to(this.accentLight2.color, {
-        r: col2.r, g: col2.g, b: col2.b, duration: 0.8
-      });
+    const starts = targets.map(([cur]) => cur.clone());
+    const startTime = performance.now();
+    const duration = 650;
 
-      // Particle Cloud color
-      if (this.particleMaterial) {
-        gsap.to(this.particleMaterial.color, {
-          r: col1.r, g: col1.g, b: col1.b, duration: 0.8
-        });
+    const stepColor = (now) => {
+      const t = Math.min((now - startTime) / duration, 1);
+      const ease = 1 - Math.pow(1 - t, 3);
+      for (let i = 0; i < targets.length; i++) {
+        targets[i][0].copy(starts[i]).lerp(targets[i][1], ease);
       }
-
-      // Core Material color tint
-      const metalCol = new THREE.Color(config.metal);
-      gsap.to(this.coreMaterial.color, {
-        r: metalCol.r, g: metalCol.g, b: metalCol.b, duration: 0.8
-      });
-    } else {
-      this.accentLight1.color.setHex(config.primary);
-      this.accentLight2.color.setHex(config.secondary);
-      this.particleMaterial.color.setHex(config.primary);
-      this.coreMaterial.color.setHex(config.metal);
-    }
-  }
-
-  /* --- 3. SECONDARY 3D SANDBOX SCENE --- */
-  initSandboxScene() {
-    this.sandboxScene = new THREE.Scene();
-    const rect = this.sandboxCanvas.getBoundingClientRect();
-    const width = rect.width || 600;
-    const height = rect.height || 480;
-
-    this.sandboxCamera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
-    this.sandboxCamera.position.set(0, 0, 5.5);
-
-    this.sandboxRenderer = new THREE.WebGLRenderer({
-      canvas: this.sandboxCanvas,
-      antialias: true,
-      alpha: true
-    });
-    this.sandboxRenderer.setSize(width, height);
-    this.sandboxRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
-
-    // Lights
-    const amb = new THREE.AmbientLight(0xffffff, 0.8);
-    this.sandboxScene.add(amb);
-
-    this.sandboxLight = new THREE.PointLight(0x8b5cf6, 3, 15);
-    this.sandboxLight.position.set(3, 4, 3);
-    this.sandboxScene.add(this.sandboxLight);
-
-    // Sandbox Mesh (Morphable Icosahedron / Geodesic Sphere)
-    const geo = new THREE.IcosahedronGeometry(1.8, 3);
-    this.sandboxMaterial = new THREE.MeshStandardMaterial({
-      color: 0x1a1e2e,
-      wireframe: false,
-      metalness: 0.85,
-      roughness: 0.2
-    });
-
-    this.sandboxMesh = new THREE.Mesh(geo, this.sandboxMaterial);
-    this.sandboxScene.add(this.sandboxMesh);
-
-    this.sandboxSpeed = 0.01;
-    this.animateSandbox();
-
-    // Resize observer
-    window.addEventListener('resize', () => {
-      if (!this.sandboxCanvas) return;
-      const r = this.sandboxCanvas.getBoundingClientRect();
-      this.sandboxCamera.aspect = r.width / r.height;
-      this.sandboxCamera.updateProjectionMatrix();
-      this.sandboxRenderer.setSize(r.width, r.height);
-    });
-  }
-
-  animateSandbox() {
-    requestAnimationFrame(() => this.animateSandbox());
-    if (!this.sandboxVisible || document.hidden) return;
-    if (this.sandboxMesh) {
-      this.sandboxMesh.rotation.y += this.sandboxSpeed;
-      this.sandboxMesh.rotation.x += this.sandboxSpeed * 0.6;
-    }
-    this.sandboxRenderer.render(this.sandboxScene, this.sandboxCamera);
-  }
-
-  setSandboxWireframe(isWireframe) {
-    if (this.sandboxMaterial) {
-      this.sandboxMaterial.wireframe = isWireframe;
-    }
-  }
-
-  setSandboxSpeed(val) {
-    this.sandboxSpeed = parseFloat(val) * 0.02;
-  }
-
-  setSandboxIntensity(val) {
-    if (this.sandboxLight) {
-      this.sandboxLight.intensity = parseFloat(val);
-    }
+      if (t < 1) requestAnimationFrame(stepColor);
+    };
+    requestAnimationFrame(stepColor);
   }
 }
 

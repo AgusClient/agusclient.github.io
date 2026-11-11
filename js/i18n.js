@@ -608,6 +608,7 @@ class I18nManager {
     if (!translations[this.currentLang]) {
       this.currentLang = 'es';
     }
+    this.needsDomSync = false;
   }
 
   init() {
@@ -686,6 +687,11 @@ class I18nManager {
         opt.classList.remove('active');
       }
     });
+
+    if (!this.needsDomSync && lang === 'es') {
+      return;
+    }
+    this.needsDomSync = true;
 
     // Translate all elements with data-i18n
     const elements = document.querySelectorAll('[data-i18n]');
