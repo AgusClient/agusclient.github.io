@@ -27,7 +27,7 @@
 - [Descargar AClient (DDNet.exe)](https://github.com/AgusClient/AClient/releases/latest/download/DDNet.exe): Descarga directa del ejecutable más reciente para Windows.
 - [Último Release en GitHub (v2.7.5)](https://github.com/AgusClient/AClient/releases/latest): Notas de versión y archivos publicados.
 - [Código Fuente en GitHub](https://github.com/AgusClient/AClient): Repositorio oficial de código abierto.
-- [Comunidad en Discord](https://discord.com/channels/1569059640598069340/1569063377375068304): Canal oficial de la comunidad y soporte.
+- [Comunidad en Discord](https://discord.gg/NsUA52HF2Y): Canal oficial de la comunidad y soporte.
 - [Ko-fi (AgusClient)](https://ko-fi.com/agusx30): Apoyo voluntario al proyecto.
 - [Sitemap XML](https://agusclient.github.io/sitemap.xml): Mapa del sitio e imágenes indexables.
 - [DDNet Oficial](https://ddnet.org/): Proyecto base oficial DDraceNetwork.
