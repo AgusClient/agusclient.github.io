@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador de Menú // AClient v2.7.5 · Opciones y Ajustes DDNet</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Explora de forma interactiva el menú completo de opciones de AClient v2.7.5 para DDNet: Fast Input aX30, Anti-Ping, Race Stats, Perfiles, Binds y Mod Tools.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://agusclient.github.io/menu.html">
+
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <!-- Estilos base y simulador -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/menu-sim.css">
+</head>
+<body class="menu-page-body">
+
+  <!-- Navegación superior -->
+  <header class="menu-top-nav">
+    <a href="./" class="back-link">
+      <span>←</span> Volver a la página principal
+    </a>
+    <div class="menu-page-badge">
+      <span class="pulse-dot"></span>
+      MODO PRUEBA // SIMULADOR EN VIVO
+    </div>
+  </header>
+
+  <!-- Introducción -->
+  <div class="menu-header-intro">
+    <h1>Menú Interactivo de AClient</h1>
+    <p>Probá y explorá todas las configuraciones reales de AClient v2.7.5 directamente en tu navegador. Cambiá de pestañas, probá los motores de Fast Input y ajustá los sliders.</p>
+  </div>
+
+  <!-- Ventana del Menú in-game (Estilo DDNet / AClient) -->
+  <main class="client-window" role="region" aria-label="Simulador del menú in-game de AClient">
+    
+    <!-- Barra superior de la ventana -->
+    <div class="window-titlebar">
+      <div class="window-title">
+        <img src="assets/images/logo.png" alt="AClient" class="logo-mini">
+        <span>AClient v2.7.5 — Configuración y Herramientas</span>
+      </div>
+      <div class="window-status-info">
+        <span class="ping-tag">● 12 ms · Anti-Ping Activo</span>
+        <div class="window-controls-dots">
+          <span class="window-dot min"></span>
+          <span class="window-dot max"></span>
+          <span class="window-dot close"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Barra de pestañas auténtica de AClient -->
+    <nav class="window-tabs-bar" aria-label="Pestañas de configuración">
+      <button class="tab-btn active" data-tab="tab-settings">
+        <span class="tab-icon">⚙️</span> Ajustes (Settings)
+      </button>
+      <button class="tab-btn" data-tab="tab-racestats">
+        <span class="tab-icon">⏱️</span> Race Stats
+      </button>
+      <button class="tab-btn" data-tab="tab-profiles">
+        <span class="tab-icon">👤</span> Perfiles
+      </button>
+      <button class="tab-btn" data-tab="tab-commands">
+        <span class="tab-icon">⌨️</span> Comandos &amp; Binds
+      </button>
+      <button class="tab-btn" data-tab="tab-mod">
+        <span class="tab-icon">🛡️</span> Mod Tools
+      </button>
+    </nav>
+
+    <!-- Contenido de las pestañas -->
+    <div class="window-content">
+
+      <!-- ==========================================
+           TAB 1: AJUSTES (SETTINGS)
+           ========================================== -->
+      <section id="tab-settings" class="tab-panel active">
+        <div class="settings-grid">
+          
+          <!-- COLUMNA IZQUIERDA -->
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            
+            <!-- Bloque: Network & Anti-Ping -->
+            <div class="section-box">
+              <div class="section-title">
+                <span>Network &amp; Anti-Ping</span>
+                <span class="badge-mini">Red</span>
+              </div>
+
+              <div class="checkbox-row">
+                <div class="checkbox-label">
+                  <span class="checkbox-title">Anti-Ping Predictivo (cl_antiping)</span>
+                  <span class="checkbox-desc">Compensación de latencia bidireccional en tiempo real</span>
+                </div>
+                <div class="cbox-custom checked"></div>
+              </div>
+
+              <div class="checkbox-row">
+                <div class="checkbox-label">
+                  <span class="checkbox-title">Eco Local de Movimiento (cl_antiping_echo)</span>
+                  <span class="checkbox-desc">Renderizado predictivo instantáneo del Tee propio</span>
+                </div>
+                <div class="cbox-custom checked"></div>
+              </div>
+
+              <div class="slider-group">
+                <div class="slider-header">
+                  <span class="slider-label">Margen de Predicción (cl_prediction_margin):</span>
+                  <span class="slider-val">25 ms</span>
+                </div>
+                <input type="range" class="client-slider" min="10" max="75" value="25" data-unit=" ms">
+              </div>
+            </div>
+
+            <!-- Bloque: Input (Fast Input) -->
+            <div class="section-box">
+              <div class="section-title">
+                <span>Fast Input (Motor de Entrada)</span>
+                <span class="badge-mini">8 Motores</span>
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 600;">Seleccionar Motor (ac_inputs):</span>
+                <div class="engine-grid">
+                  <button class="engine-btn" data-engine="Off">Off</button>
+                  <button class="engine-btn active" data-engine="aX30">aX30</button>
+                  <button class="engine-btn" data-engine="Fast">Fast</button>
+                  <button class="engine-btn" data-engine="Mejor">Mejor</button>
+                  <button class="engine-btn" data-engine="Saiko">Saiko</button>
+                  <button class="engine-btn" data-engine="Delta">Delta</button>
+                  <button class="engine-btn" data-engine="F">F</button>
+                  <button class="engine-btn" data-engine="Cloud">Cloud</button>
+                </div>
+                <div id="engine-desc" class="engine-desc-box">
+                  Motor exclusivo AClient v2.7: Predicción asíncrona sub-milisegundo con compensación adaptativa de jitter y clamp de bordes para hooks de precisión extrema.
+                </div>
+              </div>
+
+              <div id="engine-offset-group" class="slider-group">
+                <div class="slider-header">
+                  <span class="slider-label">Prediction Offset (ac_input_offset):</span>
+                  <span class="slider-val">+12 ms</span>
+                </div>
+                <input type="range" class="client-slider" min="-20" max="40" value="12" data-prefix="+" data-unit=" ms">
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: 6px;">
+                <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 600;">Interpolación de Entrada:</span>
+                <div class="pill-group">
+                  <div class="pill-opt active">HE (Recomendado)</div>
+                  <div class="pill-opt">Lineal 1:1</div>
+                  <div class="pill-opt">Cúbica Suave</div>
+                </div>
+              </div>
+
+              <div class="checkbox-row">
+                <div class="checkbox-label">
+                  <span class="checkbox-title">Compensación Adaptativa de Jitter</span>
+                  <span class="checkbox-desc">Estabiliza la entrada cuando el ping fluctúa</span>
+                </div>
+                <div class="cbox-custom checked"></div>
+              </div>
+
+              <div class="checkbox-row">
+                <div class="checkbox-label">
+                  <span class="checkbox-title">Filtro de Seguridad de Bordes (Collision Clamp)</span>
+                  <span class="checkbox-desc">Previene desincronizaciones al rozar paredes congeladas</span>
+                </div>
+                <div class="cbox-custom checked"></div>
+              </div>
+
+              <div class="checkbox-row">
+                <div class="checkbox-label">
+                  <span class="checkbox-title">Aplicar solo al estar congelado</span>
+                  <span class="checkbox-desc">Optimiza la sincronización exclusiva en rescates y unfreezes</span>
+                </div>
+                <div class="cbox-custom"></div>
+              </div>
+            </div>
+
+            <!-- Bloque: Fast Practice -->
+            <div class="section-box">
+              <div class="section-title">
+                <span>Fast Practice &amp; Ghost Mode</span>
+                <span class="badge-mini">Práctica</span>
+              </div>
+
+              <div class="checkbox-row">
+                <div class="checkbox-label">
+                  <span class="checkbox-title">Modo Fantasma (Ghost Replay)</span>
+                  <span class="checkbox-desc">Superpone tu mejor carrera para comparar trayectorias</span>
+                </div>
+                <div class="cbox-custom checked"></div>
+              </div>
+
+              <div class="slider-group">
+                <div class="slider-header">
+                  <span class="slider-label">Opacidad del Fantasma:</span>
+                  <span class="slider-val">65%</span>
+                </div>
+                <input type="range" class="client-slider" min="0" max="100" value="65" data-unit="%">
+              </div>
+
+              <div style="background: rgba(0,0,0,0.3); padding: 10px 12px; border-radius: 6px; font-size: 0.76rem; color: #94a3b8; line-height: 1.5;">
+                <span style="color: #38bdf8; font-weight: bold;">Comandos en chat:</span> <code>/tp [tee]</code> · <code>/tc</code> (cursor) · <code>/invincible</code> · <code>/weapons</code> · <code>/save</code> · <code>/load</code>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- COLUMNA DERECHA -->
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            
+            <!-- Bloque: Keystrokes HUD -->
+            <div class="section-box">
+              <div class="section-title">
+                <span>Keystrokes HUD</span>
+                <span class="badge-mini">Pantalla</span>
+              </div>
+
+              <div class="checkbox-row">
+                <div class="checkbox-label">
+                  <span class="checkbox-title">Mostrar Teclas en Pantalla (ac_keystrokes)</span>
+                  <span class="checkbox-desc">Visualiza WASD, Jump, Fire y Hook en tiempo real</span>
+                </div>
+                <div class="cbox-custom checked"></div>
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: 6px;">
+                <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 600;">Estilo Visual:</span>
+                <div class="pill-group">
+                  <div class="pill-opt active">Modern Glass</div>
+                  <div class="pill-opt">Minimalista</div>
+                  <div class="pill-opt">Cyber Neon</div>
+                </div>
+              </div>
+
+              <div class="slider-group">
+                <div class="slider-header">
+                  <span class="slider-label">Tamaño del HUD:</span>
+                  <span class="slider-val">100%</span>
+                </div>
+                <input type="range" class="client-slider" min="50" max="150" value="100" data-unit="%">
+              </div>
+            </div>
+
+            <!-- Bloque: Overlay Race Stats -->
+            <div class="section-box">
+              <div class="section-title">
+                <span>Overlay de Carrera (In-Game HUD)</span>
+                <span class="badge-mini">Overlay</span>
+              </div>
+
+              <div class="checkbox-row">
+                <div class="checkbox-label">
+                  <span class="checkbox-title">HUD Flotante de Race Stats</span>
+                  <span class="checkbox-desc">Muestra la tabla de saves y tiempos sin abrir menús</span>
+                </div>
+                <div class="cbox-custom checked"></div>
+              </div>
+
+              <div class="checkbox-row">
+                <div class="checkbox-label">
+                  <span class="checkbox-title">Guardado Automático de Récords Locales</span>
+                  <span class="checkbox-desc">Guarda los mejores tiempos en archivo JSON tras finalizar mapa</span>
+                </div>
+                <div class="cbox-custom checked"></div>
+              </div>
+
+              <div class="slider-group">
+                <div class="slider-header">
+                  <span class="slider-label">Transparencia del Fondo:</span>
+                  <span class="slider-val">40%</span>
+                </div>
+                <input type="range" class="client-slider" min="0" max="100" value="40" data-unit="%">
+              </div>
+            </div>
+
+            <!-- Bloque: Utilidades de Juego -->
+            <div class="section-box">
+              <div class="section-title">
+                <span>Utilidades &amp; Alertas</span>
+                <span class="badge-mini">Extras</span>
+              </div>
+
+              <div class="checkbox-row">
+                <div class="checkbox-label">
+                  <span class="checkbox-title">Skin Stealer con Clic en Tab</span>
+                  <span class="checkbox-desc">Copia al instante la skin y colores de cualquier jugador</span>
+                </div>
+                <div class="cbox-custom checked"></div>
+              </div>
+
+              <div class="checkbox-row">
+                <div class="checkbox-label">
+                  <span class="checkbox-title">Auto Team Lock &amp; Invites</span>
+                  <span class="checkbox-desc">Bloquea tu equipo e invita amigos automáticamente</span>
+                </div>
+                <div class="cbox-custom checked"></div>
+              </div>
+
+              <div class="checkbox-row">
+                <div class="checkbox-label">
+                  <span class="checkbox-title">Alerta Sonora al Descongelarse (Unfreeze Alert)</span>
+                  <span class="checkbox-desc">Emite un aviso sonoro si estás tabeado y te descongela un compañero</span>
+                </div>
+                <div class="cbox-custom checked"></div>
+              </div>
+
+              <div class="checkbox-row">
+                <div class="checkbox-label">
+                  <span class="checkbox-title">Alerta de Movimiento de Compañero</span>
+                  <span class="checkbox-desc">Avisa cuando tu compañero en equipo comienza a moverse</span>
+                </div>
+                <div class="cbox-custom checked"></div>
+              </div>
+            </div>
+
+            <!-- Bloque: Actualizador AClient -->
+            <div class="section-box">
+              <div class="section-title">
+                <span>Actualizador Integrado</span>
+                <span class="badge-mini" style="background: rgba(34, 197, 94, 0.15); border-color: rgba(34, 197, 94, 0.3); color: #4ade80;">Al día</span>
+              </div>
+              <div style="font-size: 0.82rem; color: #cbd5e1; display: flex; justify-content: space-between; align-items: center;">
+                <span>Versión instalada: <strong>v2.7.5</strong></span>
+                <span style="color: #4ade80; font-family: var(--font-mono, monospace);">● Actualizado</span>
+              </div>
+              <div class="checkbox-row">
+                <div class="checkbox-label">
+                  <span class="checkbox-title">Buscar actualizaciones al iniciar DDNet</span>
+                  <span class="checkbox-desc">Descarga parches y nuevos motores automáticamente</span>
+                </div>
+                <div class="cbox-custom checked"></div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- ==========================================
+           TAB 2: RACE STATS
+           ========================================== -->
+      <section id="tab-racestats" class="tab-panel">
+        
+        <!-- Barra de métricas resumen -->
+        <div class="race-summary-bar">
+          <div class="summary-metric">
+            <span class="metric-lbl">Mapa Actual</span>
+            <span class="metric-val cyan">Kobra 4 (Brutal ★★★★☆)</span>
+          </div>
+          <div class="summary-metric">
+            <span class="metric-lbl">Tiempo Transcurrido</span>
+            <span class="metric-val">04:18.42</span>
+          </div>
+          <div class="summary-metric">
+            <span class="metric-lbl">Récord Personal (PB)</span>
+            <span class="metric-val gold">03:52.10</span>
+          </div>
+          <div class="summary-metric">
+            <span class="metric-lbl">Saves Totales Equipo</span>
+            <span class="metric-val">23 Saves</span>
+          </div>
+        </div>
+
+        <!-- Tabla interactiva de estadísticas -->
+        <div class="race-table-wrap">
+          <table class="race-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Jugador</th>
+                <th>Tiempo</th>
+                <th>Freezes</th>
+                <th>Unfreezes</th>
+                <th>Hammer Saves</th>
+                <th>Hook Saves</th>
+                <th>Eficiencia</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="highlight">
+                <td style="font-weight: bold; color: #c4b5fd;">1</td>
+                <td style="font-weight: bold; color: #fff;">Agus (Tú)</td>
+                <td style="font-family: var(--font-mono, monospace);">04:18.42</td>
+                <td>2</td>
+                <td>2</td>
+                <td>14</td>
+                <td>9</td>
+                <td style="color: #4ade80; font-weight: bold;">94.2%</td>
+                <td><span class="status-badge racing">● En Carrera</span></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td style="font-weight: 600;">Kurosaki</td>
+                <td style="font-family: var(--font-mono, monospace);">04:19.05</td>
+                <td>3</td>
+                <td>3</td>
+                <td>11</td>
+                <td>12</td>
+                <td style="color: #4ade80; font-weight: bold;">89.5%</td>
+                <td><span class="status-badge racing">● En Carrera</span></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td style="font-weight: 600;">Chiller</td>
+                <td style="font-family: var(--font-mono, monospace);">04:22.80</td>
+                <td>5</td>
+                <td>4</td>
+                <td>8</td>
+                <td>6</td>
+                <td style="color: #38bdf8;">78.0%</td>
+                <td><span class="status-badge frozen">❄ Congelado</span></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td style="font-weight: 600;">Ryozuki</td>
+                <td style="font-family: var(--font-mono, monospace);">04:25.10</td>
+                <td>7</td>
+                <td>7</td>
+                <td>5</td>
+                <td>7</td>
+                <td style="color: #facc15;">72.4%</td>
+                <td><span class="status-badge racing">● En Carrera</span></td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td style="font-weight: 600;">teetee</td>
+                <td style="font-family: var(--font-mono, monospace);">04:31.90</td>
+                <td>11</td>
+                <td>9</td>
+                <td>3</td>
+                <td>4</td>
+                <td style="color: #f87171;">55.8%</td>
+                <td><span class="status-badge dead">✝ Muerte</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-actions">
+          <button id="btn-export-stats" class="copy-btn">📸 Exportar a PNG</button>
+          <button id="btn-copy-stats" class="copy-btn">📋 Copiar Resumen para Discord</button>
+          <button id="btn-reset-stats" class="copy-btn">🔄 Reiniciar Stats</button>
+        </div>
+
+      </section>
+
+
+      <!-- ==========================================
+           TAB 3: PERFILES (PROFILES)
+           ========================================== -->
+      <section id="tab-profiles" class="tab-panel">
+        
+        <!-- Ficha de jugador -->
+        <div class="profile-card">
+          <div class="profile-avatar">🐱</div>
+          <div class="profile-meta">
+            <div class="profile-name">
+              <span>Agus</span>
+              <span class="profile-tag">DDRace Legend</span>
+            </div>
+            <div style="font-size: 0.84rem; color: #94a3b8;">
+              Puntos DDNet: <strong style="color: #38bdf8;">14,850 pts</strong> · Rango Sudamérica: <strong style="color: #facc15;">#4</strong> · Mapas completados: <strong style="color: #fff;">1,180</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filtro por categoría de mapa DDNet -->
+        <div class="cat-filters">
+          <button class="cat-btn active" data-cat="all">Todos los Mapas</button>
+          <button class="cat-btn" data-cat="novice">Novice ★</button>
+          <button class="cat-btn" data-cat="moderate">Moderate ★★</button>
+          <button class="cat-btn" data-cat="brutal">Brutal ★★★★</button>
+          <button class="cat-btn" data-cat="insane">Insane ★★★★★</button>
+          <button class="cat-btn" data-cat="dummy">Dummy ★★★</button>
+        </div>
+
+        <!-- Grid de mapas con progreso -->
+        <div class="maps-grid">
+          
+          <div class="map-card" data-category="brutal">
+            <div class="map-header">
+              <span class="map-name">Kobra 4</span>
+              <span class="map-stars">★★★★☆</span>
+            </div>
+            <div style="font-size: 0.78rem; color: #94a3b8; display: flex; justify-content: space-between;">
+              <span>Récord: 03:52.10</span>
+              <span style="color: #4ade80;">✓ Completado</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 100%;"></div>
+            </div>
+          </div>
+
+          <div class="map-card" data-category="brutal">
+            <div class="map-header">
+              <span class="map-name">TeeRun 3</span>
+              <span class="map-stars">★★★★☆</span>
+            </div>
+            <div style="font-size: 0.78rem; color: #94a3b8; display: flex; justify-content: space-between;">
+              <span>Récord: 07:14.30</span>
+              <span style="color: #4ade80;">✓ Completado</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 100%;"></div>
+            </div>
+          </div>
+
+          <div class="map-card" data-category="insane">
+            <div class="map-header">
+              <span class="map-name">Nether 2</span>
+              <span class="map-stars">★★★★★</span>
+            </div>
+            <div style="font-size: 0.78rem; color: #94a3b8; display: flex; justify-content: space-between;">
+              <span>Checkpoint: 84%</span>
+              <span style="color: #facc15;">⏳ En Progreso</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 84%;"></div>
+            </div>
+          </div>
+
+          <div class="map-card" data-category="moderate">
+            <div class="map-header">
+              <span class="map-name">Multeasymap</span>
+              <span class="map-stars">★★☆☆☆</span>
+            </div>
+            <div style="font-size: 0.78rem; color: #94a3b8; display: flex; justify-content: space-between;">
+              <span>Récord: 01:12.80</span>
+              <span style="color: #4ade80;">✓ Completado</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 100%;"></div>
+            </div>
+          </div>
+
+          <div class="map-card" data-category="dummy">
+            <div class="map-header">
+              <span class="map-name">Carry Me</span>
+              <span class="map-stars">★★★☆☆</span>
+            </div>
+            <div style="font-size: 0.78rem; color: #94a3b8; display: flex; justify-content: space-between;">
+              <span>Récord: 02:40.15</span>
+              <span style="color: #4ade80;">✓ Completado</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 100%;"></div>
+            </div>
+          </div>
+
+          <div class="map-card" data-category="novice">
+            <div class="map-header">
+              <span class="map-name">Kobra 1</span>
+              <span class="map-stars">★☆☆☆☆</span>
+            </div>
+            <div style="font-size: 0.78rem; color: #94a3b8; display: flex; justify-content: space-between;">
+              <span>Récord: 00:48.20</span>
+              <span style="color: #4ade80;">✓ Completado</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 100%;"></div>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ==========================================
+           TAB 4: COMANDOS & BINDS
+           ========================================== -->
+      <section id="tab-commands" class="tab-panel">
+        
+        <!-- Buscador de comandos en tiempo real -->
+        <div class="search-input-box">
+          <span class="search-icon-pos">🔍</span>
+          <input type="text" id="cmd-search" class="search-input" placeholder="Buscar comando, cvar o bind (ej: /tp, fastinput, antiping, bind...)">
+        </div>
+
+        <div class="commands-list">
+          
+          <div class="command-row">
+            <div class="cmd-info">
+              <span class="cmd-code">/fastinput [0-7]</span>
+              <span class="cmd-desc">Cambia al instante el motor de predicción de entrada (0: Off, 1: aX30, 2: Fast...)</span>
+            </div>
+            <button class="copy-btn" data-copy="/fastinput 1">📋 Copiar</button>
+          </div>
+
+          <div class="command-row">
+            <div class="cmd-info">
+              <span class="cmd-code">/tp [nombre]</span>
+              <span class="cmd-desc">Teletransporte directo hacia la posición del compañero de práctica</span>
+            </div>
+            <button class="copy-btn" data-copy="/tp ">📋 Copiar</button>
+          </div>
+
+          <div class="command-row">
+            <div class="cmd-info">
+              <span class="cmd-code">/tc</span>
+              <span class="cmd-desc">Teletransporte instantáneo a la posición exacta donde apunta el cursor del mouse</span>
+            </div>
+            <button class="copy-btn" data-copy="/tc">📋 Copiar</button>
+          </div>
+
+          <div class="command-row">
+            <div class="cmd-info">
+              <span class="cmd-code">/invincible</span>
+              <span class="cmd-desc">Inmunidad a freeze y muertes para practicar secciones complejas sin reintentar</span>
+            </div>
+            <button class="copy-btn" data-copy="/invincible">📋 Copiar</button>
+          </div>
+
+          <div class="command-row">
+            <div class="cmd-info">
+              <span class="cmd-code">/save [slot] · /load [slot]</span>
+              <span class="cmd-desc">Guarda y restaura checkpoints exactos de posición y hook al milisegundo</span>
+            </div>
+            <button class="copy-btn" data-copy="/save 1">📋 Copiar</button>
+          </div>
+
+          <div class="command-row">
+            <div class="cmd-info">
+              <span class="cmd-code">/stealskin [nombre]</span>
+              <span class="cmd-desc">Copia la skin y configuración de color del jugador especificado</span>
+            </div>
+            <button class="copy-btn" data-copy="/stealskin ">📋 Copiar</button>
+          </div>
+
+          <div class="command-row">
+            <div class="cmd-info">
+              <span class="cmd-code">bind f "cl_antiping 1; echo Anti-Ping Activo"</span>
+              <span class="cmd-desc">Bind recomendado para activar y desactivar Anti-Ping con la tecla F</span>
+            </div>
+            <button class="copy-btn" data-copy="bind f &quot;toggle cl_antiping 0 1&quot;">📋 Copiar</button>
+          </div>
+
+          <div class="command-row">
+            <div class="cmd-info">
+              <span class="cmd-code">bind x "ac_inputs 1"</span>
+              <span class="cmd-desc">Activar el motor aX30 en cualquier momento con una tecla</span>
+            </div>
+            <button class="copy-btn" data-copy="bind x &quot;ac_inputs 1&quot;">📋 Copiar</button>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ==========================================
+           TAB 5: MOD TOOLS
+           ========================================== -->
+      <section id="tab-mod" class="tab-panel">
+        
+        <div class="mod-target-row">
+          <span style="font-size: 0.88rem; font-weight: 600; color: #f1f5f9;">Jugador Seleccionado:</span>
+          <select id="mod-target-player" class="target-select">
+            <option value="TeeGriefer">TeeGriefer (ID: 03)</option>
+            <option value="Blocker99">Blocker99 (ID: 07)</option>
+            <option value="RandomPlayer">RandomPlayer (ID: 11)</option>
+          </select>
+
+          <span style="font-size: 0.88rem; font-weight: 600; color: #f1f5f9; margin-left: auto;">Motivo:</span>
+          <select id="mod-reason" class="target-select">
+            <option value="Block intencional en carrera">Block intencional en carrera</option>
+            <option value="Toxicidad en el chat">Toxicidad en el chat</option>
+            <option value="Spam reiterado de comandos">Spam de comandos</option>
+          </select>
+        </div>
+
+        <div style="font-size: 0.82rem; color: #94a3b8; margin-bottom: 8px; font-weight: 600;">Acciones Rápidas de Moderación:</div>
+        
+        <div class="mod-actions-grid">
+          <button class="mod-act-btn warn" data-action="KICK">Kick del Servidor</button>
+          <button class="mod-act-btn warn" data-action="MUTE (15m)">Mute 15 Minutos</button>
+          <button class="mod-act-btn warn" data-action="MUTE (1 hora)">Mute 1 Hora</button>
+          <button class="mod-act-btn danger" data-action="MUTE (1 día)">Mute 1 Día</button>
+          <button class="mod-act-btn danger" data-action="BAN (7 días)">Ban 7 Días</button>
+          <button class="mod-act-btn danger" data-action="BAN PERMANENTE">Ban Permanente</button>
+        </div>
+
+        <div class="section-box" style="margin-top: 20px;">
+          <div class="section-title">
+            <span>Opciones de Seguridad &amp; Dummy</span>
+            <span class="badge-mini">Servidor</span>
+          </div>
+
+          <div class="checkbox-row">
+            <div class="checkbox-label">
+              <span class="checkbox-title">Grabación Automática de Demo (3 minutos)</span>
+              <span class="checkbox-desc">Guarda los 3 minutos previos y posteriores a la sanción como prueba</span>
+            </div>
+            <div class="cbox-custom checked"></div>
+          </div>
+
+          <div class="checkbox-row">
+            <div class="checkbox-label">
+              <span class="checkbox-title">Dummy Testing Mode</span>
+              <span class="checkbox-desc">Genera un Tee bot estático o que imite tus movimientos para practicar</span>
+            </div>
+            <div class="cbox-custom checked"></div>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Notificación Flotante (Toast) -->
+  <div id="menu-toast" class="toast-notice" role="status" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="js/menu-sim.js"></script>
+</body>
+</html>
