@@ -287,7 +287,7 @@
 
     .player-specs {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 10px;
     }
 
@@ -652,7 +652,7 @@
       </div>
       <h1 class="configs-title">CONFIGS PLAYERS</h1>
       <p class="configs-subtitle">
-        Configuraciones aprobadas enviadas directamente desde AClient: distancia de mouse, resolución y tasa de refresco de cada jugador.
+        Configuraciones aprobadas enviadas directamente desde AClient: sensibilidad, distancia de mouse, resolución y tasa de refresco de cada jugador.
       </p>
     </section>
 
@@ -663,6 +663,7 @@
           <option value="likes">Más Me gusta</option>
           <option value="recent">Más recientes</option>
           <option value="name">Nombre (A-Z)</option>
+          <option value="sens">Mayor Sensibilidad</option>
           <option value="hz">Mayor Hz</option>
           <option value="distance">Mayor Max Distance</option>
         </select>
@@ -997,7 +998,7 @@
 
       let list = approvedConfigs.filter((item) => {
         if (!q) return true;
-        const hay = `${item.player_name} ${item.resolution} ${item.hz} ${item.cl_mouse_max_distance}`.toLowerCase();
+        const hay = `${item.player_name} ${item.resolution} ${item.hz} ${item.cl_mouse_max_distance} ${item.inp_mousesens ?? ""}`.toLowerCase();
         return hay.includes(q);
       });
 
@@ -1008,6 +1009,7 @@
           return new Date(b.updated_at || 0).getTime() - new Date(a.updated_at || 0).getTime();
         }
         if (sort === "name") return String(a.player_name).localeCompare(String(b.player_name));
+        if (sort === "sens") return (Number(b.inp_mousesens) || 0) - (Number(a.inp_mousesens) || 0);
         if (sort === "hz") return Number(b.hz) - Number(a.hz);
         if (sort === "distance") return Number(b.cl_mouse_max_distance) - Number(a.cl_mouse_max_distance);
         return new Date(b.updated_at || 0).getTime() - new Date(a.updated_at || 0).getTime();
@@ -1043,6 +1045,10 @@
             <span class="verified-badge">Aprobado</span>
           </div>
           <div class="player-specs">
+            <div class="spec-box">
+              <span class="spec-label">Sensibilidad</span>
+              <span class="spec-value">${escapeHtml(item.inp_mousesens ?? "-")}</span>
+            </div>
             <div class="spec-box">
               <span class="spec-label">Max Distance</span>
               <span class="spec-value">${escapeHtml(item.cl_mouse_max_distance)}</span>
