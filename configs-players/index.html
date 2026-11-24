@@ -1454,10 +1454,12 @@
     const howModal = document.getElementById("howModal");
     const howCloseBtn = document.getElementById("howCloseBtn");
 
-    function applyLanguage(lang) {
+    function applyLanguage(lang, persist = false) {
       if (!I18N[lang]) return;
       currentLang = lang;
-      localStorage.setItem("aclient_lang", lang);
+      if (persist) {
+        localStorage.setItem("aclient_lang", lang);
+      }
       document.documentElement.lang = lang;
       document.title = t("page_title");
       currentLangCode.textContent = lang.toUpperCase();
@@ -1487,18 +1489,20 @@
 
     langToggleBtn.addEventListener("click", (e) => {
       e.stopPropagation();
-      const open = langMenu.classList.toggle("open");
-      langToggleBtn.setAttribute("aria-expanded", String(open));
+      const isOpen = langMenu.classList.toggle("active");
+      langToggleBtn.setAttribute("aria-expanded", String(isOpen));
     });
 
     document.addEventListener("click", () => {
-      langMenu.classList.remove("open");
+      langMenu.classList.remove("active");
       langToggleBtn.setAttribute("aria-expanded", "false");
     });
 
     for (const opt of document.querySelectorAll(".lang-option")) {
       opt.addEventListener("click", () => {
-        applyLanguage(opt.getAttribute("data-lang"));
+        applyLanguage(opt.getAttribute("data-lang"), true);
+        langMenu.classList.remove("active");
+        langToggleBtn.setAttribute("aria-expanded", "false");
       });
     }
 
