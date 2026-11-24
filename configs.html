@@ -593,6 +593,10 @@
     <div class="ambient-orb ambient-orb-2"></div>
     <div class="ambient-orb ambient-orb-3"></div>
   </div>
+  <div class="mouse-spotlight" aria-hidden="true"></div>
+
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
 
   <!-- HEADER -->
   <header class="site-header scrolled">
@@ -1316,6 +1320,52 @@
         await restoreSessionLikes();
       }
     });
+
+    // Custom magnetic cursor (igual que en index.html)
+    if (window.matchMedia("(pointer: fine)").matches) {
+      const cursorDot = document.querySelector(".cursor-dot");
+      const cursorRing = document.querySelector(".cursor-ring");
+      const mouseSpotlight = document.querySelector(".mouse-spotlight");
+
+      let mouseX = window.innerWidth / 2;
+      let mouseY = window.innerHeight / 2;
+      let ringX = mouseX;
+      let ringY = mouseY;
+      let cursorRaf = null;
+
+      function renderCursor() {
+        const dx = mouseX - ringX;
+        const dy = mouseY - ringY;
+        ringX += dx * 0.18;
+        ringY += dy * 0.18;
+
+        if (cursorRing) {
+          cursorRing.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
+        }
+
+        if (Math.abs(dx) < 0.25 && Math.abs(dy) < 0.25) {
+          ringX = mouseX;
+          ringY = mouseY;
+          cursorRaf = null;
+          return;
+        }
+        cursorRaf = requestAnimationFrame(renderCursor);
+      }
+
+      window.addEventListener("mousemove", (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        if (cursorDot) {
+          cursorDot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+        }
+        if (mouseSpotlight) {
+          mouseSpotlight.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+        }
+        if (cursorRaf === null) {
+          cursorRaf = requestAnimationFrame(renderCursor);
+        }
+      }, { passive: true });
+    }
   </script>
 </body>
 </html>
