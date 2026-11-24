@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <title>AClient // Aprobación rápida</title>
+  <link rel="icon" type="image/png" href="../assets/images/logo.png">
+  <style>
+    :root {
+      --bg: #08090f;
+      --card: #121420;
+      --border: rgba(139, 92, 246, 0.28);
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --ok: #22c55e;
+      --err: #ef4444;
+      --accent: #8b5cf6;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: radial-gradient(circle at top, rgba(139, 92, 246, 0.18), transparent 55%), var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px 24px;
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+    }
+    .badge {
+      display: inline-block;
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: rgba(139, 92, 246, 0.16);
+      color: #c4b5fd;
+      border: 1px solid rgba(139, 92, 246, 0.35);
+      margin-bottom: 16px;
+    }
+    .icon {
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      background: rgba(139, 92, 246, 0.15);
+      color: #c4b5fd;
+    }
+    .icon.ok { background: rgba(34, 197, 94, 0.16); color: var(--ok); }
+    .icon.err { background: rgba(239, 68, 68, 0.16); color: var(--err); }
+    h1 {
+      font-size: 1.35rem;
+      margin-bottom: 8px;
+      line-height: 1.25;
+    }
+    .sub {
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+    .specs {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-bottom: 20px;
+      font-size: 0.88rem;
+      color: #cbd5e1;
+      display: none;
+    }
+    .specs strong { color: #fff; }
+    .btn {
+      display: inline-block;
+      padding: 11px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.92rem;
+      background: var(--accent);
+      color: #fff;
+      transition: opacity 0.15s ease;
+    }
+    .btn:hover { opacity: 0.9; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="badge">AClient // Admin WhatsApp</div>
+    <div id="icon" class="icon">⏳</div>
+    <h1 id="title">Procesando solicitud...</h1>
+    <p id="sub" class="sub">Verificando token de un solo uso.</p>
+    <div id="specs" class="specs"></div>
+    <a class="btn" href="../configs-players/">Ver Configs Players</a>
+  </main>
+
+  <script>
+    const SUPABASE_URL = "https://hmrgihzjynnnappzbvdd.supabase.co";
+    const SUPABASE_KEY = "sb_publishable_pvDz7mWQ0e2qD4Q9tkyNKw_KEHQx8L6";
+
+    const iconEl = document.getElementById("icon");
+    const titleEl = document.getElementById("title");
+    const subEl = document.getElementById("sub");
+    const specsEl = document.getElementById("specs");
+
+    function showError(msg) {
+      iconEl.className = "icon err";
+      iconEl.textContent = "✕";
+      titleEl.textContent = "No se pudo completar";
+      subEl.textContent = msg;
+    }
+
+    function escapeHtml(s) {
+      return String(s ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    async function run() {
+      const params = new URLSearchParams(window.location.search);
+      const token = (params.get("t") || "").trim();
+      const action = (params.get("a") || "").trim().toLowerCase();
+
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+
+      if (!token || (action !== "approve" && action !== "reject")) {
+        showError("Enlace inválido o incompleto.");
+        return;
+      }
+
+      try {
+        const res = await fetch(`${SUPABASE_URL}/rest/v1/rpc/redeem_config_approval_token`, {
+          method: "POST",
+          headers: {
+            "apikey": SUPABASE_KEY,
+            "Authorization": `Bearer ${SUPABASE_KEY}`,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            p_token: token,
+            p_action: action
+          })
+        });
+
+        const data = await res.json();
+        if (!res.ok || !data || !data.ok) {
+          showError((data && (data.error || data.message)) || "Token inválido o ya utilizado.");
+          return;
+        }
+
+        const approved = data.status === "approved";
+        iconEl.className = approved ? "icon ok" : "icon err";
+        iconEl.textContent = approved ? "✓" : "✕";
+        titleEl.textContent = approved
+          ? `Aprobado (#${data.config_id})`
+          : `Rechazado (#${data.config_id})`;
+        subEl.textContent = approved
+          ? `${data.player_name} ya está visible en Configs Players.`
+          : `${data.player_name} fue rechazado y no aparecerá en la web.`;
+
+        specsEl.innerHTML =
+          `<strong>${escapeHtml(data.player_name)}</strong><br>` +
+          `Sens: <strong>${escapeHtml(data.inp_mousesens)}</strong> · ` +
+          `DPI: <strong>${escapeHtml(data.mouse_dpi)}</strong> · ` +
+          `Max Dist: <strong>${escapeHtml(data.cl_mouse_max_distance)}</strong><br>` +
+          `${escapeHtml(data.resolution)} @ <strong>${escapeHtml(data.hz)} Hz</strong>`;
+        specsEl.style.display = "block";
+      } catch (err) {
+        showError("Error de conexión con Supabase: " + (err && err.message ? err.message : "desconocido"));
+      }
+    }
+
+    run();
+  </script>
+</body>
+</html>
