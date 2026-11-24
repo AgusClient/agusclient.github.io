@@ -1134,70 +1134,28 @@
     <div id="stateBox" class="configs-state" style="display:none;"></div>
   </main>
 
-  <!-- Modal 1: Iniciar sesion o Crear cuenta con Discord -->
+  <!-- Modal 1: Iniciar sesion con Discord -->
   <div id="authModal" class="auth-modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="authModalTitle">
-    <form id="authForm" class="auth-modal">
-      <h2 id="authModalTitle" data-t="auth_title">Iniciar sesión</h2>
+    <div class="auth-modal">
+      <h2 id="authModalTitle" data-t="auth_title">Iniciar sesión con Discord</h2>
       <p id="authModalSub" class="auth-modal-sub" data-t="auth_sub">
-        Iniciá sesión con tu cuenta o creá una nueva verificándote con Discord (protección anti-bots).
+        Iniciá sesión con Discord para dar Me gusta, agregar tu config o destacar y descargar la tuya (sin contraseñas).
       </p>
 
       <button id="discordLoginBtn" class="btn-discord-auth" type="button">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
         </svg>
-        <span data-t="btn_discord">Crear cuenta / Entrar con Discord</span>
+        <span data-t="btn_discord">Continuar con Discord</span>
       </button>
 
-      <div class="auth-divider" data-t="auth_or">o con tu usuario ya creado</div>
-
-      <div class="auth-field">
-        <label for="authUserInput" data-t="lbl_user">Usuario</label>
-        <input id="authUserInput" class="auth-input" type="text" maxlength="32" autocomplete="username" required>
-      </div>
-      <div class="auth-field">
-        <label for="authPassInput" data-t="lbl_pass">Contraseña</label>
-        <div class="auth-pass-row">
-          <input id="authPassInput" class="auth-input" type="password" minlength="4" maxlength="128" autocomplete="current-password" required>
-          <button id="authTogglePassBtn" class="configs-action-btn" type="button">Ver</button>
-        </div>
-      </div>
-      <div id="authError" class="auth-error"></div>
-      <div class="auth-modal-actions">
+      <div class="auth-modal-actions" style="margin-top:16px;">
         <button id="authCancelBtn" class="configs-action-btn" type="button" data-t="btn_cancel">Cancelar</button>
-        <button id="authSubmitBtn" class="auth-submit-btn" type="submit" data-t="btn_login_submit">Ingresar</button>
       </div>
-    </form>
+    </div>
   </div>
 
-  <!-- Modal 2: Completar usuario y contrasena tras verificar con Discord -->
-  <div id="registerModal" class="auth-modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="registerModalTitle">
-    <form id="registerForm" class="auth-modal">
-      <div id="discordVerifiedTag" class="discord-verified-tag">Discord verificado</div>
-      <h2 id="registerModalTitle" data-t="reg_title">Creá tu contraseña</h2>
-      <p class="auth-modal-sub" data-t="reg_sub">
-        Elegí tu nombre de usuario y contraseña. Esta cuenta queda vinculada a tu Discord (1 por cuenta) y te sirve para votar acá y en AClient.
-      </p>
-      <div class="auth-field">
-        <label for="regUserInput" data-t="lbl_user">Usuario</label>
-        <input id="regUserInput" class="auth-input" type="text" maxlength="32" autocomplete="username" required>
-      </div>
-      <div class="auth-field">
-        <label for="regPassInput" data-t="lbl_create_pass">Crear contraseña</label>
-        <div class="auth-pass-row">
-          <input id="regPassInput" class="auth-input" type="password" minlength="4" maxlength="128" autocomplete="new-password" required>
-          <button id="regTogglePassBtn" class="configs-action-btn" type="button">Ver</button>
-        </div>
-      </div>
-      <div id="regError" class="auth-error"></div>
-      <div class="auth-modal-actions">
-        <button id="regCancelBtn" class="configs-action-btn" type="button" data-t="btn_cancel">Cancelar</button>
-        <button id="regSubmitBtn" class="auth-submit-btn" type="submit" data-t="btn_create_account">Crear cuenta</button>
-      </div>
-    </form>
-  </div>
-
-  <!-- Modal 3: Como agregar tu config -->
+  <!-- Modal 2: Como agregar tu config -->
   <div id="howModal" class="auth-modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="howModalTitle">
     <div class="auth-modal cfg-modal">
       <h2 id="howModalTitle" data-t="how_title">¿Cómo agregar tu config?</h2>
@@ -1205,15 +1163,15 @@
         Podés subir tu configuración <strong>directamente desde esta página</strong> iniciando sesión con <strong>Discord</strong>, o de forma automática desde <strong>AClient</strong>.
       </p>
 
-      <div class="how-section-label" data-t="how_web_label">Opción 1 · Desde esta página (con Discord)</div>
+      <div class="how-section-label" data-t="how_web_label">Opción 1 · Desde esta página (solo Discord)</div>
       <ol class="how-steps">
         <li class="how-step">
           <span class="how-step-num">1</span>
-          <div data-th="how_s1">Tocá <strong>+ Agregar config</strong> en la barra superior e iniciá sesión con tu cuenta de <strong>Discord</strong> (obligatorio para agregar una config; 1 por cuenta).</div>
+          <div data-th="how_s1">Tocá <strong>+ Agregar config</strong> en la barra superior e iniciá sesión con tu cuenta de <strong>Discord</strong> (sin contraseñas; 1 config por cuenta).</div>
         </li>
         <li class="how-step">
           <span class="how-step-num">2</span>
-          <div data-th="how_s2">Completá tu <strong>nombre</strong>, <strong>sensibilidad</strong>, <strong>DPI</strong>, <strong>cl_mouse_max_distance</strong>, <strong>resolución</strong>, <strong>Hz</strong> y una <strong>contraseña</strong> (para actualizarla después).</div>
+          <div data-th="how_s2">Completá tu <strong>nombre</strong>, <strong>sensibilidad</strong>, <strong>DPI</strong>, <strong>cl_mouse_max_distance</strong>, <strong>resolución</strong> y <strong>Hz</strong>.</div>
         </li>
         <li class="how-step">
           <span class="how-step-num">3</span>
@@ -1237,13 +1195,13 @@
     </div>
   </div>
 
-  <!-- Modal 4: Agregar / Actualizar config desde la web (solo Discord) -->
+  <!-- Modal 3: Agregar / Actualizar config desde la web (solo Discord) -->
   <div id="addConfigModal" class="auth-modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="addConfigModalTitle">
     <form id="addConfigForm" class="auth-modal cfg-modal" novalidate>
       <div id="cfgDiscordTag" class="discord-verified-tag">Discord verificado</div>
       <h2 id="addConfigModalTitle" data-t="cfg_title">Agregar / Actualizar config</h2>
       <p class="auth-modal-sub" data-t="cfg_sub">
-        Cargá los datos de tu configuración de DDNet. Se vincula a tu cuenta de Discord (1 config por cuenta) y aparecerá en la lista al aprobarse.
+        Cargá los datos de tu configuración de DDNet. Se vincula directamente a tu cuenta de Discord (1 config por cuenta, sin contraseñas) y aparecerá en la lista al aprobarse.
       </p>
 
       <div class="auth-field">
@@ -1298,17 +1256,6 @@
             <option value="360"></option>
             <option value="480"></option>
           </datalist>
-        </div>
-      </div>
-
-      <div class="auth-field">
-        <label for="cfgPassInput" data-t="cfg_lbl_pass">Contraseña de tu config</label>
-        <div class="auth-pass-row">
-          <input id="cfgPassInput" class="auth-input" type="password" minlength="4" maxlength="128" autocomplete="current-password" required>
-          <button id="cfgTogglePassBtn" class="configs-action-btn" type="button">Ver</button>
-        </div>
-        <div class="cfg-field-hint" data-t="cfg_pass_hint">
-          La primera vez la creás (mín. 4 caracteres); luego usás la misma si querés actualizar tu config desde la web o AClient.
         </div>
       </div>
 
@@ -1376,13 +1323,13 @@
         spec_monitor: "Monitor",
         like: "Me gusta",
         liked: "Te gusta",
-        auth_title: "Iniciar sesión",
-        auth_sub: "Iniciá sesión con tu cuenta o creá una nueva verificándote con Discord (protección anti-bots).",
+        auth_title: "Iniciar sesión con Discord",
+        auth_sub: "Iniciá sesión con Discord para dar Me gusta, agregar tu config o destacar y descargar la tuya (sin contraseñas).",
         auth_add_title: "Agregar tu config",
-        auth_add_sub: "Iniciá sesión con Discord para subir o actualizar tu config. Si ya tenés cuenta, también podés entrar abajo para destacar y descargar la tuya.",
+        auth_add_sub: "Iniciá sesión con Discord para subir, editar o descargar tu config (sin contraseñas; 1 por cuenta).",
         auth_like_title: "Me gusta a {name}",
-        auth_like_sub: "Si todavía no tenés cuenta, creala con Discord para evitar bots. Si ya tenés una, ingresá con tu usuario y contraseña.",
-        btn_discord: "Crear cuenta / Entrar con Discord",
+        auth_like_sub: "Iniciá sesión con Discord en 1 clic para dar Me gusta (protección anti-bots, sin contraseñas).",
+        btn_discord: "Continuar con Discord",
         auth_or: "o con tu usuario ya creado",
         lbl_user: "Usuario",
         lbl_pass: "Contraseña",
@@ -1403,10 +1350,10 @@
         discord_verified_name: "Discord verificado: {name}",
         how_title: "¿Cómo agregar tu config?",
         how_sub: "Podés subir tu configuración <strong>directamente desde esta página</strong> iniciando sesión con <strong>Discord</strong>, o de forma automática desde <strong>AClient</strong>.",
-        how_web_label: "Opción 1 · Desde esta página (con Discord)",
+        how_web_label: "Opción 1 · Desde esta página (solo Discord)",
         how_ac_label: "Opción 2 · Automático desde AClient",
-        how_s1: "Tocá <strong>+ Agregar config</strong> en la barra superior e iniciá sesión con tu cuenta de <strong>Discord</strong> (obligatorio para agregar una config; 1 por cuenta).",
-        how_s2: "Completá tu <strong>nombre</strong>, <strong>sensibilidad</strong>, <strong>DPI</strong>, <strong>cl_mouse_max_distance</strong>, <strong>resolución</strong>, <strong>Hz</strong> y una <strong>contraseña</strong> (para actualizarla después).",
+        how_s1: "Tocá <strong>+ Agregar config</strong> en la barra superior e iniciá sesión con tu cuenta de <strong>Discord</strong> (sin contraseñas; 1 config por cuenta).",
+        how_s2: "Completá tu <strong>nombre</strong>, <strong>sensibilidad</strong>, <strong>DPI</strong>, <strong>cl_mouse_max_distance</strong>, <strong>resolución</strong> y <strong>Hz</strong>.",
         how_s3: "Al aprobarse aparecerá destacada como <strong>★ Tu config</strong> y podrás <strong>descargarla en formato .cfg</strong> o actualizarla cuando quieras.",
         how_s4: "En <strong>AClient</strong>, abrí <strong>Settings → AClient → Settings</strong>, iniciá sesión con <strong>Discord</strong> y guardá en <strong>Configuraciones de jugadores</strong>: detecta tus valores del juego y monitor automáticamente.",
         how_action_login: "Iniciar sesión con Discord",
@@ -1414,7 +1361,7 @@
         btn_download_ac: "Descargar AClient",
         btn_got_it: "Entendido",
         cfg_title: "Agregar / Actualizar config",
-        cfg_sub: "Cargá los datos de tu configuración de DDNet. Se vincula a tu cuenta de Discord (1 config por cuenta) y aparecerá en la lista al aprobarse.",
+        cfg_sub: "Cargá los datos de tu configuración de DDNet. Se vincula directamente a tu cuenta de Discord (1 config por cuenta, sin contraseñas) y aparecerá en la lista al aprobarse.",
         cfg_lbl_name: "Nombre de jugador",
         cfg_lbl_sens: "Sensibilidad",
         cfg_lbl_dpi: "DPI",
@@ -1493,13 +1440,13 @@
         spec_monitor: "Monitor",
         like: "Curtir",
         liked: "Curtido",
-        auth_title: "Entrar",
-        auth_sub: "Entre com sua conta ou crie uma nova verificando com o Discord (proteção anti-bots).",
+        auth_title: "Entrar com Discord",
+        auth_sub: "Entre com o Discord para curtir, adicionar sua config ou destacar e baixar a sua (sem senhas).",
         auth_add_title: "Adicionar sua config",
-        auth_add_sub: "Entre com o Discord para enviar ou atualizar sua config. Se já tem conta, também pode entrar abaixo para destacar e baixar a sua.",
+        auth_add_sub: "Entre com o Discord para enviar, atualizar ou baixar sua config (sem senhas; 1 por conta).",
         auth_like_title: "Curtir {name}",
-        auth_like_sub: "Se ainda não tem conta, crie com o Discord para evitar bots. Se já tem, entre com seu usuário e senha.",
-        btn_discord: "Criar conta / Entrar com Discord",
+        auth_like_sub: "Entre com o Discord em 1 clique para curtir (proteção anti-bots, sem senhas).",
+        btn_discord: "Continuar com Discord",
         auth_or: "ou com seu usuário já criado",
         lbl_user: "Usuário",
         lbl_pass: "Senha",
@@ -1520,10 +1467,10 @@
         discord_verified_name: "Discord verificado: {name}",
         how_title: "Como adicionar sua config?",
         how_sub: "Você pode enviar sua configuração <strong>diretamente nesta página</strong> entrando com o <strong>Discord</strong>, ou automaticamente pelo <strong>AClient</strong>.",
-        how_web_label: "Opção 1 · Nesta página (com Discord)",
+        how_web_label: "Opção 1 · Nesta página (só Discord)",
         how_ac_label: "Opção 2 · Automático pelo AClient",
-        how_s1: "Clique em <strong>+ Adicionar config</strong> na barra superior e entre com sua conta do <strong>Discord</strong> (obrigatório para adicionar uma config; 1 por conta).",
-        how_s2: "Preencha seu <strong>nome</strong>, <strong>sensibilidade</strong>, <strong>DPI</strong>, <strong>cl_mouse_max_distance</strong>, <strong>resolução</strong>, <strong>Hz</strong> e uma <strong>senha</strong> (para atualizar depois).",
+        how_s1: "Clique em <strong>+ Adicionar config</strong> na barra superior e entre com sua conta do <strong>Discord</strong> (sem senhas; 1 config por conta).",
+        how_s2: "Preencha seu <strong>nome</strong>, <strong>sensibilidade</strong>, <strong>DPI</strong>, <strong>cl_mouse_max_distance</strong>, <strong>resolução</strong> e <strong>Hz</strong>.",
         how_s3: "Quando aprovada aparecerá destacada como <strong>★ Sua config</strong> e você poderá <strong>baixá-la em .cfg</strong> ou atualizá-la quando quiser.",
         how_s4: "No <strong>AClient</strong>, vá em <strong>Settings → AClient → Settings</strong>, entre com o <strong>Discord</strong> e salve em <strong>Configuraciones de jugadores</strong>: ele lê seus valores do jogo e monitor automaticamente.",
         how_action_login: "Entrar com Discord",
@@ -1531,7 +1478,7 @@
         btn_download_ac: "Baixar AClient",
         btn_got_it: "Entendi",
         cfg_title: "Adicionar / Atualizar config",
-        cfg_sub: "Preencha os dados da sua config do DDNet. Ela fica vinculada ao seu Discord (1 por conta) e aparecerá na lista após aprovação.",
+        cfg_sub: "Preencha os dados da sua config do DDNet. Ela fica vinculada diretamente ao seu Discord (1 por conta, sem senhas) e aparecerá na lista após aprovação.",
         cfg_lbl_name: "Nome do jogador",
         cfg_lbl_sens: "Sensibilidade",
         cfg_lbl_dpi: "DPI",
@@ -1610,13 +1557,13 @@
         spec_monitor: "Monitor",
         like: "Like",
         liked: "Liked",
-        auth_title: "Sign in",
-        auth_sub: "Sign in with your account or create a new one verified with Discord (anti-bot protection).",
+        auth_title: "Sign in with Discord",
+        auth_sub: "Sign in with Discord to like configs, add yours, or highlight and download it (no passwords needed).",
         auth_add_title: "Add your config",
-        auth_add_sub: "Sign in with Discord to upload or update your config. If you already have an account, you can also sign in below to highlight and download yours.",
+        auth_add_sub: "Sign in with Discord to upload, update, or download your config (no passwords; 1 per account).",
         auth_like_title: "Like {name}",
-        auth_like_sub: "If you don't have an account yet, create one with Discord to prevent bots. Otherwise sign in with your username and password.",
-        btn_discord: "Create account / Sign in with Discord",
+        auth_like_sub: "Sign in with Discord in 1 click to leave a like (anti-bot protection, no passwords).",
+        btn_discord: "Continue with Discord",
         auth_or: "or with an existing account",
         lbl_user: "Username",
         lbl_pass: "Password",
@@ -1637,10 +1584,10 @@
         discord_verified_name: "Discord verified: {name}",
         how_title: "How to add your config?",
         how_sub: "You can submit your config <strong>directly from this page</strong> by signing in with <strong>Discord</strong>, or upload it automatically from <strong>AClient</strong>.",
-        how_web_label: "Option 1 · From this page (with Discord)",
+        how_web_label: "Option 1 · From this page (Discord only)",
         how_ac_label: "Option 2 · Automatic from AClient",
-        how_s1: "Click <strong>+ Add config</strong> in the top bar and sign in with your <strong>Discord</strong> account (required to add a config; 1 per account).",
-        how_s2: "Fill in your <strong>player name</strong>, <strong>sensitivity</strong>, <strong>DPI</strong>, <strong>cl_mouse_max_distance</strong>, <strong>resolution</strong>, <strong>Hz</strong>, and a <strong>password</strong> (to update it later).",
+        how_s1: "Click <strong>+ Add config</strong> in the top bar and sign in with your <strong>Discord</strong> account (no passwords; 1 config per account).",
+        how_s2: "Fill in your <strong>player name</strong>, <strong>sensitivity</strong>, <strong>DPI</strong>, <strong>cl_mouse_max_distance</strong>, <strong>resolution</strong>, and <strong>Hz</strong>.",
         how_s3: "Once approved it will be highlighted as <strong>★ Your config</strong> and you'll be able to <strong>download it as .cfg</strong> or update it anytime.",
         how_s4: "In <strong>AClient</strong>, go to <strong>Settings → AClient → Settings</strong>, sign in with <strong>Discord</strong>, and save under <strong>Configuraciones de jugadores</strong>: it reads your in-game and monitor settings automatically.",
         how_action_login: "Sign in with Discord",
@@ -1648,7 +1595,7 @@
         btn_download_ac: "Download AClient",
         btn_got_it: "Got it",
         cfg_title: "Add / Update config",
-        cfg_sub: "Enter your DDNet config settings. It is linked to your Discord account (1 config per account) and will appear here once approved.",
+        cfg_sub: "Enter your DDNet config settings. It is linked directly to your Discord account (1 config per account, no passwords) and will appear here once approved.",
         cfg_lbl_name: "Player name",
         cfg_lbl_sens: "Sensitivity",
         cfg_lbl_dpi: "DPI",
@@ -1727,13 +1674,13 @@
         spec_monitor: "Монитор",
         like: "Нравится",
         liked: "Понравилось",
-        auth_title: "Вход",
-        auth_sub: "Войдите в свой аккаунт или создайте новый через Discord (защита от ботов).",
+        auth_title: "Вход через Discord",
+        auth_sub: "Войдите через Discord, чтобы ставить лайки, добавлять свой конфиг или скачать его (без паролей).",
         auth_add_title: "Добавить свой конфиг",
-        auth_add_sub: "Войдите через Discord, чтобы загрузить или обновить конфиг. Если аккаунт уже есть, можно войти ниже, чтобы выделить и скачать свой конфиг.",
+        auth_add_sub: "Войдите через Discord, чтобы загрузить, обновить или скачать свой конфиг (без паролей; 1 на аккаунт).",
         auth_like_title: "Лайк для {name}",
-        auth_like_sub: "Если аккаунта ещё нет, создайте его через Discord для защиты от ботов. Иначе войдите по логину и паролю.",
-        btn_discord: "Создать аккаунт / Войти через Discord",
+        auth_like_sub: "Войдите через Discord в 1 клик, чтобы поставить лайк (защита от ботов, без паролей).",
+        btn_discord: "Продолжить через Discord",
         auth_or: "или войдите существующим аккаунтом",
         lbl_user: "Имя пользователя",
         lbl_pass: "Пароль",
@@ -1754,10 +1701,10 @@
         discord_verified_name: "Discord подтверждён: {name}",
         how_title: "Как добавить свой конфиг?",
         how_sub: "Вы можете добавить конфиг <strong>прямо на этой странице</strong> после входа через <strong>Discord</strong> или загрузить его автоматически из <strong>AClient</strong>.",
-        how_web_label: "Вариант 1 · На этой странице (через Discord)",
+        how_web_label: "Вариант 1 · На этой странице (только Discord)",
         how_ac_label: "Вариант 2 · Автоматически из AClient",
-        how_s1: "Нажмите <strong>+ Добавить конфиг</strong> в верхней панели и войдите через <strong>Discord</strong> (обязательно для отправки конфига; 1 на аккаунт).",
-        how_s2: "Укажите <strong>ник</strong>, <strong>чувствительность</strong>, <strong>DPI</strong>, <strong>cl_mouse_max_distance</strong>, <strong>разрешение</strong>, <strong>Гц</strong> и <strong>пароль</strong> (для будущих обновлений).",
+        how_s1: "Нажмите <strong>+ Добавить конфиг</strong> в верхней панели и войдите через <strong>Discord</strong> (без паролей; 1 конфиг на аккаунт).",
+        how_s2: "Укажите <strong>ник</strong>, <strong>чувствительность</strong>, <strong>DPI</strong>, <strong>cl_mouse_max_distance</strong>, <strong>разрешение</strong> и <strong>Гц</strong>.",
         how_s3: "После одобрения он будет выделен как <strong>★ Ваш конфиг</strong>, и вы сможете <strong>скачать его в формате .cfg</strong> или обновить в любой момент.",
         how_s4: "В <strong>AClient</strong> откройте <strong>Settings → AClient → Settings</strong>, войдите через <strong>Discord</strong> и сохраните в <strong>Configuraciones de jugadores</strong> — параметры считаются автоматически.",
         how_action_login: "Войти через Discord",
@@ -1765,7 +1712,7 @@
         btn_download_ac: "Скачать AClient",
         btn_got_it: "Понятно",
         cfg_title: "Добавить / Обновить конфиг",
-        cfg_sub: "Укажите настройки вашего конфига DDNet. Он привязывается к вашему Discord (1 конфиг на аккаунт) и появится в списке после одобрения.",
+        cfg_sub: "Укажите настройки вашего конфига DDNet. Он привязывается напрямую к вашему Discord (1 конфиг на аккаунт, без паролей) и появится в списке после одобрения.",
         cfg_lbl_name: "Игровой ник",
         cfg_lbl_sens: "Чувствительность",
         cfg_lbl_dpi: "DPI",
@@ -1844,13 +1791,13 @@
         spec_monitor: "Monitor",
         like: "Gefällt mir",
         liked: "Geliked",
-        auth_title: "Anmelden",
-        auth_sub: "Melde dich an oder erstelle ein neues Konto mit Discord-Verifizierung (Anti-Bot-Schutz).",
+        auth_title: "Mit Discord anmelden",
+        auth_sub: "Melde dich mit Discord an, um zu liken, deine Config hinzuzufügen oder sie hervorzuheben und herunterzuladen (ohne Passwort).",
         auth_add_title: "Deine Config hinzufügen",
-        auth_add_sub: "Melde dich mit Discord an, um deine Config hinzuzufügen oder zu aktualisieren. Mit bestehendem Konto kannst du dich unten anmelden, um deine Config hervorzuheben und herunterzuladen.",
+        auth_add_sub: "Melde dich mit Discord an, um deine Config hinzuzufügen, zu aktualisieren oder herunterzuladen (ohne Passwort; 1 pro Konto).",
         auth_like_title: "{name} liken",
-        auth_like_sub: "Falls du noch kein Konto hast, erstelle eines mit Discord. Andernfalls melde dich mit Benutzername und Passwort an.",
-        btn_discord: "Konto erstellen / Mit Discord anmelden",
+        auth_like_sub: "Melde dich mit 1 Klick über Discord an, um zu liken (Anti-Bot-Schutz, ohne Passwort).",
+        btn_discord: "Mit Discord fortfahren",
         auth_or: "oder mit bestehendem Konto",
         lbl_user: "Benutzername",
         lbl_pass: "Passwort",
@@ -1871,10 +1818,10 @@
         discord_verified_name: "Discord verifiziert: {name}",
         how_title: "Wie fügst du deine Config hinzu?",
         how_sub: "Du kannst deine Config <strong>direkt auf dieser Seite</strong> nach der Anmeldung mit <strong>Discord</strong> hinzufügen oder sie automatisch aus <strong>AClient</strong> hochladen.",
-        how_web_label: "Option 1 · Auf dieser Seite (mit Discord)",
+        how_web_label: "Option 1 · Auf dieser Seite (nur Discord)",
         how_ac_label: "Option 2 · Automatisch aus AClient",
-        how_s1: "Klicke oben auf <strong>+ Config hinzufügen</strong> und melde dich mit deinem <strong>Discord</strong>-Konto an (erforderlich zum Hinzufügen; 1 pro Konto).",
-        how_s2: "Gib <strong>Name</strong>, <strong>Sensitivität</strong>, <strong>DPI</strong>, <strong>cl_mouse_max_distance</strong>, <strong>Auflösung</strong>, <strong>Hz</strong> und ein <strong>Passwort</strong> (für spätere Updates) ein.",
+        how_s1: "Klicke oben auf <strong>+ Config hinzufügen</strong> und melde dich mit deinem <strong>Discord</strong>-Konto an (ohne Passwort; 1 Config pro Konto).",
+        how_s2: "Gib <strong>Name</strong>, <strong>Sensitivität</strong>, <strong>DPI</strong>, <strong>cl_mouse_max_distance</strong>, <strong>Auflösung</strong> und <strong>Hz</strong> ein.",
         how_s3: "Nach Freigabe wird sie als <strong>★ Deine Config</strong> hervorgehoben und du kannst sie jederzeit als <strong>.cfg herunterladen</strong> oder aktualisieren.",
         how_s4: "In <strong>AClient</strong> gehe zu <strong>Settings → AClient → Settings</strong>, melde dich mit <strong>Discord</strong> an und speichere unter <strong>Configuraciones de jugadores</strong> — Spiel- und Monitorwerte werden automatisch erfasst.",
         how_action_login: "Mit Discord anmelden",
@@ -1882,7 +1829,7 @@
         btn_download_ac: "AClient herunterladen",
         btn_got_it: "Verstanden",
         cfg_title: "Config hinzufügen / aktualisieren",
-        cfg_sub: "Gib deine DDNet-Config-Werte ein. Sie wird mit deinem Discord verknüpft (1 Config pro Konto) und erscheint nach Freigabe in der Liste.",
+        cfg_sub: "Gib deine DDNet-Config-Werte ein. Sie wird direkt mit deinem Discord verknüpft (1 Config pro Konto, ohne Passwort) und erscheint nach Freigabe in der Liste.",
         cfg_lbl_name: "Spielername",
         cfg_lbl_sens: "Sensitivität",
         cfg_lbl_dpi: "DPI",
@@ -1945,13 +1892,12 @@
 
     let approvedConfigs = [];
     let currentUser = sessionStorage.getItem("aclient_web_user") || "";
-    let currentPass = sessionStorage.getItem("aclient_web_pass") || "";
     let discordToken = sessionStorage.getItem("aclient_discord_token") || "";
     let myConfigKey = sessionStorage.getItem("aclient_my_config_key") || "";
+    let myServerConfig = null;
     let likedKeys = new Set();
     let pendingLikeTargetKey = null;
     let pendingAuthForAddConfig = false;
-    let pendingOpenAddConfig = "";
     let busyLikeKey = null;
 
     const DISCORD_ICON_SVG = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>';
@@ -1973,26 +1919,11 @@
     const currentLangCode = document.getElementById("currentLangCode");
 
     const authModal = document.getElementById("authModal");
-    const authForm = document.getElementById("authForm");
     const authModalTitle = document.getElementById("authModalTitle");
     const authModalSub = document.getElementById("authModalSub");
     const discordLoginBtn = document.getElementById("discordLoginBtn");
-    const authUserInput = document.getElementById("authUserInput");
-    const authPassInput = document.getElementById("authPassInput");
-    const authTogglePassBtn = document.getElementById("authTogglePassBtn");
-    const authError = document.getElementById("authError");
     const authCancelBtn = document.getElementById("authCancelBtn");
-    const authSubmitBtn = document.getElementById("authSubmitBtn");
 
-    const registerModal = document.getElementById("registerModal");
-    const registerForm = document.getElementById("registerForm");
-    const discordVerifiedTag = document.getElementById("discordVerifiedTag");
-    const regUserInput = document.getElementById("regUserInput");
-    const regPassInput = document.getElementById("regPassInput");
-    const regTogglePassBtn = document.getElementById("regTogglePassBtn");
-    const regError = document.getElementById("regError");
-    const regCancelBtn = document.getElementById("regCancelBtn");
-    const regSubmitBtn = document.getElementById("regSubmitBtn");
     const downloadMyCfgBtn = document.getElementById("downloadMyCfgBtn");
     const addConfigBtn = document.getElementById("addConfigBtn");
     const addConfigBtnText = document.getElementById("addConfigBtnText");
@@ -2010,8 +1941,6 @@
     const cfgDistInput = document.getElementById("cfgDistInput");
     const cfgResInput = document.getElementById("cfgResInput");
     const cfgHzInput = document.getElementById("cfgHzInput");
-    const cfgPassInput = document.getElementById("cfgPassInput");
-    const cfgTogglePassBtn = document.getElementById("cfgTogglePassBtn");
     const cfgError = document.getElementById("cfgError");
     const cfgReconnectRow = document.getElementById("cfgReconnectRow");
     const cfgReconnectBtn = document.getElementById("cfgReconnectBtn");
@@ -2040,15 +1969,7 @@
       }
 
       searchInput.placeholder = t("search_ph");
-      authUserInput.placeholder = t("ph_user");
-      authPassInput.placeholder = t("ph_pass");
-      regUserInput.placeholder = t("ph_user");
-      regPassInput.placeholder = t("ph_new_pass");
       cfgNameInput.placeholder = t("ph_user");
-      cfgPassInput.placeholder = t("ph_new_pass");
-      authTogglePassBtn.textContent = authPassInput.type === "password" ? t("btn_show") : t("btn_hide");
-      regTogglePassBtn.textContent = regPassInput.type === "password" ? t("btn_show") : t("btn_hide");
-      cfgTogglePassBtn.textContent = cfgPassInput.type === "password" ? t("btn_show") : t("btn_hide");
 
       renderSessionArea();
       renderConfigs();
@@ -2131,11 +2052,27 @@
     }
 
     function isLoggedIn() {
-      return currentUser.length > 0 && (currentPass.length >= 4 || discordToken.length > 0);
+      return currentUser.length > 0 && discordToken.length > 0;
     }
 
     function hasDiscordSession() {
-      return isLoggedIn() && discordToken.length > 0;
+      return isLoggedIn();
+    }
+
+    function applyServerVoterData(voterRes, fallbackName = "") {
+      if (!voterRes) return;
+      currentUser = voterRes.username || fallbackName || currentUser;
+      likedKeys = new Set(Array.isArray(voterRes.liked_keys) ? voterRes.liked_keys : []);
+      if (voterRes.my_config && voterRes.my_config.player_name_key) {
+        myServerConfig = voterRes.my_config;
+        myConfigKey = String(voterRes.my_config.player_name_key).trim().toLowerCase();
+        sessionStorage.setItem("aclient_my_config_key", myConfigKey);
+      } else if (voterRes.my_config === null) {
+        myServerConfig = null;
+      }
+      if (currentUser) {
+        sessionStorage.setItem("aclient_web_user", currentUser);
+      }
     }
 
     function isMyConfig(item) {
@@ -2202,10 +2139,9 @@
 
     function clearSession() {
       currentUser = "";
-      currentPass = "";
       discordToken = "";
       myConfigKey = "";
-      pendingOpenAddConfig = "";
+      myServerConfig = null;
       pendingAuthForAddConfig = false;
       likedKeys.clear();
       sessionStorage.removeItem("aclient_web_user");
@@ -2219,15 +2155,16 @@
     function updateConfigAddControls() {
       const discordReady = hasDiscordSession();
       const myCfg = findMyApprovedConfig();
-      const hasExisting = Boolean(myCfg);
+      const hasApproved = Boolean(myCfg);
+      const hasAnyMine = hasApproved || Boolean(myServerConfig);
 
-      downloadMyCfgBtn.classList.toggle("hidden", !hasExisting);
+      downloadMyCfgBtn.classList.toggle("hidden", !hasApproved);
       addConfigBtn.classList.remove("hidden");
-      addConfigBtnText.textContent = hasExisting ? t("btn_edit_cfg") : t("btn_add_cfg");
+      addConfigBtnText.textContent = hasAnyMine ? t("btn_edit_cfg") : t("btn_add_cfg");
 
       if (discordReady) {
         howActionBtn.className = "configs-add-btn";
-        howActionBtn.innerHTML = `${PLUS_ICON_SVG}<span>${escapeHtml(hasExisting ? t("btn_edit_cfg") : t("how_action_add"))}</span>`;
+        howActionBtn.innerHTML = `${PLUS_ICON_SVG}<span>${escapeHtml(hasAnyMine ? t("btn_edit_cfg") : t("how_action_add"))}</span>`;
       } else {
         howActionBtn.className = "btn-discord-sm";
         howActionBtn.innerHTML = `${DISCORD_ICON_SVG}<span>${escapeHtml(t("how_action_login"))}</span>`;
@@ -2257,7 +2194,7 @@
 
     function openAddConfigModal() {
       if (!hasDiscordSession()) {
-        openAuthModal(null, { forAddConfig: true });
+        startDiscordOAuth({ openAddConfig: "auto" });
         return;
       }
       cfgError.textContent = "";
@@ -2266,22 +2203,19 @@
         ? t("discord_verified_name", { name: currentUser })
         : t("discord_verified");
 
-      const existing = findMyApprovedConfig();
+      const existing = myServerConfig || findMyApprovedConfig();
       cfgNameInput.value = existing ? existing.player_name : currentUser;
       cfgSensInput.value = existing && existing.inp_mousesens != null ? existing.inp_mousesens : "";
       cfgDpiInput.value = existing && existing.mouse_dpi != null ? existing.mouse_dpi : "";
       cfgDistInput.value = existing && existing.cl_mouse_max_distance != null ? existing.cl_mouse_max_distance : "";
       cfgResInput.value = existing && existing.resolution ? existing.resolution : "";
       cfgHzInput.value = existing && existing.hz != null ? existing.hz : "";
-      cfgPassInput.value = currentPass || "";
-      cfgPassInput.type = "password";
-      cfgTogglePassBtn.textContent = t("btn_show");
 
       addConfigModal.classList.remove("hidden");
       setTimeout(() => {
         if (!cfgNameInput.value) cfgNameInput.focus();
         else if (!cfgSensInput.value) cfgSensInput.focus();
-        else cfgPassInput.focus();
+        else cfgNameInput.focus();
       }, 30);
     }
 
@@ -2292,11 +2226,6 @@
     function openAuthModal(targetKey, options = {}) {
       pendingLikeTargetKey = targetKey;
       pendingAuthForAddConfig = Boolean(options && options.forAddConfig === true);
-      authError.textContent = "";
-      authUserInput.value = currentUser || "";
-      authPassInput.value = "";
-      authPassInput.type = "password";
-      authTogglePassBtn.textContent = t("btn_show");
 
       if (targetKey) {
         const target = approvedConfigs.find((x) => getItemKey(x) === targetKey);
@@ -2383,37 +2312,20 @@
         const savedPendingLike = sessionStorage.getItem("aclient_pending_like") || null;
         const savedPendingAdd = sessionStorage.getItem("aclient_pending_add_config") || "";
 
-        if (voterRes && voterRes.registered) {
-          currentUser = voterRes.username || suggestedName;
-          likedKeys = new Set(Array.isArray(voterRes.liked_keys) ? voterRes.liked_keys : []);
-          sessionStorage.setItem("aclient_web_user", currentUser);
-          sessionStorage.removeItem("aclient_pending_like");
-          sessionStorage.removeItem("aclient_pending_add_config");
-          renderSessionArea();
-          renderConfigs();
+        applyServerVoterData(voterRes, suggestedName || "player");
+        sessionStorage.removeItem("aclient_pending_like");
+        sessionStorage.removeItem("aclient_pending_add_config");
+        renderSessionArea();
+        renderConfigs();
 
-          const existingMine = findMyApprovedConfig();
-          if (savedPendingAdd === "1" || (savedPendingAdd === "auto" && !existingMine)) {
-            showToast(t("toast_welcome", { name: currentUser }));
-            openAddConfigModal();
-          } else if (savedPendingLike) {
-            await performToggleLike(savedPendingLike);
-          } else {
-            showToast(t("toast_welcome", { name: currentUser }));
-          }
+        const existingMine = myServerConfig || findMyApprovedConfig();
+        if (savedPendingAdd === "1" || (savedPendingAdd === "auto" && !existingMine)) {
+          showToast(t("toast_welcome", { name: currentUser }));
+          openAddConfigModal();
+        } else if (savedPendingLike) {
+          await performToggleLike(savedPendingLike);
         } else {
-          pendingLikeTargetKey = savedPendingLike;
-          pendingOpenAddConfig = savedPendingAdd;
-          discordVerifiedTag.textContent = suggestedName
-            ? t("discord_verified_name", { name: suggestedName })
-            : t("discord_verified");
-          regUserInput.value = suggestedName.slice(0, 32);
-          regPassInput.value = "";
-          regPassInput.type = "password";
-          regTogglePassBtn.textContent = t("btn_show");
-          regError.textContent = "";
-          registerModal.classList.remove("hidden");
-          setTimeout(() => (regUserInput.value ? regPassInput : regUserInput).focus(), 30);
+          showToast(t("toast_welcome", { name: currentUser }));
         }
         return true;
       } catch (err) {
@@ -2536,21 +2448,13 @@
       busyLikeKey = targetKey;
       renderConfigs();
       try {
-        let res;
-        if (currentPass.length >= 4) {
-          res = await callRpc("toggle_player_config_like", {
-            p_target_player_key: targetKey,
-            p_username: currentUser,
-            p_password: currentPass
-          });
-        } else if (discordToken) {
-          res = await callRpc("toggle_player_config_like_discord", {
-            p_target_player_key: targetKey
-          }, discordToken);
-        } else {
+        if (!discordToken) {
           openAuthModal(targetKey);
           return;
         }
+        const res = await callRpc("toggle_player_config_like_discord", {
+          p_target_player_key: targetKey
+        }, discordToken);
 
         const item = approvedConfigs.find((x) => getItemKey(x) === targetKey);
         if (item && typeof res.likes_count === "number") {
@@ -2564,7 +2468,7 @@
           showToast(t("toast_unliked"));
         }
       } catch (err) {
-        if (String(err.message).toLowerCase().includes("expirada")) {
+        if (/jwt|expired|expirad|401/i.test(String(err.message))) {
           clearSession();
           renderSessionArea();
           openAuthModal(targetKey);
@@ -2577,32 +2481,18 @@
     }
 
     async function restoreSessionLikes() {
-      if (!isLoggedIn()) return;
-      try {
-        if (discordToken) {
-          try {
-            const res = await callRpc("get_my_discord_voter", {}, discordToken);
-            if (res && res.registered) {
-              currentUser = res.username || currentUser;
-              likedKeys = new Set(Array.isArray(res.liked_keys) ? res.liked_keys : []);
-              renderSessionArea();
-              renderConfigs();
-              return;
-            }
-          } catch (_) {
-            // Discord token expirado: limpiar solo el token y reintentar con contraseña si existe
-          }
-          discordToken = "";
-          sessionStorage.removeItem("aclient_discord_token");
+      if (!discordToken) {
+        if (currentUser) {
+          clearSession();
+          renderSessionArea();
+          renderConfigs();
         }
-
-        if (currentPass.length >= 4) {
-          const res = await callRpc("web_login_voter", {
-            p_username: currentUser,
-            p_password: currentPass
-          });
-          currentUser = res.username || currentUser;
-          likedKeys = new Set(Array.isArray(res.liked_keys) ? res.liked_keys : []);
+        return;
+      }
+      try {
+        const res = await callRpc("get_my_discord_voter", {}, discordToken);
+        if (res && res.ok) {
+          applyServerVoterData(res);
         } else {
           clearSession();
         }
@@ -2653,7 +2543,7 @@
       if (hasDiscordSession()) {
         openAddConfigModal();
       } else {
-        openAuthModal(null, { forAddConfig: true });
+        startDiscordOAuth({ openAddConfig: "auto" });
       }
     });
     cfgReconnectBtn.addEventListener("click", () => startDiscordOAuth({ openAddConfig: "1" }));
@@ -2696,24 +2586,6 @@
       }
     });
 
-    authTogglePassBtn.addEventListener("click", () => {
-      const show = authPassInput.type === "password";
-      authPassInput.type = show ? "text" : "password";
-      authTogglePassBtn.textContent = show ? t("btn_hide") : t("btn_show");
-    });
-
-    regTogglePassBtn.addEventListener("click", () => {
-      const show = regPassInput.type === "password";
-      regPassInput.type = show ? "text" : "password";
-      regTogglePassBtn.textContent = show ? t("btn_hide") : t("btn_show");
-    });
-
-    cfgTogglePassBtn.addEventListener("click", () => {
-      const show = cfgPassInput.type === "password";
-      cfgPassInput.type = show ? "text" : "password";
-      cfgTogglePassBtn.textContent = show ? t("btn_hide") : t("btn_show");
-    });
-
     authCancelBtn.addEventListener("click", closeAuthModal);
     authModal.addEventListener("click", (e) => {
       if (e.target === authModal) closeAuthModal();
@@ -2722,12 +2594,6 @@
     cfgCancelBtn.addEventListener("click", closeAddConfigModal);
     addConfigModal.addEventListener("click", (e) => {
       if (e.target === addConfigModal) closeAddConfigModal();
-    });
-
-    regCancelBtn.addEventListener("click", () => {
-      registerModal.classList.add("hidden");
-      clearSession();
-      renderSessionArea();
     });
 
     howToAddBtn.addEventListener("click", () => {
@@ -2744,116 +2610,6 @@
         if (!howModal.classList.contains("hidden")) howModal.classList.add("hidden");
         if (!addConfigModal.classList.contains("hidden")) closeAddConfigModal();
         if (!authModal.classList.contains("hidden")) closeAuthModal();
-        if (!registerModal.classList.contains("hidden")) {
-          registerModal.classList.add("hidden");
-          clearSession();
-          renderSessionArea();
-        }
-      }
-    });
-
-    authForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      authError.textContent = "";
-      const user = authUserInput.value.trim();
-      const pass = authPassInput.value;
-
-      if (!user) {
-        authError.textContent = t("err_user_req");
-        return;
-      }
-      if (pass.length < 4 || pass.length > 128) {
-        authError.textContent = t("err_pass_len");
-        return;
-      }
-
-      authSubmitBtn.disabled = true;
-      authSubmitBtn.textContent = t("btn_verifying");
-      try {
-        const res = await callRpc("web_login_voter", {
-          p_username: user,
-          p_password: pass
-        });
-
-        currentUser = res.username || user;
-        currentPass = pass;
-        discordToken = "";
-        likedKeys = new Set(Array.isArray(res.liked_keys) ? res.liked_keys : []);
-        sessionStorage.setItem("aclient_web_user", currentUser);
-        sessionStorage.setItem("aclient_web_pass", currentPass);
-        sessionStorage.removeItem("aclient_discord_token");
-
-        const targetToLike = pendingLikeTargetKey;
-        closeAuthModal();
-        renderSessionArea();
-        renderConfigs();
-
-        if (targetToLike) {
-          await performToggleLike(targetToLike);
-        } else {
-          showToast(t("toast_logged_in", { name: currentUser }));
-        }
-      } catch (err) {
-        authError.textContent = err.message;
-      } finally {
-        authSubmitBtn.disabled = false;
-        authSubmitBtn.textContent = t("btn_login_submit");
-      }
-    });
-
-    registerForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      regError.textContent = "";
-      const user = regUserInput.value.trim();
-      const pass = regPassInput.value;
-
-      if (!user) {
-        regError.textContent = t("err_user_req");
-        return;
-      }
-      if (pass.length < 4 || pass.length > 128) {
-        regError.textContent = t("err_pass_len");
-        return;
-      }
-
-      regSubmitBtn.disabled = true;
-      regSubmitBtn.textContent = t("btn_creating");
-      try {
-        const res = await callRpc("register_voter_with_discord", {
-          p_username: user,
-          p_password: pass
-        }, discordToken);
-
-        currentUser = res.username || user;
-        currentPass = pass;
-        likedKeys = new Set(Array.isArray(res.liked_keys) ? res.liked_keys : []);
-        sessionStorage.setItem("aclient_web_user", currentUser);
-        sessionStorage.setItem("aclient_web_pass", currentPass);
-        sessionStorage.removeItem("aclient_pending_like");
-        sessionStorage.removeItem("aclient_pending_add_config");
-
-        const targetToLike = pendingLikeTargetKey;
-        const shouldOpenAdd = pendingOpenAddConfig;
-        pendingLikeTargetKey = null;
-        pendingOpenAddConfig = "";
-        registerModal.classList.add("hidden");
-        renderSessionArea();
-        renderConfigs();
-
-        const existingMine = findMyApprovedConfig();
-        if (shouldOpenAdd === "1" || (shouldOpenAdd === "auto" && !existingMine)) {
-          showToast(t("toast_created", { name: currentUser }));
-          openAddConfigModal();
-        } else if (targetToLike) {
-          await performToggleLike(targetToLike);
-        } else {
-          showToast(t("toast_created", { name: currentUser }));
-        }
-      } catch (err) {
-        regError.textContent = err.message;
-      } finally {
-        regSubmitBtn.disabled = false;
-        regSubmitBtn.textContent = t("btn_create_account");
       }
     });
 
@@ -2878,7 +2634,6 @@
       const maxDist = distRaw === "" ? NaN : Number(distRaw);
       const resolution = cfgResInput.value.trim().replace(/\s*[×xX]\s*/g, "x");
       const hz = hzRaw === "" ? NaN : Number(hzRaw);
-      const password = cfgPassInput.value;
 
       if (!playerName || playerName.length > 32) {
         cfgError.textContent = t("err_cfg_name");
@@ -2910,18 +2665,13 @@
         cfgHzInput.focus();
         return;
       }
-      if (password.length < 4 || password.length > 128) {
-        cfgError.textContent = t("err_pass_len");
-        cfgPassInput.focus();
-        return;
-      }
 
       cfgSubmitBtn.disabled = true;
       cfgSubmitBtn.textContent = t("cfg_saving");
       try {
         const res = await callRpc("upsert_player_config", {
           p_player_name: playerName,
-          p_password: password,
+          p_password: null,
           p_mouse_max_distance: maxDist,
           p_resolution: resolution,
           p_hz: hz,
@@ -2929,8 +2679,18 @@
           p_mouse_dpi: dpi
         }, discordToken);
 
-        const key = playerName.toLowerCase();
+        const key = String((res && res.player_name_key) || playerName).trim().toLowerCase();
         myConfigKey = key;
+        myServerConfig = {
+          player_name_key: key,
+          player_name: playerName,
+          inp_mousesens: sens,
+          mouse_dpi: dpi,
+          cl_mouse_max_distance: maxDist,
+          resolution,
+          hz,
+          status: (res && res.status) || "pending"
+        };
         sessionStorage.setItem("aclient_my_config_key", key);
 
         closeAddConfigModal();
