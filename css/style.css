@@ -434,6 +434,10 @@ body {
   letter-spacing: 0.05em;
 }
 
+.nav-container > nav {
+  margin-right: auto;
+}
+
 .nav-links {
   display: flex;
   align-items: center;
@@ -533,6 +537,58 @@ body {
   border-radius: 50%;
   background: var(--accent-primary);
   box-shadow: 0 0 8px var(--accent-primary);
+}
+
+/* Highlighted Configs Players Nav Button */
+.btn-configs-nav {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 9px 18px;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.34), rgba(236, 72, 153, 0.26));
+  border: 1px solid rgba(167, 139, 250, 0.72);
+  border-radius: 100px;
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 0 22px var(--accent-glow), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+}
+
+.btn-configs-nav::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+  transition: left 0.55s ease;
+}
+
+.btn-configs-nav:hover,
+.btn-configs-nav.active {
+  transform: translateY(-2px) scale(1.02);
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.52), rgba(236, 72, 153, 0.42));
+  border-color: #ffffff;
+  box-shadow: 0 0 32px var(--accent-glow), inset 0 1px 0 rgba(255, 255, 255, 0.32);
+}
+
+.btn-configs-nav:hover::before {
+  left: 100%;
+}
+
+.btn-configs-nav svg {
+  flex-shrink: 0;
+  color: #e9d5ff;
 }
 
 /* --- HERO SECTION --- */
