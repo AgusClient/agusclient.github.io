@@ -170,6 +170,69 @@
       cursor: not-allowed;
     }
 
+    .configs-how-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(139, 92, 246, 0.45);
+      background: rgba(139, 92, 246, 0.14);
+      color: var(--accent-text);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: border-color var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
+    }
+
+    .configs-how-btn:hover {
+      border-color: var(--accent-primary);
+      background: rgba(139, 92, 246, 0.28);
+      color: #fff;
+    }
+
+    .how-steps {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 0 0 18px;
+      padding: 0;
+    }
+
+    .how-step {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 11px 12px;
+      border-radius: 12px;
+      background: rgba(5, 6, 8, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    .how-step strong {
+      color: var(--text-main);
+    }
+
+    .how-step-num {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #fff;
+      background: var(--accent-gradient);
+    }
+
     .session-pill {
       display: inline-flex;
       align-items: center;
@@ -680,6 +743,7 @@
       </div>
       <div class="configs-toolbar-right">
         <span id="countPill" class="configs-count-pill">Cargando...</span>
+        <button id="howToAddBtn" class="configs-how-btn" type="button">¿Cómo agregar?</button>
         <div id="sessionArea"></div>
         <button id="refreshBtn" class="configs-action-btn" type="button">Actualizar</button>
       </div>
@@ -752,6 +816,38 @@
     </form>
   </div>
 
+  <!-- Modal 3: Como agregar tu config -->
+  <div id="howModal" class="auth-modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="howModalTitle">
+    <div class="auth-modal" style="max-width:480px;">
+      <h2 id="howModalTitle">¿Cómo agregar tu config?</h2>
+      <p class="auth-modal-sub">
+        Las configuraciones se envían directamente desde <strong>AClient</strong> para garantizar que los valores reales del juego y tu monitor se carguen automáticamente.
+      </p>
+      <ol class="how-steps">
+        <li class="how-step">
+          <span class="how-step-num">1</span>
+          <div>Descargá y abrí <strong>AClient</strong> en tu PC.</div>
+        </li>
+        <li class="how-step">
+          <span class="how-step-num">2</span>
+          <div>Entrá a <strong>Settings → AClient → Settings</strong> y bajá hasta el bloque <strong>Guardar Configuración en la BD</strong>.</div>
+        </li>
+        <li class="how-step">
+          <span class="how-step-num">3</span>
+          <div>Ingresá el <strong>DPI de tu mouse</strong> y elegí una <strong>contraseña</strong> (la primera vez la creás; luego usás la misma para actualizar tu config).</div>
+        </li>
+        <li class="how-step">
+          <span class="how-step-num">4</span>
+          <div>Tocá <strong>Guardar / Actualizar</strong>. AClient lee automáticamente tu <strong>nombre</strong>, <strong>sensibilidad</strong>, <strong>cl_mouse_max_distance</strong>, <strong>resolución</strong> y <strong>Hz</strong>, y al aprobarse aparecerá acá.</div>
+        </li>
+      </ol>
+      <div class="auth-modal-actions">
+        <a href="https://github.com/AgusClient/AClient/releases/latest/download/DDNet.exe" class="configs-action-btn" style="text-decoration:none;" download="DDNet.exe">Descargar AClient</a>
+        <button id="howCloseBtn" class="auth-submit-btn" type="button">Entendido</button>
+      </div>
+    </div>
+  </div>
+
   <div id="toast" class="configs-toast" role="status" aria-live="polite"></div>
 
   <script>
@@ -796,6 +892,9 @@
     const regError = document.getElementById("regError");
     const regCancelBtn = document.getElementById("regCancelBtn");
     const regSubmitBtn = document.getElementById("regSubmitBtn");
+    const howToAddBtn = document.getElementById("howToAddBtn");
+    const howModal = document.getElementById("howModal");
+    const howCloseBtn = document.getElementById("howCloseBtn");
 
     function showToast(text) {
       toastEl.textContent = text;
@@ -1225,8 +1324,15 @@
       renderSessionArea();
     });
 
+    howToAddBtn.addEventListener("click", () => howModal.classList.remove("hidden"));
+    howCloseBtn.addEventListener("click", () => howModal.classList.add("hidden"));
+    howModal.addEventListener("click", (e) => {
+      if (e.target === howModal) howModal.classList.add("hidden");
+    });
+
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
+        if (!howModal.classList.contains("hidden")) howModal.classList.add("hidden");
         if (!authModal.classList.contains("hidden")) closeAuthModal();
         if (!registerModal.classList.contains("hidden")) {
           registerModal.classList.add("hidden");
