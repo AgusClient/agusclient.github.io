@@ -10,6 +10,7 @@ const translations = {
     "meta.description": "AClient: cliente competitivo para DDNet y Teeworlds con Fast Input (8 motores incl. aXv2), GameSkins compartidas, Entities remotas, Hook Glow y Race Stats.",
 
     // Nav
+    "nav.configs": "Configs Players",
     "nav.modtools": "Mod Tools",
     "nav.gameskin": "GameSkin & Glow",
     "nav.philosophy": "Visión",
@@ -209,6 +210,7 @@ const translations = {
     "meta.description": "AClient: cliente competitivo para DDNet e Teeworlds com Fast Input (8 motores incl. aXv2), GameSkins compartilhadas, Entities remotas, Hook Glow e Race Stats.",
 
     // Nav
+    "nav.configs": "Configs Players",
     "nav.modtools": "Mod Tools",
     "nav.gameskin": "GameSkin & Glow",
     "nav.philosophy": "Visão",
@@ -408,6 +410,7 @@ const translations = {
     "meta.description": "AClient: competitive client for DDNet and Teeworlds featuring Fast Input (8 engines incl. aXv2), shared GameSkins, remote Entities, Hook Glow, and live Race Stats.",
 
     // Nav
+    "nav.configs": "Configs Players",
     "nav.modtools": "Mod Tools",
     "nav.gameskin": "GameSkin & Glow",
     "nav.philosophy": "Vision",
