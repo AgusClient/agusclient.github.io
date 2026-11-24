@@ -276,13 +276,150 @@
       color: #fff;
     }
 
+    .configs-add-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 9px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(167, 139, 250, 0.72);
+      background: var(--accent-gradient);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(139, 92, 246, 0.30);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
+    }
+
+    .configs-add-btn:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 26px rgba(139, 92, 246, 0.46);
+      filter: brightness(1.06);
+    }
+
+    .configs-add-btn.hidden,
+    .configs-download-btn.hidden {
+      display: none;
+    }
+
+    .configs-download-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 9px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(52, 211, 153, 0.55);
+      background: rgba(16, 185, 129, 0.16);
+      color: #6ee7b7;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .configs-download-btn:hover {
+      transform: translateY(-1px);
+      background: rgba(16, 185, 129, 0.28);
+      border-color: rgba(52, 211, 153, 0.85);
+      color: #ecfdf5;
+      box-shadow: 0 8px 22px rgba(16, 185, 129, 0.25);
+    }
+
+    .how-section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-text);
+      margin: 4px 0 8px;
+    }
+
+    .how-section-label.alt {
+      color: var(--text-muted);
+      margin-top: 14px;
+    }
+
     .how-steps {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      margin: 0 0 18px;
+      gap: 10px;
+      margin: 0 0 12px;
       padding: 0;
+    }
+
+    .how-modal-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .btn-discord-sm {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 15px;
+      border-radius: 10px;
+      border: 1px solid rgba(114, 137, 218, 0.65);
+      background: #5865F2;
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 0.86rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(88, 101, 242, 0.32);
+      transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+    }
+
+    .btn-discord-sm:hover {
+      background: #4752C4;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(88, 101, 242, 0.45);
+    }
+
+    .cfg-modal {
+      max-width: 510px;
+      max-height: 92vh;
+      overflow-y: auto;
+    }
+
+    .cfg-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .cfg-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .cfg-field-hint {
+      margin-top: 5px;
+      font-size: 0.76rem;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+
+    .cfg-reconnect-row {
+      margin-bottom: 12px;
+    }
+
+    .cfg-reconnect-row.hidden {
+      display: none;
     }
 
     .how-step {
@@ -375,6 +512,105 @@
       background: var(--bg-card-hover);
       border-color: var(--border-glow);
       box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .player-card.is-mine {
+      overflow: hidden;
+      background: linear-gradient(155deg, rgba(139, 92, 246, 0.17), rgba(16, 19, 32, 0.92) 65%);
+      border-color: rgba(167, 139, 250, 0.78);
+      box-shadow: 0 0 0 1px rgba(167, 139, 250, 0.28), 0 18px 46px rgba(139, 92, 246, 0.26);
+    }
+
+    .player-card.is-mine::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 3px;
+      background: var(--accent-gradient);
+    }
+
+    .player-card.is-mine:hover {
+      border-color: rgba(196, 181, 253, 0.95);
+      box-shadow: 0 0 0 1px rgba(196, 181, 253, 0.42), 0 22px 54px rgba(139, 92, 246, 0.36);
+    }
+
+    .player-card.is-mine .player-avatar {
+      box-shadow: 0 0 0 2px rgba(196, 181, 253, 0.65), 0 8px 24px var(--accent-glow);
+    }
+
+    .player-badges {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .mine-badge {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 4px 9px;
+      border-radius: 999px;
+      color: #f5f3ff;
+      background: var(--accent-gradient);
+      border: 1px solid rgba(221, 214, 254, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      box-shadow: 0 4px 14px rgba(139, 92, 246, 0.35);
+    }
+
+    .player-card-actions {
+      display: inline-flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .card-download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(52, 211, 153, 0.55);
+      background: rgba(16, 185, 129, 0.16);
+      color: #6ee7b7;
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+    }
+
+    .card-download-btn:hover {
+      transform: translateY(-1px);
+      background: rgba(16, 185, 129, 0.30);
+      border-color: rgba(52, 211, 153, 0.9);
+      color: #ecfdf5;
+    }
+
+    .card-edit-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(167, 139, 250, 0.5);
+      background: rgba(139, 92, 246, 0.16);
+      color: #ddd6fe;
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+    }
+
+    .card-edit-btn:hover {
+      transform: translateY(-1px);
+      background: rgba(139, 92, 246, 0.32);
+      border-color: rgba(196, 181, 253, 0.85);
+      color: #fff;
     }
 
     .player-card-head {
@@ -739,6 +975,10 @@
       .spec-box.spec-wide {
         grid-column: span 1;
       }
+      .cfg-grid-3,
+      .cfg-grid-2 {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -850,7 +1090,7 @@
       </div>
       <h1 class="configs-title" data-t="title">CONFIGS PLAYERS</h1>
       <p class="configs-subtitle" data-t="subtitle">
-        Configuraciones aprobadas enviadas directamente desde AClient: sensibilidad, DPI, distancia de mouse, resolución y tasa de refresco de cada jugador.
+        Configuraciones aprobadas de jugadores de DDNet: sensibilidad, DPI, distancia de mouse, resolución y tasa de refresco. Agregá la tuya iniciando sesión con Discord o desde AClient.
       </p>
     </section>
 
@@ -870,6 +1110,21 @@
       <div class="configs-toolbar-right">
         <span id="countPill" class="configs-count-pill">Cargando...</span>
         <button id="howToAddBtn" class="configs-how-btn" type="button" data-t="btn_how">¿Cómo agregar?</button>
+        <button id="downloadMyCfgBtn" class="configs-download-btn hidden" type="button">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span data-t="btn_download_my_cfg">Descargar mi config</span>
+        </button>
+        <button id="addConfigBtn" class="configs-add-btn" type="button">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          <span id="addConfigBtnText" data-t="btn_add_cfg">Agregar config</span>
+        </button>
         <div id="sessionArea"></div>
         <button id="refreshBtn" class="configs-action-btn" type="button" data-t="btn_refresh">Actualizar</button>
       </div>
@@ -944,34 +1199,129 @@
 
   <!-- Modal 3: Como agregar tu config -->
   <div id="howModal" class="auth-modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="howModalTitle">
-    <div class="auth-modal" style="max-width:480px;">
+    <div class="auth-modal cfg-modal">
       <h2 id="howModalTitle" data-t="how_title">¿Cómo agregar tu config?</h2>
       <p class="auth-modal-sub" data-th="how_sub">
-        Las configuraciones se envían directamente desde <strong>AClient</strong> para garantizar que los valores reales del juego y tu monitor se carguen automáticamente.
+        Podés subir tu configuración <strong>directamente desde esta página</strong> iniciando sesión con <strong>Discord</strong>, o de forma automática desde <strong>AClient</strong>.
       </p>
+
+      <div class="how-section-label" data-t="how_web_label">Opción 1 · Desde esta página (con Discord)</div>
       <ol class="how-steps">
         <li class="how-step">
           <span class="how-step-num">1</span>
-          <div data-th="how_s1">Descargá y abrí <strong>AClient</strong> en tu PC.</div>
+          <div data-th="how_s1">Tocá <strong>+ Agregar config</strong> en la barra superior e iniciá sesión con tu cuenta de <strong>Discord</strong> (obligatorio para agregar una config; 1 por cuenta).</div>
         </li>
         <li class="how-step">
           <span class="how-step-num">2</span>
-          <div data-th="how_s2">Entrá a <strong>Settings → AClient → Settings</strong>, iniciá sesión con <strong>Discord</strong> y bajá hasta <strong>Configuraciones de jugadores</strong>.</div>
+          <div data-th="how_s2">Completá tu <strong>nombre</strong>, <strong>sensibilidad</strong>, <strong>DPI</strong>, <strong>cl_mouse_max_distance</strong>, <strong>resolución</strong>, <strong>Hz</strong> y una <strong>contraseña</strong> (para actualizarla después).</div>
         </li>
         <li class="how-step">
           <span class="how-step-num">3</span>
-          <div data-th="how_s3">Ingresá el <strong>DPI de tu mouse</strong> y elegí una <strong>contraseña</strong> (la primera vez la creás; luego usás la misma para actualizar tu config).</div>
-        </li>
-        <li class="how-step">
-          <span class="how-step-num">4</span>
-          <div data-th="how_s4">Tocá <strong>Guardar / Actualizar</strong>. AClient lee automáticamente tu <strong>nombre</strong>, <strong>sensibilidad</strong>, <strong>cl_mouse_max_distance</strong>, <strong>resolución</strong> y <strong>Hz</strong>, y al aprobarse aparecerá acá.</div>
+          <div data-th="how_s3">Al aprobarse aparecerá destacada como <strong>★ Tu config</strong> y podrás <strong>descargarla en formato .cfg</strong> o actualizarla cuando quieras.</div>
         </li>
       </ol>
-      <div class="auth-modal-actions">
+
+      <div class="how-section-label alt" data-t="how_ac_label">Opción 2 · Automático desde AClient</div>
+      <ol class="how-steps" style="margin-bottom:4px;">
+        <li class="how-step">
+          <span class="how-step-num">4</span>
+          <div data-th="how_s4">En <strong>AClient</strong>, abrí <strong>Settings → AClient → Settings</strong>, iniciá sesión con <strong>Discord</strong> y guardá en <strong>Configuraciones de jugadores</strong>: detecta tus valores del juego y monitor automáticamente.</div>
+        </li>
+      </ol>
+
+      <div class="how-modal-actions">
+        <button id="howActionBtn" class="btn-discord-sm" type="button"></button>
         <a href="https://github.com/AgusClient/AClient/releases/latest/download/DDNet.exe" class="configs-action-btn" style="text-decoration:none;" download="DDNet.exe" data-t="btn_download_ac">Descargar AClient</a>
-        <button id="howCloseBtn" class="auth-submit-btn" type="button" data-t="btn_got_it">Entendido</button>
+        <button id="howCloseBtn" class="configs-action-btn" type="button" data-t="btn_got_it">Entendido</button>
       </div>
     </div>
+  </div>
+
+  <!-- Modal 4: Agregar / Actualizar config desde la web (solo Discord) -->
+  <div id="addConfigModal" class="auth-modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="addConfigModalTitle">
+    <form id="addConfigForm" class="auth-modal cfg-modal" novalidate>
+      <div id="cfgDiscordTag" class="discord-verified-tag">Discord verificado</div>
+      <h2 id="addConfigModalTitle" data-t="cfg_title">Agregar / Actualizar config</h2>
+      <p class="auth-modal-sub" data-t="cfg_sub">
+        Cargá los datos de tu configuración de DDNet. Se vincula a tu cuenta de Discord (1 config por cuenta) y aparecerá en la lista al aprobarse.
+      </p>
+
+      <div class="auth-field">
+        <label for="cfgNameInput" data-t="cfg_lbl_name">Nombre de jugador</label>
+        <input id="cfgNameInput" class="auth-input" type="text" maxlength="32" autocomplete="nickname" required>
+      </div>
+
+      <div class="cfg-grid-3">
+        <div class="auth-field">
+          <label for="cfgSensInput" data-t="cfg_lbl_sens">Sensibilidad</label>
+          <input id="cfgSensInput" class="auth-input" type="number" min="1" max="100000" step="1" inputmode="numeric" placeholder="200" required>
+        </div>
+        <div class="auth-field">
+          <label for="cfgDpiInput" data-t="cfg_lbl_dpi">DPI</label>
+          <input id="cfgDpiInput" class="auth-input" type="number" min="50" max="50000" step="1" inputmode="numeric" placeholder="800" required>
+        </div>
+        <div class="auth-field">
+          <label for="cfgDistInput" data-t="cfg_lbl_dist">Max Distance</label>
+          <input id="cfgDistInput" class="auth-input" type="number" min="0" max="5000" step="1" inputmode="numeric" placeholder="400" required>
+        </div>
+      </div>
+
+      <div class="cfg-grid-2">
+        <div class="auth-field">
+          <label for="cfgResInput" data-t="cfg_lbl_res">Resolución</label>
+          <input id="cfgResInput" class="auth-input" type="text" maxlength="32" list="commonResList" placeholder="1920x1080" required>
+          <datalist id="commonResList">
+            <option value="1920x1080"></option>
+            <option value="2560x1440"></option>
+            <option value="3840x2160"></option>
+            <option value="1600x900"></option>
+            <option value="1440x1080"></option>
+            <option value="1366x768"></option>
+            <option value="1280x1024"></option>
+            <option value="1280x720"></option>
+            <option value="2560x1080"></option>
+            <option value="3440x1440"></option>
+          </datalist>
+        </div>
+        <div class="auth-field">
+          <label for="cfgHzInput" data-t="cfg_lbl_hz">Monitor (Hz)</label>
+          <input id="cfgHzInput" class="auth-input" type="number" min="0" max="1000" step="1" inputmode="numeric" list="commonHzList" placeholder="144" required>
+          <datalist id="commonHzList">
+            <option value="60"></option>
+            <option value="75"></option>
+            <option value="120"></option>
+            <option value="144"></option>
+            <option value="165"></option>
+            <option value="180"></option>
+            <option value="240"></option>
+            <option value="280"></option>
+            <option value="360"></option>
+            <option value="480"></option>
+          </datalist>
+        </div>
+      </div>
+
+      <div class="auth-field">
+        <label for="cfgPassInput" data-t="cfg_lbl_pass">Contraseña de tu config</label>
+        <div class="auth-pass-row">
+          <input id="cfgPassInput" class="auth-input" type="password" minlength="4" maxlength="128" autocomplete="current-password" required>
+          <button id="cfgTogglePassBtn" class="configs-action-btn" type="button">Ver</button>
+        </div>
+        <div class="cfg-field-hint" data-t="cfg_pass_hint">
+          La primera vez la creás (mín. 4 caracteres); luego usás la misma si querés actualizar tu config desde la web o AClient.
+        </div>
+      </div>
+
+      <div id="cfgError" class="auth-error"></div>
+      <div id="cfgReconnectRow" class="cfg-reconnect-row hidden">
+        <button id="cfgReconnectBtn" class="btn-discord-auth" type="button" data-t="btn_reconnect_discord">Reconectar con Discord</button>
+      </div>
+
+      <div class="auth-modal-actions">
+        <button id="cfgCancelBtn" class="configs-action-btn" type="button" data-t="btn_cancel">Cancelar</button>
+        <button id="cfgSubmitBtn" class="auth-submit-btn" type="submit" data-t="cfg_submit">Guardar / Actualizar</button>
+      </div>
+    </form>
   </div>
 
   <div id="toast" class="configs-toast" role="status" aria-live="polite"></div>
@@ -988,7 +1338,7 @@
         nav_configs: "Configs Players",
         eyebrow: "ACLIENT // CONFIGS VERIFICADAS",
         title: "CONFIGS PLAYERS",
-        subtitle: "Configuraciones aprobadas enviadas directamente desde AClient: sensibilidad, DPI, distancia de mouse, resolución y tasa de refresco de cada jugador.",
+        subtitle: "Configuraciones aprobadas de jugadores de DDNet: sensibilidad, DPI, distancia de mouse, resolución y tasa de refresco. Agregá la tuya iniciando sesión con Discord o desde AClient.",
         search_ph: "Buscar jugador, resolución o Hz...",
         sort_likes: "Más Me gusta",
         sort_recent: "Más recientes",
@@ -997,6 +1347,9 @@
         sort_dpi: "Mayor DPI",
         sort_hz: "Mayor Hz",
         sort_distance: "Mayor Max Distance",
+        btn_add_cfg: "Agregar config",
+        btn_edit_cfg: "Actualizar mi config",
+        btn_download_my_cfg: "Descargar mi config",
         btn_how: "¿Cómo agregar?",
         btn_refresh: "Actualizar",
         btn_login: "Iniciar sesión",
@@ -1006,13 +1359,16 @@
         loading_title: "Cargando configuraciones...",
         loading_sub: "Obteniendo lista de jugadores aprobados.",
         empty_title: "Todavía no hay configuraciones publicadas",
-        empty_sub: "Subí la tuya desde AClient (Settings → AClient → Configuraciones de jugadores) y aparecerá acá una vez aprobada.",
+        empty_sub: "Iniciá sesión con Discord para agregar tu config desde esta página, o subila desde AClient. Aparecerá acá una vez aprobada.",
         no_match_title: "Sin resultados",
         no_match_sub: "No se encontraron jugadores que coincidan con tu búsqueda.",
         err_load_title: "No se pudieron cargar las configs",
         one_player: "1 jugador",
         n_players: "{n} jugadores",
         approved_badge: "Aprobado",
+        mine_badge: "★ Tu config",
+        btn_card_download: "Descargar .cfg",
+        btn_card_edit: "Editar",
         spec_sens: "Sens",
         spec_dpi: "DPI",
         spec_maxdist: "Max Dist",
@@ -1022,6 +1378,8 @@
         liked: "Te gusta",
         auth_title: "Iniciar sesión",
         auth_sub: "Iniciá sesión con tu cuenta o creá una nueva verificándote con Discord (protección anti-bots).",
+        auth_add_title: "Agregar tu config",
+        auth_add_sub: "Iniciá sesión con Discord para subir o actualizar tu config. Si ya tenés cuenta, también podés entrar abajo para destacar y descargar la tuya.",
         auth_like_title: "Me gusta a {name}",
         auth_like_sub: "Si todavía no tenés cuenta, creala con Discord para evitar bots. Si ya tenés una, ingresá con tu usuario y contraseña.",
         btn_discord: "Crear cuenta / Entrar con Discord",
@@ -1044,13 +1402,42 @@
         discord_verified: "Discord verificado",
         discord_verified_name: "Discord verificado: {name}",
         how_title: "¿Cómo agregar tu config?",
-        how_sub: "Las configuraciones se envían directamente desde <strong>AClient</strong> para garantizar que los valores reales del juego y tu monitor se carguen automáticamente.",
-        how_s1: "Descargá y abrí <strong>AClient</strong> en tu PC.",
-        how_s2: "Entrá a <strong>Settings → AClient → Settings</strong>, iniciá sesión con <strong>Discord</strong> y bajá hasta <strong>Configuraciones de jugadores</strong>.",
-        how_s3: "Ingresá el <strong>DPI de tu mouse</strong> y elegí una <strong>contraseña</strong> (la primera vez la creás; luego usás la misma para actualizar tu config).",
-        how_s4: "Tocá <strong>Guardar / Actualizar</strong>. AClient lee automáticamente tu <strong>nombre</strong>, <strong>sensibilidad</strong>, <strong>cl_mouse_max_distance</strong>, <strong>resolución</strong> y <strong>Hz</strong>, y al aprobarse aparecerá acá.",
+        how_sub: "Podés subir tu configuración <strong>directamente desde esta página</strong> iniciando sesión con <strong>Discord</strong>, o de forma automática desde <strong>AClient</strong>.",
+        how_web_label: "Opción 1 · Desde esta página (con Discord)",
+        how_ac_label: "Opción 2 · Automático desde AClient",
+        how_s1: "Tocá <strong>+ Agregar config</strong> en la barra superior e iniciá sesión con tu cuenta de <strong>Discord</strong> (obligatorio para agregar una config; 1 por cuenta).",
+        how_s2: "Completá tu <strong>nombre</strong>, <strong>sensibilidad</strong>, <strong>DPI</strong>, <strong>cl_mouse_max_distance</strong>, <strong>resolución</strong>, <strong>Hz</strong> y una <strong>contraseña</strong> (para actualizarla después).",
+        how_s3: "Al aprobarse aparecerá destacada como <strong>★ Tu config</strong> y podrás <strong>descargarla en formato .cfg</strong> o actualizarla cuando quieras.",
+        how_s4: "En <strong>AClient</strong>, abrí <strong>Settings → AClient → Settings</strong>, iniciá sesión con <strong>Discord</strong> y guardá en <strong>Configuraciones de jugadores</strong>: detecta tus valores del juego y monitor automáticamente.",
+        how_action_login: "Iniciar sesión con Discord",
+        how_action_add: "Agregar mi config",
         btn_download_ac: "Descargar AClient",
         btn_got_it: "Entendido",
+        cfg_title: "Agregar / Actualizar config",
+        cfg_sub: "Cargá los datos de tu configuración de DDNet. Se vincula a tu cuenta de Discord (1 config por cuenta) y aparecerá en la lista al aprobarse.",
+        cfg_lbl_name: "Nombre de jugador",
+        cfg_lbl_sens: "Sensibilidad",
+        cfg_lbl_dpi: "DPI",
+        cfg_lbl_dist: "Max Distance",
+        cfg_lbl_res: "Resolución",
+        cfg_lbl_hz: "Monitor (Hz)",
+        cfg_lbl_pass: "Contraseña de tu config",
+        cfg_pass_hint: "La primera vez la creás (mín. 4 caracteres); luego usás la misma si querés actualizar tu config desde la web o AClient.",
+        cfg_submit: "Guardar / Actualizar",
+        cfg_saving: "Guardando...",
+        btn_reconnect_discord: "Reconectar con Discord",
+        err_cfg_discord_req: "Necesitás iniciar sesión con Discord para agregar o actualizar tu config.",
+        err_cfg_discord_expired: "Tu sesión de Discord expiró. Reconectate con Discord para guardar tu config.",
+        err_cfg_name: "Ingresá un nombre de jugador válido (1 a 32 caracteres).",
+        err_cfg_sens: "Sensibilidad inválida (1 a 100000).",
+        err_cfg_dpi: "DPI inválido (50 a 50000).",
+        err_cfg_dist: "Max Distance inválido (0 a 5000).",
+        err_cfg_res: "Ingresá una resolución válida (ej: 1920x1080).",
+        err_cfg_hz: "Valor de Hz inválido (0 a 1000).",
+        toast_cfg_pending: "Config enviada. Aparecerá acá cuando sea aprobada.",
+        toast_cfg_published: "¡Config publicada correctamente!",
+        toast_cfg_updated: "Config actualizada correctamente.",
+        toast_cfg_downloaded: "Config descargada: {file}",
         toast_logout: "Sesión cerrada",
         toast_welcome: "Bienvenido, {name}",
         toast_logged_in: "Sesión iniciada como {name}",
@@ -1068,7 +1455,7 @@
         nav_configs: "Configs Players",
         eyebrow: "ACLIENT // CONFIGS VERIFICADAS",
         title: "CONFIGS PLAYERS",
-        subtitle: "Configurações aprovadas enviadas diretamente do AClient: sensibilidade, DPI, distância do mouse, resolução e taxa de atualização de cada jogador.",
+        subtitle: "Configurações aprovadas de jogadores de DDNet: sensibilidade, DPI, distância do mouse, resolução e taxa de atualização. Adicione a sua entrando com o Discord ou pelo AClient.",
         search_ph: "Buscar jogador, resolução ou Hz...",
         sort_likes: "Mais curtidos",
         sort_recent: "Mais recentes",
@@ -1077,6 +1464,9 @@
         sort_dpi: "Maior DPI",
         sort_hz: "Maior Hz",
         sort_distance: "Maior Max Distance",
+        btn_add_cfg: "Adicionar config",
+        btn_edit_cfg: "Atualizar minha config",
+        btn_download_my_cfg: "Baixar minha config",
         btn_how: "Como adicionar?",
         btn_refresh: "Atualizar",
         btn_login: "Entrar",
@@ -1086,13 +1476,16 @@
         loading_title: "Carregando configurações...",
         loading_sub: "Obtendo lista de jogadores aprovados.",
         empty_title: "Ainda não há configurações publicadas",
-        empty_sub: "Envie a sua pelo AClient (Settings → AClient → Configuraciones de jugadores) e ela aparecerá aqui assim que for aprovada.",
+        empty_sub: "Entre com o Discord para adicionar sua config nesta página, ou envie pelo AClient. Ela aparecerá aqui assim que for aprovada.",
         no_match_title: "Sem resultados",
         no_match_sub: "Nenhum jogador corresponde à sua busca.",
         err_load_title: "Não foi possível carregar as configs",
         one_player: "1 jogador",
         n_players: "{n} jogadores",
         approved_badge: "Aprovado",
+        mine_badge: "★ Sua config",
+        btn_card_download: "Baixar .cfg",
+        btn_card_edit: "Editar",
         spec_sens: "Sens",
         spec_dpi: "DPI",
         spec_maxdist: "Max Dist",
@@ -1102,6 +1495,8 @@
         liked: "Curtido",
         auth_title: "Entrar",
         auth_sub: "Entre com sua conta ou crie uma nova verificando com o Discord (proteção anti-bots).",
+        auth_add_title: "Adicionar sua config",
+        auth_add_sub: "Entre com o Discord para enviar ou atualizar sua config. Se já tem conta, também pode entrar abaixo para destacar e baixar a sua.",
         auth_like_title: "Curtir {name}",
         auth_like_sub: "Se ainda não tem conta, crie com o Discord para evitar bots. Se já tem, entre com seu usuário e senha.",
         btn_discord: "Criar conta / Entrar com Discord",
@@ -1124,13 +1519,42 @@
         discord_verified: "Discord verificado",
         discord_verified_name: "Discord verificado: {name}",
         how_title: "Como adicionar sua config?",
-        how_sub: "As configurações são enviadas diretamente pelo <strong>AClient</strong> para garantir que os valores reais do jogo e do seu monitor sejam carregados automaticamente.",
-        how_s1: "Baixe e abra o <strong>AClient</strong> no seu PC.",
-        how_s2: "Vá em <strong>Settings → AClient → Settings</strong>, entre com o <strong>Discord</strong> e role até <strong>Configuraciones de jugadores</strong>.",
-        how_s3: "Digite o <strong>DPI do seu mouse</strong> e escolha uma <strong>senha</strong> (na primeira vez você cria; depois usa a mesma para atualizar).",
-        how_s4: "Clique em <strong>Guardar / Actualizar</strong>. O AClient lê automaticamente seu <strong>nome</strong>, <strong>sensibilidade</strong>, <strong>cl_mouse_max_distance</strong>, <strong>resolução</strong> e <strong>Hz</strong>, e quando aprovada aparecerá aqui.",
+        how_sub: "Você pode enviar sua configuração <strong>diretamente nesta página</strong> entrando com o <strong>Discord</strong>, ou automaticamente pelo <strong>AClient</strong>.",
+        how_web_label: "Opção 1 · Nesta página (com Discord)",
+        how_ac_label: "Opção 2 · Automático pelo AClient",
+        how_s1: "Clique em <strong>+ Adicionar config</strong> na barra superior e entre com sua conta do <strong>Discord</strong> (obrigatório para adicionar uma config; 1 por conta).",
+        how_s2: "Preencha seu <strong>nome</strong>, <strong>sensibilidade</strong>, <strong>DPI</strong>, <strong>cl_mouse_max_distance</strong>, <strong>resolução</strong>, <strong>Hz</strong> e uma <strong>senha</strong> (para atualizar depois).",
+        how_s3: "Quando aprovada aparecerá destacada como <strong>★ Sua config</strong> e você poderá <strong>baixá-la em .cfg</strong> ou atualizá-la quando quiser.",
+        how_s4: "No <strong>AClient</strong>, vá em <strong>Settings → AClient → Settings</strong>, entre com o <strong>Discord</strong> e salve em <strong>Configuraciones de jugadores</strong>: ele lê seus valores do jogo e monitor automaticamente.",
+        how_action_login: "Entrar com Discord",
+        how_action_add: "Adicionar minha config",
         btn_download_ac: "Baixar AClient",
         btn_got_it: "Entendi",
+        cfg_title: "Adicionar / Atualizar config",
+        cfg_sub: "Preencha os dados da sua config do DDNet. Ela fica vinculada ao seu Discord (1 por conta) e aparecerá na lista após aprovação.",
+        cfg_lbl_name: "Nome do jogador",
+        cfg_lbl_sens: "Sensibilidade",
+        cfg_lbl_dpi: "DPI",
+        cfg_lbl_dist: "Max Distance",
+        cfg_lbl_res: "Resolução",
+        cfg_lbl_hz: "Monitor (Hz)",
+        cfg_lbl_pass: "Senha da sua config",
+        cfg_pass_hint: "Na primeira vez você cria (mín. 4 caracteres); depois usa a mesma para atualizar pela web ou AClient.",
+        cfg_submit: "Salvar / Atualizar",
+        cfg_saving: "Salvando...",
+        btn_reconnect_discord: "Reconectar com Discord",
+        err_cfg_discord_req: "Você precisa entrar com o Discord para adicionar ou atualizar sua config.",
+        err_cfg_discord_expired: "Sua sessão do Discord expirou. Reconecte com o Discord para salvar.",
+        err_cfg_name: "Digite um nome de jogador válido (1 a 32 caracteres).",
+        err_cfg_sens: "Sensibilidade inválida (1 a 100000).",
+        err_cfg_dpi: "DPI inválido (50 a 50000).",
+        err_cfg_dist: "Max Distance inválido (0 a 5000).",
+        err_cfg_res: "Digite uma resolução válida (ex: 1920x1080).",
+        err_cfg_hz: "Valor de Hz inválido (0 a 1000).",
+        toast_cfg_pending: "Config enviada! Ela aparecerá aqui quando for aprovada.",
+        toast_cfg_published: "Config publicada com sucesso!",
+        toast_cfg_updated: "Config atualizada com sucesso.",
+        toast_cfg_downloaded: "Config baixada: {file}",
         toast_logout: "Sessão encerrada",
         toast_welcome: "Bem-vindo, {name}",
         toast_logged_in: "Conectado como {name}",
@@ -1148,7 +1572,7 @@
         nav_configs: "Player Configs",
         eyebrow: "ACLIENT // VERIFIED CONFIGS",
         title: "PLAYER CONFIGS",
-        subtitle: "Approved player settings uploaded directly from AClient: mouse sensitivity, DPI, max distance, resolution and monitor refresh rate.",
+        subtitle: "Approved DDNet player settings: mouse sensitivity, DPI, max distance, resolution and monitor refresh rate. Add yours by signing in with Discord or directly from AClient.",
         search_ph: "Search player, resolution or Hz...",
         sort_likes: "Most liked",
         sort_recent: "Most recent",
@@ -1157,6 +1581,9 @@
         sort_dpi: "Highest DPI",
         sort_hz: "Highest Hz",
         sort_distance: "Highest Max Distance",
+        btn_add_cfg: "Add config",
+        btn_edit_cfg: "Update my config",
+        btn_download_my_cfg: "Download my config",
         btn_how: "How to add?",
         btn_refresh: "Refresh",
         btn_login: "Sign in",
@@ -1166,13 +1593,16 @@
         loading_title: "Loading configs...",
         loading_sub: "Fetching approved player list.",
         empty_title: "No published configs yet",
-        empty_sub: "Upload yours from AClient (Settings → AClient → Configuraciones de jugadores) and it will appear here once approved.",
+        empty_sub: "Sign in with Discord to add your config from this page, or upload it from AClient. It will appear here once approved.",
         no_match_title: "No results",
         no_match_sub: "No players match your search.",
         err_load_title: "Could not load configs",
         one_player: "1 player",
         n_players: "{n} players",
         approved_badge: "Approved",
+        mine_badge: "★ Your config",
+        btn_card_download: "Download .cfg",
+        btn_card_edit: "Edit",
         spec_sens: "Sens",
         spec_dpi: "DPI",
         spec_maxdist: "Max Dist",
@@ -1182,6 +1612,8 @@
         liked: "Liked",
         auth_title: "Sign in",
         auth_sub: "Sign in with your account or create a new one verified with Discord (anti-bot protection).",
+        auth_add_title: "Add your config",
+        auth_add_sub: "Sign in with Discord to upload or update your config. If you already have an account, you can also sign in below to highlight and download yours.",
         auth_like_title: "Like {name}",
         auth_like_sub: "If you don't have an account yet, create one with Discord to prevent bots. Otherwise sign in with your username and password.",
         btn_discord: "Create account / Sign in with Discord",
@@ -1204,13 +1636,42 @@
         discord_verified: "Discord verified",
         discord_verified_name: "Discord verified: {name}",
         how_title: "How to add your config?",
-        how_sub: "Configs are uploaded directly from <strong>AClient</strong> so your real in-game values and monitor refresh rate are captured automatically.",
-        how_s1: "Download and open <strong>AClient</strong> on your PC.",
-        how_s2: "Go to <strong>Settings → AClient → Settings</strong>, sign in with <strong>Discord</strong>, and scroll to <strong>Configuraciones de jugadores</strong>.",
-        how_s3: "Enter your <strong>mouse DPI</strong> and pick a <strong>password</strong> (created on your first upload, reused later to update your config).",
-        how_s4: "Click <strong>Guardar / Actualizar</strong>. AClient reads your <strong>name</strong>, <strong>sensitivity</strong>, <strong>cl_mouse_max_distance</strong>, <strong>resolution</strong> and <strong>Hz</strong> automatically, and once approved it will appear here.",
+        how_sub: "You can submit your config <strong>directly from this page</strong> by signing in with <strong>Discord</strong>, or upload it automatically from <strong>AClient</strong>.",
+        how_web_label: "Option 1 · From this page (with Discord)",
+        how_ac_label: "Option 2 · Automatic from AClient",
+        how_s1: "Click <strong>+ Add config</strong> in the top bar and sign in with your <strong>Discord</strong> account (required to add a config; 1 per account).",
+        how_s2: "Fill in your <strong>player name</strong>, <strong>sensitivity</strong>, <strong>DPI</strong>, <strong>cl_mouse_max_distance</strong>, <strong>resolution</strong>, <strong>Hz</strong>, and a <strong>password</strong> (to update it later).",
+        how_s3: "Once approved it will be highlighted as <strong>★ Your config</strong> and you'll be able to <strong>download it as .cfg</strong> or update it anytime.",
+        how_s4: "In <strong>AClient</strong>, go to <strong>Settings → AClient → Settings</strong>, sign in with <strong>Discord</strong>, and save under <strong>Configuraciones de jugadores</strong>: it reads your in-game and monitor settings automatically.",
+        how_action_login: "Sign in with Discord",
+        how_action_add: "Add my config",
         btn_download_ac: "Download AClient",
         btn_got_it: "Got it",
+        cfg_title: "Add / Update config",
+        cfg_sub: "Enter your DDNet config settings. It is linked to your Discord account (1 config per account) and will appear here once approved.",
+        cfg_lbl_name: "Player name",
+        cfg_lbl_sens: "Sensitivity",
+        cfg_lbl_dpi: "DPI",
+        cfg_lbl_dist: "Max Distance",
+        cfg_lbl_res: "Resolution",
+        cfg_lbl_hz: "Monitor (Hz)",
+        cfg_lbl_pass: "Config password",
+        cfg_pass_hint: "Created on your first upload (min. 4 chars); reuse the same password to update your config from the web or AClient.",
+        cfg_submit: "Save / Update",
+        cfg_saving: "Saving...",
+        btn_reconnect_discord: "Reconnect with Discord",
+        err_cfg_discord_req: "You must sign in with Discord to add or update your config.",
+        err_cfg_discord_expired: "Your Discord session expired. Reconnect with Discord to save your config.",
+        err_cfg_name: "Please enter a valid player name (1 to 32 characters).",
+        err_cfg_sens: "Invalid sensitivity (1 to 100000).",
+        err_cfg_dpi: "Invalid DPI (50 to 50000).",
+        err_cfg_dist: "Invalid Max Distance (0 to 5000).",
+        err_cfg_res: "Please enter a valid resolution (e.g. 1920x1080).",
+        err_cfg_hz: "Invalid Hz value (0 to 1000).",
+        toast_cfg_pending: "Config submitted! It will appear here once approved.",
+        toast_cfg_published: "Config published successfully!",
+        toast_cfg_updated: "Config updated successfully.",
+        toast_cfg_downloaded: "Config downloaded: {file}",
         toast_logout: "Signed out",
         toast_welcome: "Welcome, {name}",
         toast_logged_in: "Signed in as {name}",
@@ -1228,7 +1689,7 @@
         nav_configs: "Конфиги игроков",
         eyebrow: "ACLIENT // ПРОВЕРЕННЫЕ КОНФИГИ",
         title: "КОНФИГИ ИГРОКОВ",
-        subtitle: "Одобренные настройки игроков, загруженные напрямую из AClient: чувствительность, DPI, макс. дистанция мыши, разрешение и частота монитора.",
+        subtitle: "Одобренные настройки игроков DDNet: чувствительность, DPI, макс. дистанция мыши, разрешение и частота монитора. Добавьте свой конфиг через Discord или из AClient.",
         search_ph: "Поиск игрока, разрешения или Гц...",
         sort_likes: "Больше лайков",
         sort_recent: "Сначала новые",
@@ -1237,6 +1698,9 @@
         sort_dpi: "Выше DPI",
         sort_hz: "Выше Гц",
         sort_distance: "Выше Max Distance",
+        btn_add_cfg: "Добавить конфиг",
+        btn_edit_cfg: "Обновить конфиг",
+        btn_download_my_cfg: "Скачать мой конфиг",
         btn_how: "Как добавить?",
         btn_refresh: "Обновить",
         btn_login: "Войти",
@@ -1246,13 +1710,16 @@
         loading_title: "Загрузка конфигов...",
         loading_sub: "Получаем список одобренных игроков.",
         empty_title: "Опубликованных конфигов пока нет",
-        empty_sub: "Загрузите свой конфиг из AClient (главное меню или Settings → AClient → Configuraciones de jugadores), и он появится здесь после одобрения.",
+        empty_sub: "Войдите через Discord, чтобы добавить свой конфиг прямо на этой странице, или загрузите его из AClient. Он появится здесь после одобрения.",
         no_match_title: "Ничего не найдено",
         no_match_sub: "По вашему запросу игроки не найдены.",
         err_load_title: "Не удалось загрузить конфиги",
         one_player: "1 игрок",
         n_players: "{n} игроков",
         approved_badge: "Одобрено",
+        mine_badge: "★ Ваш конфиг",
+        btn_card_download: "Скачать .cfg",
+        btn_card_edit: "Изменить",
         spec_sens: "Sens",
         spec_dpi: "DPI",
         spec_maxdist: "Max Dist",
@@ -1262,6 +1729,8 @@
         liked: "Понравилось",
         auth_title: "Вход",
         auth_sub: "Войдите в свой аккаунт или создайте новый через Discord (защита от ботов).",
+        auth_add_title: "Добавить свой конфиг",
+        auth_add_sub: "Войдите через Discord, чтобы загрузить или обновить конфиг. Если аккаунт уже есть, можно войти ниже, чтобы выделить и скачать свой конфиг.",
         auth_like_title: "Лайк для {name}",
         auth_like_sub: "Если аккаунта ещё нет, создайте его через Discord для защиты от ботов. Иначе войдите по логину и паролю.",
         btn_discord: "Создать аккаунт / Войти через Discord",
@@ -1284,13 +1753,42 @@
         discord_verified: "Discord подтверждён",
         discord_verified_name: "Discord подтверждён: {name}",
         how_title: "Как добавить свой конфиг?",
-        how_sub: "Конфиги отправляются напрямую из <strong>AClient</strong>, чтобы реальные игровые настройки и частота монитора подтягивались автоматически.",
-        how_s1: "Скачайте и откройте <strong>AClient</strong> на ПК.",
-        how_s2: "Нажмите <strong>Configuraciones de jugadores</strong> в главном меню (или перейдите в <strong>Settings → AClient → Settings</strong>) и войдите через <strong>Discord</strong>.",
-        how_s3: "Введите <strong>DPI вашей мыши</strong> и задайте <strong>пароль</strong> (создаётся при первой отправке и используется для последующих обновлений).",
-        how_s4: "Нажмите <strong>Guardar / Actualizar</strong>. AClient автоматически считает ваш <strong>ник</strong>, <strong>sens</strong>, <strong>cl_mouse_max_distance</strong>, <strong>разрешение</strong> и <strong>Гц</strong>.",
+        how_sub: "Вы можете добавить конфиг <strong>прямо на этой странице</strong> после входа через <strong>Discord</strong> или загрузить его автоматически из <strong>AClient</strong>.",
+        how_web_label: "Вариант 1 · На этой странице (через Discord)",
+        how_ac_label: "Вариант 2 · Автоматически из AClient",
+        how_s1: "Нажмите <strong>+ Добавить конфиг</strong> в верхней панели и войдите через <strong>Discord</strong> (обязательно для отправки конфига; 1 на аккаунт).",
+        how_s2: "Укажите <strong>ник</strong>, <strong>чувствительность</strong>, <strong>DPI</strong>, <strong>cl_mouse_max_distance</strong>, <strong>разрешение</strong>, <strong>Гц</strong> и <strong>пароль</strong> (для будущих обновлений).",
+        how_s3: "После одобрения он будет выделен как <strong>★ Ваш конфиг</strong>, и вы сможете <strong>скачать его в формате .cfg</strong> или обновить в любой момент.",
+        how_s4: "В <strong>AClient</strong> откройте <strong>Settings → AClient → Settings</strong>, войдите через <strong>Discord</strong> и сохраните в <strong>Configuraciones de jugadores</strong> — параметры считаются автоматически.",
+        how_action_login: "Войти через Discord",
+        how_action_add: "Добавить мой конфиг",
         btn_download_ac: "Скачать AClient",
         btn_got_it: "Понятно",
+        cfg_title: "Добавить / Обновить конфиг",
+        cfg_sub: "Укажите настройки вашего конфига DDNet. Он привязывается к вашему Discord (1 конфиг на аккаунт) и появится в списке после одобрения.",
+        cfg_lbl_name: "Игровой ник",
+        cfg_lbl_sens: "Чувствительность",
+        cfg_lbl_dpi: "DPI",
+        cfg_lbl_dist: "Max Distance",
+        cfg_lbl_res: "Разрешение",
+        cfg_lbl_hz: "Монитор (Гц)",
+        cfg_lbl_pass: "Пароль для конфига",
+        cfg_pass_hint: "Создаётся при первой отправке (мин. 4 символа); используйте тот же пароль для обновлений на сайте или в AClient.",
+        cfg_submit: "Сохранить / Обновить",
+        cfg_saving: "Сохранение...",
+        btn_reconnect_discord: "Войти через Discord снова",
+        err_cfg_discord_req: "Для добавления или обновления конфига нужно войти через Discord.",
+        err_cfg_discord_expired: "Сессия Discord истекла. Войдите через Discord снова, чтобы сохранить конфиг.",
+        err_cfg_name: "Введите корректный ник (от 1 до 32 символов).",
+        err_cfg_sens: "Неверная чувствительность (1–100000).",
+        err_cfg_dpi: "Неверный DPI (50–50000).",
+        err_cfg_dist: "Неверный Max Distance (0–5000).",
+        err_cfg_res: "Введите корректное разрешение (например, 1920x1080).",
+        err_cfg_hz: "Неверная частота Гц (0–1000).",
+        toast_cfg_pending: "Конфиг отправлен! Он появится здесь после одобрения.",
+        toast_cfg_published: "Конфиг успешно опубликован!",
+        toast_cfg_updated: "Конфиг успешно обновлён.",
+        toast_cfg_downloaded: "Конфиг скачан: {file}",
         toast_logout: "Вы вышли из аккаунта",
         toast_welcome: "Добро пожаловать, {name}",
         toast_logged_in: "Вход выполнен: {name}",
@@ -1308,7 +1806,7 @@
         nav_configs: "Spieler-Configs",
         eyebrow: "ACLIENT // VERIFIZIERTE CONFIGS",
         title: "SPIELER-CONFIGS",
-        subtitle: "Geprüfte Spielereinstellungen direkt aus AClient: Maus-Sensitivität, DPI, Max Distance, Auflösung und Bildwiederholrate.",
+        subtitle: "Geprüfte DDNet-Spielereinstellungen: Maus-Sensitivität, DPI, Max Distance, Auflösung und Bildwiederholrate. Füge deine mit Discord oder direkt aus AClient hinzu.",
         search_ph: "Spieler, Auflösung oder Hz suchen...",
         sort_likes: "Meiste Likes",
         sort_recent: "Neueste",
@@ -1317,6 +1815,9 @@
         sort_dpi: "Höchste DPI",
         sort_hz: "Höchste Hz",
         sort_distance: "Höchste Max Distance",
+        btn_add_cfg: "Config hinzufügen",
+        btn_edit_cfg: "Meine Config aktualisieren",
+        btn_download_my_cfg: "Meine Config laden",
         btn_how: "Wie hinzufügen?",
         btn_refresh: "Aktualisieren",
         btn_login: "Anmelden",
@@ -1326,13 +1827,16 @@
         loading_title: "Configs werden geladen...",
         loading_sub: "Liste geprüfter Spieler wird abgerufen.",
         empty_title: "Noch keine Configs veröffentlicht",
-        empty_sub: "Lade deine Config aus AClient hoch (Startmenü oder Settings → AClient → Configuraciones de jugadores). Nach Freigabe erscheint sie hier.",
+        empty_sub: "Melde dich mit Discord an, um deine Config direkt auf dieser Seite hinzuzufügen, oder lade sie aus AClient hoch. Nach Freigabe erscheint sie hier.",
         no_match_title: "Keine Ergebnisse",
         no_match_sub: "Keine Spieler entsprechen deiner Suche.",
         err_load_title: "Configs konnten nicht geladen werden",
         one_player: "1 Spieler",
         n_players: "{n} Spieler",
         approved_badge: "Freigegeben",
+        mine_badge: "★ Deine Config",
+        btn_card_download: ".cfg laden",
+        btn_card_edit: "Bearbeiten",
         spec_sens: "Sens",
         spec_dpi: "DPI",
         spec_maxdist: "Max Dist",
@@ -1342,6 +1846,8 @@
         liked: "Geliked",
         auth_title: "Anmelden",
         auth_sub: "Melde dich an oder erstelle ein neues Konto mit Discord-Verifizierung (Anti-Bot-Schutz).",
+        auth_add_title: "Deine Config hinzufügen",
+        auth_add_sub: "Melde dich mit Discord an, um deine Config hinzuzufügen oder zu aktualisieren. Mit bestehendem Konto kannst du dich unten anmelden, um deine Config hervorzuheben und herunterzuladen.",
         auth_like_title: "{name} liken",
         auth_like_sub: "Falls du noch kein Konto hast, erstelle eines mit Discord. Andernfalls melde dich mit Benutzername und Passwort an.",
         btn_discord: "Konto erstellen / Mit Discord anmelden",
@@ -1364,13 +1870,42 @@
         discord_verified: "Discord verifiziert",
         discord_verified_name: "Discord verifiziert: {name}",
         how_title: "Wie fügst du deine Config hinzu?",
-        how_sub: "Configs werden direkt aus <strong>AClient</strong> hochgeladen, damit echte Spielwerte und Monitor-Hz automatisch erfasst werden.",
-        how_s1: "Lade <strong>AClient</strong> herunter und starte es auf deinem PC.",
-        how_s2: "Klicke im Startmenü auf <strong>Configuraciones de jugadores</strong> (oder gehe zu <strong>Settings → AClient → Settings</strong>) und melde dich mit <strong>Discord</strong> an.",
-        how_s3: "Gib deine <strong>Maus-DPI</strong> ein und wähle ein <strong>Passwort</strong> (wird beim ersten Mal erstellt und später für Updates genutzt).",
-        how_s4: "Klicke auf <strong>Guardar / Actualizar</strong>. AClient liest <strong>Name</strong>, <strong>Sens</strong>, <strong>cl_mouse_max_distance</strong>, <strong>Auflösung</strong> und <strong>Hz</strong> automatisch aus.",
+        how_sub: "Du kannst deine Config <strong>direkt auf dieser Seite</strong> nach der Anmeldung mit <strong>Discord</strong> hinzufügen oder sie automatisch aus <strong>AClient</strong> hochladen.",
+        how_web_label: "Option 1 · Auf dieser Seite (mit Discord)",
+        how_ac_label: "Option 2 · Automatisch aus AClient",
+        how_s1: "Klicke oben auf <strong>+ Config hinzufügen</strong> und melde dich mit deinem <strong>Discord</strong>-Konto an (erforderlich zum Hinzufügen; 1 pro Konto).",
+        how_s2: "Gib <strong>Name</strong>, <strong>Sensitivität</strong>, <strong>DPI</strong>, <strong>cl_mouse_max_distance</strong>, <strong>Auflösung</strong>, <strong>Hz</strong> und ein <strong>Passwort</strong> (für spätere Updates) ein.",
+        how_s3: "Nach Freigabe wird sie als <strong>★ Deine Config</strong> hervorgehoben und du kannst sie jederzeit als <strong>.cfg herunterladen</strong> oder aktualisieren.",
+        how_s4: "In <strong>AClient</strong> gehe zu <strong>Settings → AClient → Settings</strong>, melde dich mit <strong>Discord</strong> an und speichere unter <strong>Configuraciones de jugadores</strong> — Spiel- und Monitorwerte werden automatisch erfasst.",
+        how_action_login: "Mit Discord anmelden",
+        how_action_add: "Meine Config hinzufügen",
         btn_download_ac: "AClient herunterladen",
         btn_got_it: "Verstanden",
+        cfg_title: "Config hinzufügen / aktualisieren",
+        cfg_sub: "Gib deine DDNet-Config-Werte ein. Sie wird mit deinem Discord verknüpft (1 Config pro Konto) und erscheint nach Freigabe in der Liste.",
+        cfg_lbl_name: "Spielername",
+        cfg_lbl_sens: "Sensitivität",
+        cfg_lbl_dpi: "DPI",
+        cfg_lbl_dist: "Max Distance",
+        cfg_lbl_res: "Auflösung",
+        cfg_lbl_hz: "Monitor (Hz)",
+        cfg_lbl_pass: "Config-Passwort",
+        cfg_pass_hint: "Wird beim ersten Mal erstellt (mind. 4 Zeichen); nutze dasselbe Passwort für Updates im Web oder in AClient.",
+        cfg_submit: "Speichern / Aktualisieren",
+        cfg_saving: "Wird gespeichert...",
+        btn_reconnect_discord: "Erneut mit Discord verbinden",
+        err_cfg_discord_req: "Du musst dich mit Discord anmelden, um eine Config hinzuzufügen oder zu aktualisieren.",
+        err_cfg_discord_expired: "Deine Discord-Sitzung ist abgelaufen. Verbinde dich erneut mit Discord.",
+        err_cfg_name: "Bitte gib einen gültigen Spielernamen ein (1 bis 32 Zeichen).",
+        err_cfg_sens: "Ungültige Sensitivität (1 bis 100000).",
+        err_cfg_dpi: "Ungültige DPI (50 bis 50000).",
+        err_cfg_dist: "Ungültige Max Distance (0 bis 5000).",
+        err_cfg_res: "Bitte gib eine gültige Auflösung ein (z. B. 1920x1080).",
+        err_cfg_hz: "Ungültiger Hz-Wert (0 bis 1000).",
+        toast_cfg_pending: "Config gesendet! Sie erscheint hier nach Freigabe.",
+        toast_cfg_published: "Config erfolgreich veröffentlicht!",
+        toast_cfg_updated: "Config erfolgreich aktualisiert.",
+        toast_cfg_downloaded: "Config heruntergeladen: {file}",
         toast_logout: "Abgemeldet",
         toast_welcome: "Willkommen, {name}",
         toast_logged_in: "Angemeldet als {name}",
@@ -1412,9 +1947,17 @@
     let currentUser = sessionStorage.getItem("aclient_web_user") || "";
     let currentPass = sessionStorage.getItem("aclient_web_pass") || "";
     let discordToken = sessionStorage.getItem("aclient_discord_token") || "";
+    let myConfigKey = sessionStorage.getItem("aclient_my_config_key") || "";
     let likedKeys = new Set();
     let pendingLikeTargetKey = null;
+    let pendingAuthForAddConfig = false;
+    let pendingOpenAddConfig = "";
     let busyLikeKey = null;
+
+    const DISCORD_ICON_SVG = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>';
+    const PLUS_ICON_SVG = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>';
+    const DOWNLOAD_ICON_SVG = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>';
+    const EDIT_ICON_SVG = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>';
 
     const container = document.getElementById("configsContainer");
     const stateBox = document.getElementById("stateBox");
@@ -1450,9 +1993,30 @@
     const regError = document.getElementById("regError");
     const regCancelBtn = document.getElementById("regCancelBtn");
     const regSubmitBtn = document.getElementById("regSubmitBtn");
+    const downloadMyCfgBtn = document.getElementById("downloadMyCfgBtn");
+    const addConfigBtn = document.getElementById("addConfigBtn");
+    const addConfigBtnText = document.getElementById("addConfigBtnText");
     const howToAddBtn = document.getElementById("howToAddBtn");
     const howModal = document.getElementById("howModal");
+    const howActionBtn = document.getElementById("howActionBtn");
     const howCloseBtn = document.getElementById("howCloseBtn");
+
+    const addConfigModal = document.getElementById("addConfigModal");
+    const addConfigForm = document.getElementById("addConfigForm");
+    const cfgDiscordTag = document.getElementById("cfgDiscordTag");
+    const cfgNameInput = document.getElementById("cfgNameInput");
+    const cfgSensInput = document.getElementById("cfgSensInput");
+    const cfgDpiInput = document.getElementById("cfgDpiInput");
+    const cfgDistInput = document.getElementById("cfgDistInput");
+    const cfgResInput = document.getElementById("cfgResInput");
+    const cfgHzInput = document.getElementById("cfgHzInput");
+    const cfgPassInput = document.getElementById("cfgPassInput");
+    const cfgTogglePassBtn = document.getElementById("cfgTogglePassBtn");
+    const cfgError = document.getElementById("cfgError");
+    const cfgReconnectRow = document.getElementById("cfgReconnectRow");
+    const cfgReconnectBtn = document.getElementById("cfgReconnectBtn");
+    const cfgCancelBtn = document.getElementById("cfgCancelBtn");
+    const cfgSubmitBtn = document.getElementById("cfgSubmitBtn");
 
     function applyLanguage(lang, persist = false) {
       if (!I18N[lang]) return;
@@ -1480,8 +2044,11 @@
       authPassInput.placeholder = t("ph_pass");
       regUserInput.placeholder = t("ph_user");
       regPassInput.placeholder = t("ph_new_pass");
+      cfgNameInput.placeholder = t("ph_user");
+      cfgPassInput.placeholder = t("ph_new_pass");
       authTogglePassBtn.textContent = authPassInput.type === "password" ? t("btn_show") : t("btn_hide");
       regTogglePassBtn.textContent = regPassInput.type === "password" ? t("btn_show") : t("btn_hide");
+      cfgTogglePassBtn.textContent = cfgPassInput.type === "password" ? t("btn_show") : t("btn_hide");
 
       renderSessionArea();
       renderConfigs();
@@ -1567,15 +2134,104 @@
       return currentUser.length > 0 && (currentPass.length >= 4 || discordToken.length > 0);
     }
 
+    function hasDiscordSession() {
+      return isLoggedIn() && discordToken.length > 0;
+    }
+
+    function isMyConfig(item) {
+      if (!isLoggedIn() || !item) return false;
+      const itemKey = getItemKey(item);
+      if (!itemKey) return false;
+      if (myConfigKey && itemKey === myConfigKey) return true;
+      return currentUser.length > 0 && itemKey === currentUser.trim().toLowerCase();
+    }
+
+    function findMyApprovedConfig() {
+      if (!isLoggedIn()) return null;
+      return approvedConfigs.find((x) => isMyConfig(x)) || null;
+    }
+
+    function downloadPlayerConfig(item) {
+      if (!item) return;
+      const lines = [
+        "# AClient / DDNet Player Config",
+        `# Player: ${item.player_name || "player"}`
+      ];
+      if (item.mouse_dpi != null) {
+        lines.push(`# Mouse DPI: ${item.mouse_dpi}`);
+      }
+      if (item.resolution || item.hz != null) {
+        const resLabel = item.resolution || "?";
+        const hzLabel = item.hz != null ? ` @ ${item.hz} Hz` : "";
+        lines.push(`# Monitor: ${resLabel}${hzLabel}`);
+      }
+      lines.push("# Source: https://agusclient.github.io/configs-players/", "");
+
+      if (Number.isFinite(Number(item.inp_mousesens))) {
+        lines.push(`inp_mousesens ${Number(item.inp_mousesens)}`);
+      }
+      if (Number.isFinite(Number(item.cl_mouse_max_distance))) {
+        lines.push(`cl_mouse_max_distance ${Number(item.cl_mouse_max_distance)}`);
+      }
+      const resMatch = String(item.resolution || "").trim().match(/^(\d+)\s*[xX×]\s*(\d+)$/);
+      if (resMatch) {
+        lines.push(`gfx_screen_width ${resMatch[1]}`);
+        lines.push(`gfx_screen_height ${resMatch[2]}`);
+      }
+      if (Number.isFinite(Number(item.hz)) && Number(item.hz) > 0) {
+        lines.push(`gfx_screen_refresh_rate ${Number(item.hz)}`);
+      }
+
+      const safeBase = String(item.player_name || "player")
+        .trim()
+        .replace(/[^a-zA-Z0-9_-]+/g, "_")
+        .replace(/^_+|_+$/g, "") || "player";
+      const filename = `${safeBase}_aclient.cfg`;
+
+      const blob = new Blob([lines.join("\n") + "\n"], { type: "text/plain;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      showToast(t("toast_cfg_downloaded", { file: filename }));
+    }
+
     function clearSession() {
       currentUser = "";
       currentPass = "";
       discordToken = "";
+      myConfigKey = "";
+      pendingOpenAddConfig = "";
+      pendingAuthForAddConfig = false;
       likedKeys.clear();
       sessionStorage.removeItem("aclient_web_user");
       sessionStorage.removeItem("aclient_web_pass");
       sessionStorage.removeItem("aclient_discord_token");
+      sessionStorage.removeItem("aclient_my_config_key");
       sessionStorage.removeItem("aclient_pending_like");
+      sessionStorage.removeItem("aclient_pending_add_config");
+    }
+
+    function updateConfigAddControls() {
+      const discordReady = hasDiscordSession();
+      const myCfg = findMyApprovedConfig();
+      const hasExisting = Boolean(myCfg);
+
+      downloadMyCfgBtn.classList.toggle("hidden", !hasExisting);
+      addConfigBtn.classList.remove("hidden");
+      addConfigBtnText.textContent = hasExisting ? t("btn_edit_cfg") : t("btn_add_cfg");
+
+      if (discordReady) {
+        howActionBtn.className = "configs-add-btn";
+        howActionBtn.innerHTML = `${PLUS_ICON_SVG}<span>${escapeHtml(hasExisting ? t("btn_edit_cfg") : t("how_action_add"))}</span>`;
+      } else {
+        howActionBtn.className = "btn-discord-sm";
+        howActionBtn.innerHTML = `${DISCORD_ICON_SVG}<span>${escapeHtml(t("how_action_login"))}</span>`;
+      }
     }
 
     function renderSessionArea() {
@@ -1588,18 +2244,54 @@
         `;
         document.getElementById("logoutBtn").addEventListener("click", () => {
           clearSession();
+          closeAddConfigModal();
           renderSessionArea();
           renderConfigs();
           showToast(t("toast_logout"));
         });
       } else {
-        sessionArea.innerHTML = `<button id="openLoginBtn" class="configs-action-btn" type="button">${escapeHtml(t("btn_login"))}</button>`;
-        document.getElementById("openLoginBtn").addEventListener("click", () => openAuthModal(null));
+        sessionArea.innerHTML = "";
       }
+      updateConfigAddControls();
     }
 
-    function openAuthModal(targetKey) {
+    function openAddConfigModal() {
+      if (!hasDiscordSession()) {
+        openAuthModal(null, { forAddConfig: true });
+        return;
+      }
+      cfgError.textContent = "";
+      cfgReconnectRow.classList.add("hidden");
+      cfgDiscordTag.textContent = currentUser
+        ? t("discord_verified_name", { name: currentUser })
+        : t("discord_verified");
+
+      const existing = findMyApprovedConfig();
+      cfgNameInput.value = existing ? existing.player_name : currentUser;
+      cfgSensInput.value = existing && existing.inp_mousesens != null ? existing.inp_mousesens : "";
+      cfgDpiInput.value = existing && existing.mouse_dpi != null ? existing.mouse_dpi : "";
+      cfgDistInput.value = existing && existing.cl_mouse_max_distance != null ? existing.cl_mouse_max_distance : "";
+      cfgResInput.value = existing && existing.resolution ? existing.resolution : "";
+      cfgHzInput.value = existing && existing.hz != null ? existing.hz : "";
+      cfgPassInput.value = currentPass || "";
+      cfgPassInput.type = "password";
+      cfgTogglePassBtn.textContent = t("btn_show");
+
+      addConfigModal.classList.remove("hidden");
+      setTimeout(() => {
+        if (!cfgNameInput.value) cfgNameInput.focus();
+        else if (!cfgSensInput.value) cfgSensInput.focus();
+        else cfgPassInput.focus();
+      }, 30);
+    }
+
+    function closeAddConfigModal() {
+      addConfigModal.classList.add("hidden");
+    }
+
+    function openAuthModal(targetKey, options = {}) {
       pendingLikeTargetKey = targetKey;
+      pendingAuthForAddConfig = Boolean(options && options.forAddConfig === true);
       authError.textContent = "";
       authUserInput.value = currentUser || "";
       authPassInput.value = "";
@@ -1610,6 +2302,9 @@
         const target = approvedConfigs.find((x) => getItemKey(x) === targetKey);
         authModalTitle.textContent = target ? t("auth_like_title", { name: target.player_name }) : t("auth_title");
         authModalSub.textContent = t("auth_like_sub");
+      } else if (pendingAuthForAddConfig) {
+        authModalTitle.textContent = t("auth_add_title");
+        authModalSub.textContent = t("auth_add_sub");
       } else {
         authModalTitle.textContent = t("auth_title");
         authModalSub.textContent = t("auth_sub");
@@ -1620,14 +2315,24 @@
 
     function closeAuthModal() {
       pendingLikeTargetKey = null;
+      pendingAuthForAddConfig = false;
       authModal.classList.add("hidden");
     }
 
-    function startDiscordOAuth() {
-      if (pendingLikeTargetKey) {
-        sessionStorage.setItem("aclient_pending_like", pendingLikeTargetKey);
-      } else {
+    function startDiscordOAuth(options = {}) {
+      const mode = options && options.openAddConfig
+        ? (options.openAddConfig === "auto" ? "auto" : "1")
+        : "";
+      if (mode) {
+        sessionStorage.setItem("aclient_pending_add_config", mode);
         sessionStorage.removeItem("aclient_pending_like");
+      } else {
+        sessionStorage.removeItem("aclient_pending_add_config");
+        if (pendingLikeTargetKey) {
+          sessionStorage.setItem("aclient_pending_like", pendingLikeTargetKey);
+        } else {
+          sessionStorage.removeItem("aclient_pending_like");
+        }
       }
       const redirectTo = `${window.location.origin}/configs-players/`;
       const authUrl = `${SUPABASE_URL}/auth/v1/authorize?provider=discord&redirect_to=${encodeURIComponent(redirectTo)}`;
@@ -1642,6 +2347,7 @@
         const params = new URLSearchParams((hash.startsWith("#") ? hash.slice(1) : search.slice(1)));
         const errDesc = params.get("error_description") || params.get("error") || "Discord error";
         history.replaceState(null, "", window.location.pathname);
+        sessionStorage.removeItem("aclient_pending_add_config");
         showToast(errDesc);
         return false;
       }
@@ -1675,22 +2381,29 @@
 
         const voterRes = await callRpc("get_my_discord_voter", {}, accessToken);
         const savedPendingLike = sessionStorage.getItem("aclient_pending_like") || null;
+        const savedPendingAdd = sessionStorage.getItem("aclient_pending_add_config") || "";
 
         if (voterRes && voterRes.registered) {
           currentUser = voterRes.username || suggestedName;
           likedKeys = new Set(Array.isArray(voterRes.liked_keys) ? voterRes.liked_keys : []);
           sessionStorage.setItem("aclient_web_user", currentUser);
           sessionStorage.removeItem("aclient_pending_like");
+          sessionStorage.removeItem("aclient_pending_add_config");
           renderSessionArea();
           renderConfigs();
 
-          if (savedPendingLike) {
+          const existingMine = findMyApprovedConfig();
+          if (savedPendingAdd === "1" || (savedPendingAdd === "auto" && !existingMine)) {
+            showToast(t("toast_welcome", { name: currentUser }));
+            openAddConfigModal();
+          } else if (savedPendingLike) {
             await performToggleLike(savedPendingLike);
           } else {
             showToast(t("toast_welcome", { name: currentUser }));
           }
         } else {
           pendingLikeTargetKey = savedPendingLike;
+          pendingOpenAddConfig = savedPendingAdd;
           discordVerifiedTag.textContent = suggestedName
             ? t("discord_verified_name", { name: suggestedName })
             : t("discord_verified");
@@ -1722,6 +2435,9 @@
       });
 
       list = [...list].sort((a, b) => {
+        const aMine = isMyConfig(a) ? 1 : 0;
+        const bMine = isMyConfig(b) ? 1 : 0;
+        if (aMine !== bMine) return bMine - aMine;
         if (sort === "likes") {
           const diff = (Number(b.likes_count) || 0) - (Number(a.likes_count) || 0);
           if (diff !== 0) return diff;
@@ -1753,16 +2469,20 @@
         const likes = Number(item.likes_count) || 0;
         const isLiked = likedKeys.has(key);
         const isBusy = busyLikeKey === key;
+        const mine = isMyConfig(item);
 
         const card = document.createElement("article");
-        card.className = "player-card";
+        card.className = mine ? "player-card is-mine" : "player-card";
         card.innerHTML = `
           <div class="player-card-head">
             <div class="player-identity">
               <div class="player-avatar">${escapeHtml(getInitial(item.player_name))}</div>
               <div class="player-name" title="${escapeHtml(item.player_name)}">${escapeHtml(item.player_name)}</div>
             </div>
-            <span class="verified-badge">${escapeHtml(t("approved_badge"))}</span>
+            <div class="player-badges">
+              ${mine ? `<span class="mine-badge">${escapeHtml(t("mine_badge"))}</span>` : ""}
+              <span class="verified-badge">${escapeHtml(t("approved_badge"))}</span>
+            </div>
           </div>
           <div class="player-specs">
             <div class="spec-box">
@@ -1788,12 +2508,24 @@
           </div>
           <div class="player-card-foot">
             <span class="player-date">${escapeHtml(formatDate(item.updated_at))}</span>
-            <button class="like-btn ${isLiked ? "liked" : ""}" type="button" data-like-key="${escapeHtml(key)}" ${isBusy ? "disabled" : ""}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-              </svg>
-              <span>${escapeHtml(isLiked ? t("liked") : t("like"))} (${likes})</span>
-            </button>
+            <div class="player-card-actions">
+              ${mine ? `
+                <button class="card-download-btn" type="button" data-download-key="${escapeHtml(key)}">
+                  ${DOWNLOAD_ICON_SVG}
+                  <span>${escapeHtml(t("btn_card_download"))}</span>
+                </button>
+                <button class="card-edit-btn" type="button" data-edit-my-cfg="1">
+                  ${EDIT_ICON_SVG}
+                  <span>${escapeHtml(t("btn_card_edit"))}</span>
+                </button>
+              ` : ""}
+              <button class="like-btn ${isLiked ? "liked" : ""}" type="button" data-like-key="${escapeHtml(key)}" ${isBusy ? "disabled" : ""}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+                <span>${escapeHtml(isLiked ? t("liked") : t("like"))} (${likes})</span>
+              </button>
+            </div>
           </div>
         `;
         container.appendChild(card);
@@ -1847,6 +2579,23 @@
     async function restoreSessionLikes() {
       if (!isLoggedIn()) return;
       try {
+        if (discordToken) {
+          try {
+            const res = await callRpc("get_my_discord_voter", {}, discordToken);
+            if (res && res.registered) {
+              currentUser = res.username || currentUser;
+              likedKeys = new Set(Array.isArray(res.liked_keys) ? res.liked_keys : []);
+              renderSessionArea();
+              renderConfigs();
+              return;
+            }
+          } catch (_) {
+            // Discord token expirado: limpiar solo el token y reintentar con contraseña si existe
+          }
+          discordToken = "";
+          sessionStorage.removeItem("aclient_discord_token");
+        }
+
         if (currentPass.length >= 4) {
           const res = await callRpc("web_login_voter", {
             p_username: currentUser,
@@ -1854,14 +2603,8 @@
           });
           currentUser = res.username || currentUser;
           likedKeys = new Set(Array.isArray(res.liked_keys) ? res.liked_keys : []);
-        } else if (discordToken) {
-          const res = await callRpc("get_my_discord_voter", {}, discordToken);
-          if (res && res.registered) {
-            currentUser = res.username || currentUser;
-            likedKeys = new Set(Array.isArray(res.liked_keys) ? res.liked_keys : []);
-          } else {
-            clearSession();
-          }
+        } else {
+          clearSession();
         }
       } catch (_) {
         clearSession();
@@ -1884,6 +2627,7 @@
           throw new Error("Invalid server response");
         }
         approvedConfigs = data;
+        updateConfigAddControls();
         renderConfigs();
       } catch (err) {
         container.innerHTML = "";
@@ -1898,9 +2642,50 @@
     searchInput.addEventListener("input", renderConfigs);
     sortSelect.addEventListener("change", renderConfigs);
     refreshBtn.addEventListener("click", fetchApprovedConfigs);
-    discordLoginBtn.addEventListener("click", startDiscordOAuth);
+    discordLoginBtn.addEventListener("click", () => {
+      startDiscordOAuth(pendingAuthForAddConfig ? { openAddConfig: "auto" } : {});
+    });
+    downloadMyCfgBtn.addEventListener("click", () => {
+      const mine = findMyApprovedConfig();
+      if (mine) downloadPlayerConfig(mine);
+    });
+    addConfigBtn.addEventListener("click", () => {
+      if (hasDiscordSession()) {
+        openAddConfigModal();
+      } else {
+        openAuthModal(null, { forAddConfig: true });
+      }
+    });
+    cfgReconnectBtn.addEventListener("click", () => startDiscordOAuth({ openAddConfig: "1" }));
+
+    howActionBtn.addEventListener("click", () => {
+      howModal.classList.add("hidden");
+      if (hasDiscordSession()) {
+        openAddConfigModal();
+      } else {
+        startDiscordOAuth({ openAddConfig: "1" });
+      }
+    });
 
     container.addEventListener("click", (e) => {
+      const downloadBtn = e.target.closest("button[data-download-key]");
+      if (downloadBtn) {
+        const dlKey = downloadBtn.getAttribute("data-download-key");
+        const target = approvedConfigs.find((x) => getItemKey(x) === dlKey);
+        if (target) downloadPlayerConfig(target);
+        return;
+      }
+
+      const editBtn = e.target.closest("button[data-edit-my-cfg]");
+      if (editBtn) {
+        if (hasDiscordSession()) {
+          openAddConfigModal();
+        } else {
+          startDiscordOAuth({ openAddConfig: "1" });
+        }
+        return;
+      }
+
       const btn = e.target.closest("button[data-like-key]");
       if (!btn || busyLikeKey) return;
       const targetKey = btn.getAttribute("data-like-key");
@@ -1923,9 +2708,20 @@
       regTogglePassBtn.textContent = show ? t("btn_hide") : t("btn_show");
     });
 
+    cfgTogglePassBtn.addEventListener("click", () => {
+      const show = cfgPassInput.type === "password";
+      cfgPassInput.type = show ? "text" : "password";
+      cfgTogglePassBtn.textContent = show ? t("btn_hide") : t("btn_show");
+    });
+
     authCancelBtn.addEventListener("click", closeAuthModal);
     authModal.addEventListener("click", (e) => {
       if (e.target === authModal) closeAuthModal();
+    });
+
+    cfgCancelBtn.addEventListener("click", closeAddConfigModal);
+    addConfigModal.addEventListener("click", (e) => {
+      if (e.target === addConfigModal) closeAddConfigModal();
     });
 
     regCancelBtn.addEventListener("click", () => {
@@ -1934,7 +2730,10 @@
       renderSessionArea();
     });
 
-    howToAddBtn.addEventListener("click", () => howModal.classList.remove("hidden"));
+    howToAddBtn.addEventListener("click", () => {
+      updateConfigAddControls();
+      howModal.classList.remove("hidden");
+    });
     howCloseBtn.addEventListener("click", () => howModal.classList.add("hidden"));
     howModal.addEventListener("click", (e) => {
       if (e.target === howModal) howModal.classList.add("hidden");
@@ -1943,6 +2742,7 @@
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
         if (!howModal.classList.contains("hidden")) howModal.classList.add("hidden");
+        if (!addConfigModal.classList.contains("hidden")) closeAddConfigModal();
         if (!authModal.classList.contains("hidden")) closeAuthModal();
         if (!registerModal.classList.contains("hidden")) {
           registerModal.classList.add("hidden");
@@ -2030,14 +2830,21 @@
         sessionStorage.setItem("aclient_web_user", currentUser);
         sessionStorage.setItem("aclient_web_pass", currentPass);
         sessionStorage.removeItem("aclient_pending_like");
+        sessionStorage.removeItem("aclient_pending_add_config");
 
         const targetToLike = pendingLikeTargetKey;
+        const shouldOpenAdd = pendingOpenAddConfig;
         pendingLikeTargetKey = null;
+        pendingOpenAddConfig = "";
         registerModal.classList.add("hidden");
         renderSessionArea();
         renderConfigs();
 
-        if (targetToLike) {
+        const existingMine = findMyApprovedConfig();
+        if (shouldOpenAdd === "1" || (shouldOpenAdd === "auto" && !existingMine)) {
+          showToast(t("toast_created", { name: currentUser }));
+          openAddConfigModal();
+        } else if (targetToLike) {
           await performToggleLike(targetToLike);
         } else {
           showToast(t("toast_created", { name: currentUser }));
@@ -2047,6 +2854,108 @@
       } finally {
         regSubmitBtn.disabled = false;
         regSubmitBtn.textContent = t("btn_create_account");
+      }
+    });
+
+    addConfigForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      cfgError.textContent = "";
+      cfgReconnectRow.classList.add("hidden");
+
+      if (!hasDiscordSession()) {
+        cfgError.textContent = t("err_cfg_discord_req");
+        cfgReconnectRow.classList.remove("hidden");
+        return;
+      }
+
+      const playerName = cfgNameInput.value.trim();
+      const sensRaw = cfgSensInput.value.trim();
+      const dpiRaw = cfgDpiInput.value.trim();
+      const distRaw = cfgDistInput.value.trim();
+      const hzRaw = cfgHzInput.value.trim();
+      const sens = sensRaw === "" ? NaN : Number(sensRaw);
+      const dpi = dpiRaw === "" ? NaN : Number(dpiRaw);
+      const maxDist = distRaw === "" ? NaN : Number(distRaw);
+      const resolution = cfgResInput.value.trim().replace(/\s*[×xX]\s*/g, "x");
+      const hz = hzRaw === "" ? NaN : Number(hzRaw);
+      const password = cfgPassInput.value;
+
+      if (!playerName || playerName.length > 32) {
+        cfgError.textContent = t("err_cfg_name");
+        cfgNameInput.focus();
+        return;
+      }
+      if (!Number.isInteger(sens) || sens < 1 || sens > 100000) {
+        cfgError.textContent = t("err_cfg_sens");
+        cfgSensInput.focus();
+        return;
+      }
+      if (!Number.isInteger(dpi) || dpi < 50 || dpi > 50000) {
+        cfgError.textContent = t("err_cfg_dpi");
+        cfgDpiInput.focus();
+        return;
+      }
+      if (!Number.isInteger(maxDist) || maxDist < 0 || maxDist > 5000) {
+        cfgError.textContent = t("err_cfg_dist");
+        cfgDistInput.focus();
+        return;
+      }
+      if (!resolution || resolution.length > 32) {
+        cfgError.textContent = t("err_cfg_res");
+        cfgResInput.focus();
+        return;
+      }
+      if (!Number.isInteger(hz) || hz < 0 || hz > 1000) {
+        cfgError.textContent = t("err_cfg_hz");
+        cfgHzInput.focus();
+        return;
+      }
+      if (password.length < 4 || password.length > 128) {
+        cfgError.textContent = t("err_pass_len");
+        cfgPassInput.focus();
+        return;
+      }
+
+      cfgSubmitBtn.disabled = true;
+      cfgSubmitBtn.textContent = t("cfg_saving");
+      try {
+        const res = await callRpc("upsert_player_config", {
+          p_player_name: playerName,
+          p_password: password,
+          p_mouse_max_distance: maxDist,
+          p_resolution: resolution,
+          p_hz: hz,
+          p_mouse_sens: sens,
+          p_mouse_dpi: dpi
+        }, discordToken);
+
+        const key = playerName.toLowerCase();
+        myConfigKey = key;
+        sessionStorage.setItem("aclient_my_config_key", key);
+
+        closeAddConfigModal();
+        await fetchApprovedConfigs();
+
+        const isNowVisible = approvedConfigs.some((x) => getItemKey(x) === key);
+        if (res && res.created) {
+          showToast(isNowVisible ? t("toast_cfg_published") : t("toast_cfg_pending"));
+        } else {
+          showToast(t("toast_cfg_updated"));
+        }
+      } catch (err) {
+        const msg = String(err && err.message ? err.message : err);
+        if (/jwt|expired|expirad|401|iniciar sesion con discord/i.test(msg)) {
+          discordToken = "";
+          sessionStorage.removeItem("aclient_discord_token");
+          renderSessionArea();
+          cfgError.textContent = t("err_cfg_discord_expired");
+          cfgReconnectRow.classList.remove("hidden");
+        } else {
+          cfgError.textContent = msg;
+        }
+      } finally {
+        cfgSubmitBtn.disabled = false;
+        cfgSubmitBtn.textContent = t("cfg_submit");
       }
     });
 
