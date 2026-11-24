@@ -42,6 +42,8 @@
   <meta property="og:locale" content="es_ES">
   <meta property="og:locale:alternate" content="pt_BR">
   <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="ru_RU">
+  <meta property="og:locale:alternate" content="de_DE">
 
   <!-- Twitter / X Cards -->
   <meta name="twitter:card" content="summary_large_image">
@@ -66,7 +68,7 @@
         "url": "https://agusclient.github.io/",
         "name": "AClient",
         "alternateName": ["Clientx30", "AClient DDNet"],
-        "inLanguage": ["es", "pt", "en"]
+        "inLanguage": ["es", "pt", "en", "ru", "de"]
       },
       {
         "@type": "SoftwareApplication",
@@ -78,7 +80,7 @@
         "operatingSystem": "Windows 64-bit",
         "softwareVersion": "2.8.5",
         "isAccessibleForFree": true,
-        "inLanguage": ["es", "pt", "en"],
+        "inLanguage": ["es", "pt", "en", "ru", "de"],
         "description": "Cliente competitivo de código abierto para DDNet y Teeworlds con Fast Input (8 motores incl. aXv2 y aX30), GameSkins compartidas, Entities remotas, Hook Glow, Race Stats en vivo y editor de assets.",
         "url": "https://agusclient.github.io/",
         "mainEntityOfPage": {
@@ -204,6 +206,16 @@
             <button type="button" class="lang-option" data-lang="en" role="menuitem">
               <span class="lang-flag">🇺🇸</span>
               <span class="lang-name">English</span>
+              <span class="lang-check">✓</span>
+            </button>
+            <button type="button" class="lang-option" data-lang="ru" role="menuitem">
+              <span class="lang-flag">🇷🇺</span>
+              <span class="lang-name">Русский</span>
+              <span class="lang-check">✓</span>
+            </button>
+            <button type="button" class="lang-option" data-lang="de" role="menuitem">
+              <span class="lang-flag">🇩🇪</span>
+              <span class="lang-name">Deutsch</span>
               <span class="lang-check">✓</span>
             </button>
           </div>
@@ -459,29 +471,29 @@
         <div class="marquee-item">
           <span class="marquee-text highlight">FAST INPUT</span>
           <span class="marquee-separator"></span>
-          <span class="marquee-text">RACE STATS EN VIVO</span>
+          <span class="marquee-text" data-i18n="marquee.racestats">RACE STATS EN VIVO</span>
           <span class="marquee-separator"></span>
           <span class="marquee-text highlight">FAST PRACTICE</span>
           <span class="marquee-separator"></span>
-          <span class="marquee-text">EDITOR DE ASSETS</span>
+          <span class="marquee-text" data-i18n="marquee.editor">EDITOR DE ASSETS</span>
           <span class="marquee-separator"></span>
           <span class="marquee-text highlight">SILENT TYPING</span>
           <span class="marquee-separator"></span>
-          <span class="marquee-text">PERFILES DDNET + KOG</span>
+          <span class="marquee-text" data-i18n="marquee.profiles">PERFILES DDNET + KOG</span>
           <span class="marquee-separator"></span>
         </div>
         <div class="marquee-item">
           <span class="marquee-text highlight">FAST INPUT</span>
           <span class="marquee-separator"></span>
-          <span class="marquee-text">RACE STATS EN VIVO</span>
+          <span class="marquee-text" data-i18n="marquee.racestats">RACE STATS EN VIVO</span>
           <span class="marquee-separator"></span>
           <span class="marquee-text highlight">FAST PRACTICE</span>
           <span class="marquee-separator"></span>
-          <span class="marquee-text">EDITOR DE ASSETS</span>
+          <span class="marquee-text" data-i18n="marquee.editor">EDITOR DE ASSETS</span>
           <span class="marquee-separator"></span>
           <span class="marquee-text highlight">SILENT TYPING</span>
           <span class="marquee-separator"></span>
-          <span class="marquee-text">PERFILES DDNET + KOG</span>
+          <span class="marquee-text" data-i18n="marquee.profiles">PERFILES DDNET + KOG</span>
           <span class="marquee-separator"></span>
         </div>
       </div>
@@ -707,7 +719,7 @@
         <span class="section-eyebrow" data-i18n="credits.eyebrow">AGRADECIMIENTOS // COMUNIDAD</span>
         <h2 class="section-title" data-i18n="credits.title">CRÉDITOS Y RECONOCIMIENTO</h2>
         <p class="section-lead" data-i18n="credits.desc">
-          AClient se construye gracias a innovaciones y desarrollos de la comunidad de DDNet y teeworlds.
+          AClient se construye gracias a innovaciones y desarrollos de la comunidad de DDNet y Teeworlds.
         </p>
       </div>
 
@@ -718,7 +730,7 @@
             <span class="credit-badge" data-i18n="credits.nova_badge">Live HUD</span>
           </div>
           <p class="credit-body" data-i18n="credits.nova_desc">
-            Creador original del overlay de estadísticas en vivo que contabiliza freezes, muertes y saques en tiempo real durante la carrera.
+            Creador original del overlay de estadísticas en vivo que contabiliza freezes, muertes y saves en tiempo real durante la carrera.
           </p>
         </div>
 
@@ -768,16 +780,16 @@
           </p>
 
           <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-            <div class="glass-chip">100% Código Abierto</div>
+            <div class="glass-chip" data-i18n="cta.chip_os">100% Código Abierto</div>
             <div class="glass-chip">DDNet</div>
             <div class="glass-chip">Discord Rich Presence</div>
-            <div class="glass-chip">Configs tc_* compatibles</div>
+            <div class="glass-chip" data-i18n="cta.chip_tc">Configs tc_* compatibles</div>
           </div>
         </div>
 
         <div class="allocation-box">
           <div class="allocation-header">
-            <span>CLIENTE</span>
+            <span data-i18n="cta.box_title">CLIENTE</span>
             <span style="color: var(--accent-primary);" data-i18n="cta.box_sub">COMPETITIVO</span>
           </div>
 
@@ -803,7 +815,7 @@
             <div class="logo-symbol"><picture><source srcset="assets/images/logo.webp" type="image/webp"><img src="assets/images/logo.png" alt="AClient" width="320" height="400" loading="lazy" decoding="async"></picture></div>
             <span class="logo-text">ACLIENT</span>
           </div>
-          <p style="color: var(--text-dim); font-size: 0.9rem; line-height: 1.7;">
+          <p style="color: var(--text-dim); font-size: 0.9rem; line-height: 1.7;" data-i18n="footer.desc">
             Cliente competitivo y de práctica avanzada para DDNet, creado por y para la comunidad.
           </p>
         </div>
@@ -826,8 +838,8 @@
             <ul class="footer-nav-list">
               <li><a href="configs-players/" data-i18n="nav.configs">Configs Players</a></li>
               <li><a href="#sound-lab">Fast Input</a></li>
-              <li><a href="#gallery">Galería</a></li>
-              <li><a href="#specs">Módulos</a></li>
+              <li><a href="#gallery" data-i18n="nav.gallery">Galería</a></li>
+              <li><a href="#specs" data-i18n="nav.specs">Módulos</a></li>
               <li><a href="https://github.com/AgusClient/AClient/releases/latest/download/DDNet.exe" download="DDNet.exe" data-i18n="footer.get_aclient">Obtener AClient</a></li>
               <li><a href="https://github.com/AgusClient/AClient" target="_blank" rel="noopener noreferrer">GitHub</a></li>
             </ul>
@@ -857,7 +869,7 @@
 
   <script src="js/audio.js?v=2" defer></script>
   <script src="js/three-scene.js?v=2" defer></script>
-  <script src="js/i18n.js?v=2" defer></script>
+  <script src="js/i18n.js?v=3" defer></script>
   <script src="js/main.js?v=2" defer></script>
 </body>
 </html>

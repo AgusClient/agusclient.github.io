@@ -42,6 +42,8 @@
   <meta property="og:locale" content="es_ES">
   <meta property="og:locale:alternate" content="pt_BR">
   <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="ru_RU">
+  <meta property="og:locale:alternate" content="de_DE">
 
   <!-- Twitter / X Cards -->
   <meta name="twitter:card" content="summary_large_image">
@@ -66,7 +68,7 @@
         "url": "https://agusclient.github.io/configs-players/",
         "name": "Configs Players // AClient",
         "description": "Configuraciones verificadas de jugadores de AClient para DDNet: sensibilidad, DPI, cl_mouse_max_distance, resolución y tasa de refresco.",
-        "inLanguage": ["es", "pt", "en"],
+        "inLanguage": ["es", "pt", "en", "ru", "de"],
         "isPartOf": {
           "@id": "https://agusclient.github.io/#website"
         }
@@ -813,6 +815,16 @@
               <span class="lang-name">English</span>
               <span class="lang-check">✓</span>
             </button>
+            <button type="button" class="lang-option" data-lang="ru" role="menuitem">
+              <span class="lang-flag">🇷🇺</span>
+              <span class="lang-name">Русский</span>
+              <span class="lang-check">✓</span>
+            </button>
+            <button type="button" class="lang-option" data-lang="de" role="menuitem">
+              <span class="lang-flag">🇩🇪</span>
+              <span class="lang-name">Deutsch</span>
+              <span class="lang-check">✓</span>
+            </button>
           </div>
         </div>
 
@@ -1208,14 +1220,181 @@
         err_user_req: "Please enter a username.",
         err_pass_len: "Password must be between 4 and 128 characters.",
         date_locale: "en-US"
+      },
+      ru: {
+        page_title: "Конфиги игроков // AClient",
+        nav_home: "Главная",
+        nav_credits: "Авторы",
+        nav_configs: "Конфиги игроков",
+        eyebrow: "ACLIENT // ПРОВЕРЕННЫЕ КОНФИГИ",
+        title: "КОНФИГИ ИГРОКОВ",
+        subtitle: "Одобренные настройки игроков, загруженные напрямую из AClient: чувствительность, DPI, макс. дистанция мыши, разрешение и частота монитора.",
+        search_ph: "Поиск игрока, разрешения или Гц...",
+        sort_likes: "Больше лайков",
+        sort_recent: "Сначала новые",
+        sort_name: "Имя (A-Z)",
+        sort_sens: "Выше чувствительность",
+        sort_dpi: "Выше DPI",
+        sort_hz: "Выше Гц",
+        sort_distance: "Выше Max Distance",
+        btn_how: "Как добавить?",
+        btn_refresh: "Обновить",
+        btn_login: "Войти",
+        btn_logout: "Выйти",
+        session_lbl: "Сессия:",
+        loading: "Загрузка...",
+        loading_title: "Загрузка конфигов...",
+        loading_sub: "Получаем список одобренных игроков.",
+        empty_title: "Опубликованных конфигов пока нет",
+        empty_sub: "Загрузите свой конфиг из AClient (главное меню или Settings → AClient → Configuraciones de jugadores), и он появится здесь после одобрения.",
+        no_match_title: "Ничего не найдено",
+        no_match_sub: "По вашему запросу игроки не найдены.",
+        err_load_title: "Не удалось загрузить конфиги",
+        one_player: "1 игрок",
+        n_players: "{n} игроков",
+        approved_badge: "Одобрено",
+        spec_sens: "Sens",
+        spec_dpi: "DPI",
+        spec_maxdist: "Max Dist",
+        spec_res: "Разрешение",
+        spec_monitor: "Монитор",
+        like: "Нравится",
+        liked: "Понравилось",
+        auth_title: "Вход",
+        auth_sub: "Войдите в свой аккаунт или создайте новый через Discord (защита от ботов).",
+        auth_like_title: "Лайк для {name}",
+        auth_like_sub: "Если аккаунта ещё нет, создайте его через Discord для защиты от ботов. Иначе войдите по логину и паролю.",
+        btn_discord: "Создать аккаунт / Войти через Discord",
+        auth_or: "или войдите существующим аккаунтом",
+        lbl_user: "Имя пользователя",
+        lbl_pass: "Пароль",
+        lbl_create_pass: "Создать пароль",
+        ph_user: "Ваш игровой ник",
+        ph_pass: "Ваш пароль",
+        ph_new_pass: "Минимум 4 символа",
+        btn_show: "Показать",
+        btn_hide: "Скрыть",
+        btn_cancel: "Отмена",
+        btn_login_submit: "Войти",
+        btn_verifying: "Проверка...",
+        reg_title: "Создайте пароль",
+        reg_sub: "Выберите логин и пароль. Аккаунт привязывается к вашему Discord (1 на аккаунт) и подходит для голосования здесь и в AClient.",
+        btn_create_account: "Создать аккаунт",
+        btn_creating: "Создание...",
+        discord_verified: "Discord подтверждён",
+        discord_verified_name: "Discord подтверждён: {name}",
+        how_title: "Как добавить свой конфиг?",
+        how_sub: "Конфиги отправляются напрямую из <strong>AClient</strong>, чтобы реальные игровые настройки и частота монитора подтягивались автоматически.",
+        how_s1: "Скачайте и откройте <strong>AClient</strong> на ПК.",
+        how_s2: "Нажмите <strong>Configuraciones de jugadores</strong> в главном меню (или перейдите в <strong>Settings → AClient → Settings</strong>) и войдите через <strong>Discord</strong>.",
+        how_s3: "Введите <strong>DPI вашей мыши</strong> и задайте <strong>пароль</strong> (создаётся при первой отправке и используется для последующих обновлений).",
+        how_s4: "Нажмите <strong>Guardar / Actualizar</strong>. AClient автоматически считает ваш <strong>ник</strong>, <strong>sens</strong>, <strong>cl_mouse_max_distance</strong>, <strong>разрешение</strong> и <strong>Гц</strong>.",
+        btn_download_ac: "Скачать AClient",
+        btn_got_it: "Понятно",
+        toast_logout: "Вы вышли из аккаунта",
+        toast_welcome: "Добро пожаловать, {name}",
+        toast_logged_in: "Вход выполнен: {name}",
+        toast_created: "Аккаунт создан: {name}",
+        toast_liked: "Вы поставили лайк {name}",
+        toast_unliked: "Лайк убран",
+        err_user_req: "Введите имя пользователя.",
+        err_pass_len: "Пароль должен содержать от 4 до 128 символов.",
+        date_locale: "ru-RU"
+      },
+      de: {
+        page_title: "Spieler-Configs // AClient",
+        nav_home: "Start",
+        nav_credits: "Credits",
+        nav_configs: "Spieler-Configs",
+        eyebrow: "ACLIENT // VERIFIZIERTE CONFIGS",
+        title: "SPIELER-CONFIGS",
+        subtitle: "Geprüfte Spielereinstellungen direkt aus AClient: Maus-Sensitivität, DPI, Max Distance, Auflösung und Bildwiederholrate.",
+        search_ph: "Spieler, Auflösung oder Hz suchen...",
+        sort_likes: "Meiste Likes",
+        sort_recent: "Neueste",
+        sort_name: "Name (A-Z)",
+        sort_sens: "Höchste Sensitivität",
+        sort_dpi: "Höchste DPI",
+        sort_hz: "Höchste Hz",
+        sort_distance: "Höchste Max Distance",
+        btn_how: "Wie hinzufügen?",
+        btn_refresh: "Aktualisieren",
+        btn_login: "Anmelden",
+        btn_logout: "Abmelden",
+        session_lbl: "Sitzung:",
+        loading: "Lädt...",
+        loading_title: "Configs werden geladen...",
+        loading_sub: "Liste geprüfter Spieler wird abgerufen.",
+        empty_title: "Noch keine Configs veröffentlicht",
+        empty_sub: "Lade deine Config aus AClient hoch (Startmenü oder Settings → AClient → Configuraciones de jugadores). Nach Freigabe erscheint sie hier.",
+        no_match_title: "Keine Ergebnisse",
+        no_match_sub: "Keine Spieler entsprechen deiner Suche.",
+        err_load_title: "Configs konnten nicht geladen werden",
+        one_player: "1 Spieler",
+        n_players: "{n} Spieler",
+        approved_badge: "Freigegeben",
+        spec_sens: "Sens",
+        spec_dpi: "DPI",
+        spec_maxdist: "Max Dist",
+        spec_res: "Auflösung",
+        spec_monitor: "Monitor",
+        like: "Gefällt mir",
+        liked: "Geliked",
+        auth_title: "Anmelden",
+        auth_sub: "Melde dich an oder erstelle ein neues Konto mit Discord-Verifizierung (Anti-Bot-Schutz).",
+        auth_like_title: "{name} liken",
+        auth_like_sub: "Falls du noch kein Konto hast, erstelle eines mit Discord. Andernfalls melde dich mit Benutzername und Passwort an.",
+        btn_discord: "Konto erstellen / Mit Discord anmelden",
+        auth_or: "oder mit bestehendem Konto",
+        lbl_user: "Benutzername",
+        lbl_pass: "Passwort",
+        lbl_create_pass: "Passwort erstellen",
+        ph_user: "Dein Spielername",
+        ph_pass: "Dein Passwort",
+        ph_new_pass: "Mindestens 4 Zeichen",
+        btn_show: "Zeigen",
+        btn_hide: "Verbergen",
+        btn_cancel: "Abbrechen",
+        btn_login_submit: "Anmelden",
+        btn_verifying: "Wird geprüft...",
+        reg_title: "Passwort erstellen",
+        reg_sub: "Wähle Benutzername und Passwort. Dieses Konto ist mit deinem Discord verknüpft (1 pro Konto) und gilt hier sowie in AClient.",
+        btn_create_account: "Konto erstellen",
+        btn_creating: "Wird erstellt...",
+        discord_verified: "Discord verifiziert",
+        discord_verified_name: "Discord verifiziert: {name}",
+        how_title: "Wie fügst du deine Config hinzu?",
+        how_sub: "Configs werden direkt aus <strong>AClient</strong> hochgeladen, damit echte Spielwerte und Monitor-Hz automatisch erfasst werden.",
+        how_s1: "Lade <strong>AClient</strong> herunter und starte es auf deinem PC.",
+        how_s2: "Klicke im Startmenü auf <strong>Configuraciones de jugadores</strong> (oder gehe zu <strong>Settings → AClient → Settings</strong>) und melde dich mit <strong>Discord</strong> an.",
+        how_s3: "Gib deine <strong>Maus-DPI</strong> ein und wähle ein <strong>Passwort</strong> (wird beim ersten Mal erstellt und später für Updates genutzt).",
+        how_s4: "Klicke auf <strong>Guardar / Actualizar</strong>. AClient liest <strong>Name</strong>, <strong>Sens</strong>, <strong>cl_mouse_max_distance</strong>, <strong>Auflösung</strong> und <strong>Hz</strong> automatisch aus.",
+        btn_download_ac: "AClient herunterladen",
+        btn_got_it: "Verstanden",
+        toast_logout: "Abgemeldet",
+        toast_welcome: "Willkommen, {name}",
+        toast_logged_in: "Angemeldet als {name}",
+        toast_created: "Konto erstellt: {name}",
+        toast_liked: "Du hast {name} geliked",
+        toast_unliked: "Like entfernt",
+        err_user_req: "Bitte gib einen Benutzernamen ein.",
+        err_pass_len: "Das Passwort muss zwischen 4 und 128 Zeichen lang sein.",
+        date_locale: "de-DE"
       }
     };
 
     function detectInitialLang() {
       const saved = localStorage.getItem("aclient_lang");
       if (saved && I18N[saved]) return saved;
-      const nav = (navigator.language || "es").slice(0, 2).toLowerCase();
-      return I18N[nav] ? nav : "es";
+      const langs = (Array.isArray(navigator.languages) && navigator.languages.length > 0)
+        ? navigator.languages
+        : [navigator.language || navigator.userLanguage || "en"];
+      for (const entry of langs) {
+        if (!entry) continue;
+        const code = String(entry).toLowerCase().split("-")[0];
+        if (I18N[code]) return code;
+      }
+      return "en";
     }
 
     let currentLang = detectInitialLang();

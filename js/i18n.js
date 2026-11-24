@@ -1,13 +1,14 @@
 /**
  * Internationalization (i18n) Engine for AClient Landing Page
- * Supported Languages: Español (es), Português (pt), English (en)
+ * Supported Languages: Español (es), Português (pt), English (en), Русский (ru), Deutsch (de)
+ * Auto-detects browser language on first visit; defaults to English (en) if unsupported.
  */
 
 const translations = {
   es: {
     // Meta
     "meta.title": "AClient // Cliente Competitivo para DDNet · Fast Input & Race Stats",
-    "meta.description": "AClient: cliente competitivo para DDNet y Teeworlds con Fast Input (8 motores incl. aXv2), GameSkins compartidas, Entities remotas, Hook Glow y Race Stats.",
+    "meta.description": "AClient: cliente competitivo para DDNet y Teeworlds con Fast Input (8 motores incl. aXv2), Configs Players, GameSkins compartidas, Hook Glow y Race Stats.",
 
     // Nav
     "nav.configs": "Configs Players",
@@ -54,6 +55,11 @@ const translations = {
     "theme.azure": "Cian // 03",
     "theme.gold": "Dorado // 04",
 
+    // Marquee
+    "marquee.racestats": "RACE STATS EN VIVO",
+    "marquee.editor": "EDITOR DE ASSETS",
+    "marquee.profiles": "PERFILES DDNET + KOG",
+
     // Mod Tools
     "mod.eyebrow": "Mod Tools",
     "mod.title": "MODERACIÓN SIN FRICCIÓN",
@@ -73,7 +79,7 @@ const translations = {
     // GameSkin Others
     "gameskin.eyebrow": "Innovación y Estética Visual",
     "gameskin.title": "ASSETS COMPARTIDOS Y HOOK GLOW",
-    "gameskin.lead": "Históricamente en Teeworlds y DDNet, las armas, ganchos y entities fueron siempre texturas locales estáticas. <span class=\"highlight\">AClient es el primer cliente en la historia del juego en implementar GameSkins Compartidos y Entities Remotas</span> en tiempo real, sumando además efectos como Hook Glow.",
+    "gameskin.lead": "Históricamente en Teeworlds y DDNet, las armas, ganchos y entities fueron siempre texturas locales estáticas. <span class=\"highlight\">AClient es el primer cliente en la historia del juego en implementar GameSkins Compartidas y Entities Remotas</span> en tiempo real, sumando además efectos como Hook Glow.",
     "gameskin.chip1": "Pionero en DDNet / Teeworlds",
     "gameskin.chip2": "GameSkins en la Nube",
     "gameskin.chip3": "Entities Remotas en Vivo",
@@ -135,7 +141,7 @@ const translations = {
     "gallery.card2_tag": "JUGADORES",
     "gallery.card2_title": "Menú rápido",
     "gallery.card2_desc": "Asistir, copiar skin, abrir perfiles en DDNet y KoG, y acciones de moderación en un clic.",
-    "gallery.card3_tag": "MODERAÇÃO",
+    "gallery.card3_tag": "MODERACIÓN",
     "gallery.card3_title": "Presets de kick, mute y ban",
     "gallery.card3_desc": "Razones y duraciones listas para usar, con grabación automática de demo al sancionar.",
     "gallery.card4_tag": "RACE STATS",
@@ -179,18 +185,22 @@ const translations = {
     // Credits
     "credits.eyebrow": "AGRADECIMIENTOS // COMUNIDAD",
     "credits.title": "CRÉDITOS Y RECONOCIMIENTO",
-    "credits.desc": "AClient se construye gracias a innovaciones y desarrollos de la comunidad de DDNet y teeworlds.",
+    "credits.desc": "AClient se construye gracias a innovaciones y desarrollos de la comunidad de DDNet y Teeworlds.",
     "credits.nova_badge": "Live HUD",
-    "credits.nova_desc": "Creador original del overlay de estadísticas en vivo que contabiliza freezes, muertes y saques en tiempo real durante la carrera.",
+    "credits.nova_desc": "Creador original del overlay de estadísticas en vivo que contabiliza freezes, muertes y saves en tiempo real durante la carrera.",
     "credits.bestclient_badge": "Graphic Suite",
     "credits.bestclient_desc": "Creadores del editor de assets integrado con lienzo dual y modos de fusión HSLA (TeeLike, Screen, Multiply y Overlay).",
     "credits.ddnet_badge": "Core Engine",
     "credits.ddnet_desc": "Motor base oficial de DDNet sobre el que se apoya toda la física de juego, conectividad y seguridad de red.",
     "credits.tclient_badge": "Competitive Mod",
     "credits.tclient_desc": "Inspiración y base modular para configuraciones competitivas avanzadas, integraciones y utilidades de práctica.",
+
     // CTA
     "cta.title": "PROBÁ ACLIENT EN TU PRÓXIMA CARRERA",
     "cta.desc": "Todo el poder de DDNet con las herramientas que te faltaban. Sumate a la comunidad y mantenete al tanto de las novedades.",
+    "cta.chip_os": "100% Código Abierto",
+    "cta.chip_tc": "Configs tc_* compatibles",
+    "cta.box_title": "CLIENTE",
     "cta.box_sub": "COMPETITIVO",
 
     // Footer
@@ -207,7 +217,7 @@ const translations = {
   pt: {
     // Meta
     "meta.title": "AClient // Cliente Competitivo para DDNet · Fast Input & Race Stats",
-    "meta.description": "AClient: cliente competitivo para DDNet e Teeworlds com Fast Input (8 motores incl. aXv2), GameSkins compartilhadas, Entities remotas, Hook Glow e Race Stats.",
+    "meta.description": "AClient: cliente competitivo para DDNet e Teeworlds com Fast Input (8 motores incl. aXv2), Configs Players, GameSkins compartilhadas, Hook Glow e Race Stats.",
 
     // Nav
     "nav.configs": "Configs Players",
@@ -253,6 +263,11 @@ const translations = {
     "theme.fuchsia": "Fúcsia // 02",
     "theme.azure": "Ciano // 03",
     "theme.gold": "Dourado // 04",
+
+    // Marquee
+    "marquee.racestats": "RACE STATS AO VIVO",
+    "marquee.editor": "EDITOR DE ASSETS",
+    "marquee.profiles": "PERFIS DDNET + KOG",
 
     // Mod Tools
     "mod.eyebrow": "Mod Tools",
@@ -356,7 +371,7 @@ const translations = {
     "modules.spec3_desc": "Modo fantasma regulável, auto /spec para o original, auto team lock com atraso configurável e atalhos /invite all e /invite friends.",
     "modules.spec4_title": "Editor de Game Assets",
     "modules.spec4_badge": "HSLA + 4 fusões",
-    "modules.spec4_desc": "Lienzo duplo doador/resultado para Entities, Game, HUD, Particles, Emoticons e Extras. Reescalonamento bilinear, colorização e exportação PNG.",
+    "modules.spec4_desc": "Tela dupla doadora/resultado para Entities, Game, HUD, Particles, Emoticons e Extras. Reescalonamento bilinear, colorização e exportação PNG com recarga em tempo real.",
     "modules.spec5_title": "Chat & Alertas",
     "modules.spec5_badge": "Silent Typing",
     "modules.spec5_desc": "Oculte seu balão ao digitar ou os de terceiros, controle o echo local e receba avisos em segundo plano ao descongelar ou se mover estando AFK.",
@@ -379,18 +394,22 @@ const translations = {
     // Credits
     "credits.eyebrow": "AGRADECIMENTOS // COMUNIDADE",
     "credits.title": "CRÉDITOS E RECONHECIMENTO",
-    "credits.desc": "O AClient é construído graças às inovações e desenvolvimentos da comunidade de DDNet e teeworlds.",
+    "credits.desc": "O AClient é construído graças às inovações e desenvolvimentos da comunidade de DDNet e Teeworlds.",
     "credits.nova_badge": "Live HUD",
-    "credits.nova_desc": "Criador original do overlay de estatísticas em tempo real que contabiliza freezes, mortes e saques durante a corrida.",
+    "credits.nova_desc": "Criador original do overlay de estatísticas em tempo real que contabiliza freezes, mortes e resgates (saves) durante a corrida.",
     "credits.bestclient_badge": "Graphic Suite",
     "credits.bestclient_desc": "Criadores do editor de assets integrado com tela dupla e modos de mesclagem HSLA (TeeLike, Screen, Multiply e Overlay).",
     "credits.ddnet_badge": "Core Engine",
     "credits.ddnet_desc": "Motor base oficial do DDNet no qual toda a física do jogo, conectividade e segurança de rede se apoiam.",
     "credits.tclient_badge": "Competitive Mod",
     "credits.tclient_desc": "Inspiração e base modular para configurações competitivas avançadas, integrações e ferramentas de treino.",
+
     // CTA
     "cta.title": "EXPERIMENTE O ACLIENT NA SUA PRÓXIMA CORRIDA",
     "cta.desc": "Todo o poder do DDNet com as ferramentas que faltavam. Junte-se à comunidade e fique por dentro das novidades.",
+    "cta.chip_os": "100% Código Aberto",
+    "cta.chip_tc": "Configs tc_* compatíveis",
+    "cta.box_title": "CLIENTE",
     "cta.box_sub": "COMPETITIVO",
 
     // Footer
@@ -407,10 +426,10 @@ const translations = {
   en: {
     // Meta
     "meta.title": "AClient // Competitive Client for DDNet · Fast Input & Race Stats",
-    "meta.description": "AClient: competitive client for DDNet and Teeworlds featuring Fast Input (8 engines incl. aXv2), shared GameSkins, remote Entities, Hook Glow, and live Race Stats.",
+    "meta.description": "AClient: competitive client for DDNet and Teeworlds featuring Fast Input (8 engines incl. aXv2), Player Configs, shared GameSkins, Hook Glow, and live Race Stats.",
 
     // Nav
-    "nav.configs": "Configs Players",
+    "nav.configs": "Player Configs",
     "nav.modtools": "Mod Tools",
     "nav.gameskin": "GameSkin & Glow",
     "nav.philosophy": "Vision",
@@ -453,6 +472,11 @@ const translations = {
     "theme.fuchsia": "Fuchsia // 02",
     "theme.azure": "Cyan // 03",
     "theme.gold": "Golden // 04",
+
+    // Marquee
+    "marquee.racestats": "LIVE RACE STATS",
+    "marquee.editor": "ASSETS EDITOR",
+    "marquee.profiles": "DDNET + KOG PROFILES",
 
     // Mod Tools
     "mod.eyebrow": "Mod Tools",
@@ -579,18 +603,22 @@ const translations = {
     // Credits
     "credits.eyebrow": "ACKNOWLEDGEMENTS // COMMUNITY",
     "credits.title": "CREDITS & ATTRIBUTION",
-    "credits.desc": "AClient is built on the shoulders of innovators across the DDNet and teeworlds competitive communities.",
+    "credits.desc": "AClient is built on the shoulders of innovators across the DDNet and Teeworlds competitive communities.",
     "credits.nova_badge": "Live HUD",
-    "credits.nova_desc": "Original author of the real-time race stats overlay tracking freezes, deaths, and rescues (saques) during runs.",
+    "credits.nova_desc": "Original author of the real-time race stats overlay tracking freezes, deaths, and saves during runs.",
     "credits.bestclient_badge": "Graphic Suite",
     "credits.bestclient_desc": "Creators of the integrated asset editor featuring dual canvas workflows and HSLA blend modes (TeeLike, Screen, Multiply, Overlay).",
     "credits.ddnet_badge": "Core Engine",
     "credits.ddnet_desc": "Official DDNet core engine powering the movement physics, high-tick netcode, and competitive fairness.",
     "credits.tclient_badge": "Competitive Mod",
     "credits.tclient_desc": "Inspiration and architectural base for advanced competitive cvars, client tooling, and practice features.",
+
     // CTA
     "cta.title": "TRY ACLIENT IN YOUR NEXT RUN",
     "cta.desc": "All the power of DDNet with the competitive edge you were missing. Join the community and stay tuned for releases.",
+    "cta.chip_os": "100% Open Source",
+    "cta.chip_tc": "Compatible tc_* configs",
+    "cta.box_title": "CLIENT",
     "cta.box_sub": "COMPETITIVE",
 
     // Footer
@@ -602,15 +630,450 @@ const translations = {
     "footer.get_aclient": "Get AClient",
     "footer.bottom": "AClient · Community open-source project based on DDNet and TClient.",
     "footer.clock": "LOCAL TIME:"
+  },
+
+  ru: {
+    // Meta
+    "meta.title": "AClient // Соревновательный клиент для DDNet · Fast Input и Race Stats",
+    "meta.description": "AClient: соревновательный клиент для DDNet и Teeworlds с Fast Input (8 движков, включая aXv2), конфигами игроков, общими GameSkin, Hook Glow и Race Stats.",
+
+    // Nav
+    "nav.configs": "Конфиги игроков",
+    "nav.modtools": "Mod Tools",
+    "nav.gameskin": "GameSkin & Glow",
+    "nav.philosophy": "Идея",
+    "nav.anatomy": "Race Stats",
+    "nav.sound_lab": "Fast Input",
+    "nav.gallery": "Галерея",
+    "nav.specs": "Модули",
+    "nav.credits": "Авторы",
+    "nav.download": "Скачать",
+
+    // Preloader
+    "preloader.status": "ЗАГРУЗКА КЛИЕНТА",
+
+    // Hero
+    "hero.badge": "ACLIENT // ОТКРЫТЫЙ КОД · СОРЕВНОВАТЕЛЬНЫЙ КЛИЕНТ ДЛЯ DDNET",
+    "hero.title1": "МЕНЬШЕ ЗАДЕРЖКА.",
+    "hero.title2": "ВЫШЕ ТОЧНОСТЬ.",
+    "hero.desc": "AClient выводит DDNet на новый уровень: движки Fast Input, живой Race Stats с анимированным рейтингом, инструменты тренировки, редактор ассетов и меню для соревновательной игры.",
+    "hero.theme_label": "ТЕМА САЙТА:",
+    "hero.btn_racestats": "Смотреть Race Stats",
+    "hero.btn_github": "Исходный код на GitHub",
+    "hero.btn_kofi": "Поддержать на Ko-fi",
+    "hero.btn_discord": "Сообщество Discord",
+    "hero.hint_rotate": "Вращать на 360°",
+    "hero.hud1_label": "Fast Input",
+    "hero.hud1_unit": "движков",
+    "hero.hud1_sub": "aX30, aXv2, Fast, Best, Saiko, Delta, F и Cloud",
+    "hero.hud2_label": "Race Stats",
+    "hero.hud2_unit": "критериев",
+    "hero.hud2_sub": "Живой рейтинг в стиле F1 со вспышками обгонов",
+    "hero.hud3_label": "Редактор ассетов",
+    "hero.hud3_unit": "режима",
+    "hero.hud3_sub": "TeeLike, Screen, Multiply и Overlay",
+    "hero.hud4_label": "Конфигурация",
+    "hero.hud4_unit": "своя",
+    "hero.hud4_sub": "изолированный settings_aclient.cfg в AppData",
+
+    // Themes
+    "theme.default": "Фиолетовый // 01",
+    "theme.fuchsia": "Фуксия // 02",
+    "theme.azure": "Циан // 03",
+    "theme.gold": "Золотой // 04",
+
+    // Marquee
+    "marquee.racestats": "RACE STATS В РЕАЛЬНОМ ВРЕМЕНИ",
+    "marquee.editor": "РЕДАКТОР АССЕТОВ",
+    "marquee.profiles": "ПРОФИЛИ DDNET + KOG",
+
+    // Mod Tools
+    "mod.eyebrow": "Mod Tools",
+    "mod.title": "МОДЕРАЦИЯ БЕЗ ЛИШНИХ ДЕЙСТВИЙ",
+    "mod.desc": "Встроенные инструменты модератора: быстрые действия над любым игроком и готовые пресеты наказаний.",
+    "mod.card1_title": "Меню игрока",
+    "mod.card1_sub": "Нажмите на игрока и действуйте мгновенно",
+    "mod.card1_li1": "Наблюдать, скопировать скин и открыть профиль на DDNet, DDNet Web или KoG Web",
+    "mod.card1_li2": "Раздел модерации с <strong>Mute ID</strong>, <strong>Kick</strong> и <strong>Ban</strong>",
+    "mod.card1_li3": "Всё прямо из меню, без ввода консольных команд",
+    "mod.card2_title": "Вкладка Mod",
+    "mod.card2_sub": "Редактируемые пресеты для каждого наказания",
+    "mod.card2_li1": "Автоматическая запись 3-минутной демки при кике или бане",
+    "mod.card2_li2": "Пресеты для <strong>Kick</strong>, <strong>Mute</strong> (длительность и причины) и <strong>Ban</strong> (минуты и причины)",
+    "mod.card2_li3": "Режим теста на Dummy и быстрый переход в канал Discord",
+    "mod.card2_li4": "Сброс настроек по умолчанию в один клик",
+
+    // GameSkin Others
+    "gameskin.eyebrow": "Визуальные инновации",
+    "gameskin.title": "ОБЩИЕ АССЕТЫ И HOOK GLOW",
+    "gameskin.lead": "Исторически в Teeworlds и DDNet оружие, хук и entities всегда были статичными локальными текстурами. <span class=\"highlight\">AClient — первый клиент в истории игры с общими GameSkins и удалёнными Entities</span> в реальном времени, а также эффектом Hook Glow.",
+    "gameskin.chip1": "Пионер в DDNet / Teeworlds",
+    "gameskin.chip2": "Облачные GameSkins",
+    "gameskin.chip3": "Удалённые Entities",
+    "gameskin.chip4": "Динамический Hook Glow",
+    "gameskin.f1_badge": "Разработка и инновация AClient",
+    "gameskin.f1_title": "Общие GameSkins (GameSkinOthers)",
+    "gameskin.f1_desc": "Раньше все игроки видели одну и ту же локальную текстуру. AClient добавил облачную синхронизацию: каждый ти показывает своё оружие, хук и молот с автоматической загрузкой на лету.",
+    "gameskin.f2_badge": "Впервые в клиенте",
+    "gameskin.f2_title": "Удалённые и динамические Entities",
+    "gameskin.f2_desc": "Синхронизация слоёв entities между игроками в реальном времени. Позволяет тайлам и entities интерактивно реагировать на хук и действия каждого игрока на сервере.",
+    "gameskin.f3_badge": "Соревновательный эффект",
+    "gameskin.f3_title": "Настраиваемый Hook Glow",
+    "gameskin.f3_desc": "Свечение и динамический ореол вдоль линии хука. Улучшает видимость быстрых хуков в гонках и сложных сейвах с настраиваемыми цветами и яркостью.",
+    "gameskin.caption_title": "Синхронизация в реальном времени",
+    "gameskin.caption_sub": "Смотрите кастомные скины и ассеты каждого игрока с AClient",
+
+    // Vision
+    "vision.eyebrow": "Почему AClient",
+    "vision.title": "СОЗДАН ДЛЯ СЕРЬЁЗНОЙ ИГРЫ",
+    "vision.lead": "Клиент на базе DDNet и TClient, который <span class=\"highlight\">даёт вам полный контроль и данные</span>: ввод, статистика, тренировка и кастомизация.",
+    "vision.body": "Каждый модуль решает реальную задачу в гонках: снижение задержки ввода, анализ игры команды, удобная тренировка и изолированный конфиг с обратной совместимостью для биндов <code>tc_*</code>.",
+    "vision.chip1": "100% Open Source",
+    "vision.chip_base": "На базе DDNet / TClient",
+    "vision.chip2": "Изолированный конфиг ac_",
+    "vision.chip3": "Скрипты ChaiScript",
+    "vision.card_title": "Панель ввода",
+    "vision.card_sub": "Режимы, смещения, адаптивная компенсация, фильтр краёв и интерполяция",
+
+    // Race Stats
+    "stats.eyebrow": "Race Stats",
+    "stats.title": "АНАЛИЗИРУЙТЕ КАЖДЫЙ ЗАБЕГ",
+    "stats.desc": "Нажимайте на точки пульсации, чтобы узнать, за что отвечает каждая часть панели.",
+    "stats.pin1_tag": "ИСТОРИЯ",
+    "stats.pin1_title": "Сохранённые логи",
+    "stats.pin1_desc": "Каждый забег сохраняется с картой, командой, временем и причиной сохранения (Auto, Finish). Открывайте в любой момент.",
+    "stats.pin2_tag": "ЖИВАЯ ТАБЛИЦА",
+    "stats.pin2_title": "Статистика игроков",
+    "stats.pin2_desc": "Фризы, молоты, смерти, эффективность, баланс и время каждого ти с сортировкой по 8 критериям.",
+    "stats.pin3_tag": "АВТОСОХРАНЕНИЕ",
+    "stats.pin3_title": "Авто-запись",
+    "stats.pin3_desc": "Сохранение перед /kill или /team, на финише карты или только при прохождении. Настраиваемая длительность и лимит логов.",
+    "stats.pin4_tag": "ПОДЕЛИТЬСЯ",
+    "stats.pin4_title": "Экспорт в PNG",
+    "stats.pin4_desc": "Экспортируйте итоги забега в виде изображения, чтобы поделиться с командой.",
+
+    // Fast Input
+    "input.eyebrow": "Fast Input",
+    "input.title": "ВОСЕМЬ ДВИЖКОВ НА ВЫБОР",
+    "input.desc": "Проведите курсором по волне, чтобы изменить сигнал, и выберите движок для сравнения отклика. Интерактивная визуализация скорости реакции ввода.",
+    "input.control_label": "РЕЖИМ FAST INPUT:",
+    "input.btn_best": "Лучший",
+
+    // Gallery
+    "gallery.eyebrow": "В действии",
+    "gallery.title": "ГАЛЕРЕЯ",
+    "gallery.card1_tag": "ПРОФИЛИ",
+    "gallery.card1_title": "Команды и непройденные карты",
+    "gallery.card1_desc": "Ищите игроков в DDNet или KoG, определяйте свою команду и смотрите общие непройденные карты по сложности.",
+    "gallery.card2_tag": "ИГРОКИ",
+    "gallery.card2_title": "Быстрое меню",
+    "gallery.card2_desc": "Наблюдение, копирование скина, открытие профилей DDNet и KoG и действия модерации в один клик.",
+    "gallery.card3_tag": "МОДЕРАЦИЯ",
+    "gallery.card3_title": "Пресеты kick, mute и ban",
+    "gallery.card3_desc": "Готовые причины и сроки наказаний с автоматической записью 3-минутной демки.",
+    "gallery.card4_tag": "RACE STATS",
+    "gallery.card4_title": "Результаты забега",
+    "gallery.card4_desc": "Сравнивайте игроков команды в одной таблице и сохраняйте как картинку.",
+
+    // Modules
+    "modules.eyebrow": "Модули",
+    "modules.title": "ВСЁ УЖЕ ВКЛЮЧЕНО",
+    "modules.spec1_title": "Fast Input",
+    "modules.spec1_badge": "8 движков",
+    "modules.spec1_desc": "aX30, aXv2, Fast, Best, Saiko, Delta, F и Cloud. Запас и смещение предсказания, адаптивная компенсация, защита краёв, интерполяция (HE, 1:1, Cubic), sub-tick aiming и управление для других ти.",
+    "modules.spec2_title": "Race Stats & HUD",
+    "modules.spec2_badge": "8 критериев",
+    "modules.spec2_desc": "Определение сейвов (молот и хук), анимированный рейтинг в стиле F1, настройка масштаба, позиции и прозрачности HUD и автосохранение истории.",
+    "modules.spec3_title": "Fast Practice и команды",
+    "modules.spec3_badge": "Ghost 0–100%",
+    "modules.spec3_desc": "Настраиваемая прозрачность призрака, авто /spec на оригинал, авто-блокировка команды с задержкой и команды /invite all и /invite friends.",
+    "modules.spec4_title": "Редактор Game Assets",
+    "modules.spec4_badge": "HSLA + 4 режима",
+    "modules.spec4_desc": "Двойной холст донор/результат для Entities, Game, HUD, Particles, Emoticons и Extras. Билинейное масштабирование, перекраска HSLA и экспорт PNG с горячей перезагрузкой.",
+    "modules.spec5_title": "Чат и уведомления",
+    "modules.spec5_badge": "Silent Typing",
+    "modules.spec5_desc": "Скрывайте свой или чужой индикатор набора, управляйте локальным эхом и получайте фоновые уведомления при разморозке или движении в AFK.",
+    "modules.spec6_title": "Интеграции",
+    "modules.spec6_badge": "Discord + ChaiScript",
+    "modules.spec6_desc": "Discord Rich Presence с картой и статусом, скрипты .chai для макросов, визуальные эффекты (следы, радуга, питомцы) и отдельный конфиг <code>ac_</code>.",
+    "modules.spec7_title": "Skin Stealer",
+    "modules.spec7_badge": "Копировать скины",
+    "modules.spec7_desc": "Копируйте скин любого игрока в один клик.",
+    "modules.spec8_title": "Звуки игры",
+    "modules.spec8_badge": "Свой звук",
+    "modules.spec8_desc": "Заменяйте игровые звуки на любые по своему вкусу.",
+    "modules.spec9_title": "Общие GameSkins и Entities",
+    "modules.spec9_badge": "Пионер AClient",
+    "modules.spec9_desc": "Первый клиент в Teeworlds/DDNet с живой синхронизацией индивидуального оружия, хуков и динамических слоёв entities.",
+    "modules.spec10_title": "Hook Glow",
+    "modules.spec10_badge": "Динамический Glow",
+    "modules.spec10_desc": "Настраиваемое свечение и ореол вдоль линии хука для лучшей читаемости и стиля при каждом выстреле.",
+
+    // Credits
+    "credits.eyebrow": "БЛАГОДАРНОСТИ // СООБЩЕСТВО",
+    "credits.title": "АВТОРЫ И БЛАГОДАРНОСТИ",
+    "credits.desc": "AClient создан благодаря разработкам и идеям соревновательного сообщества DDNet и Teeworlds.",
+    "credits.nova_badge": "Live HUD",
+    "credits.nova_desc": "Оригинальный автор живого оверлея статистики, отслеживающего фризы, смерти и сейвы во время забега.",
+    "credits.bestclient_badge": "Graphic Suite",
+    "credits.bestclient_desc": "Создатели встроенного редактора ассетов с двойным холстом и режимами смешивания HSLA (TeeLike, Screen, Multiply, Overlay).",
+    "credits.ddnet_badge": "Core Engine",
+    "credits.ddnet_desc": "Официальный движок DDNet, обеспечивающий физику движения, сетевой код и честную игру.",
+    "credits.tclient_badge": "Competitive Mod",
+    "credits.tclient_desc": "Вдохновение и модульная база для продвинутых соревновательных настроек, интеграций и тренировочных инструментов.",
+
+    // CTA
+    "cta.title": "ПОПРОБУЙТЕ ACLIENT В СЛЕДУЮЩЕМ ЗАБЕГЕ",
+    "cta.desc": "Вся мощь DDNet и инструменты, которых вам не хватало. Присоединяйтесь к сообществу и следите за обновлениями.",
+    "cta.chip_os": "100% Open Source",
+    "cta.chip_tc": "Совместимость с tc_*",
+    "cta.box_title": "КЛИЕНТ",
+    "cta.box_sub": "СОРЕВНОВАТЕЛЬНЫЙ",
+
+    // Footer
+    "footer.desc": "Соревновательный клиент и инструменты тренировки для DDNet, созданные сообществом и для сообщества.",
+    "footer.col1": "Разделы",
+    "footer.col2": "Функции",
+    "footer.col3": "Сообщество",
+    "footer.nav_home": "Главная",
+    "footer.get_aclient": "Скачать AClient",
+    "footer.bottom": "AClient · Открытый проект сообщества на базе DDNet и TClient.",
+    "footer.clock": "МЕСТНОЕ ВРЕМЯ:"
+  },
+
+  de: {
+    // Meta
+    "meta.title": "AClient // Kompetitiver DDNet-Client · Fast Input & Race Stats",
+    "meta.description": "AClient: kompetitiver Client für DDNet und Teeworlds mit Fast Input (8 Engines inkl. aXv2), Spieler-Configs, geteilten GameSkins, Hook Glow und Race Stats.",
+
+    // Nav
+    "nav.configs": "Spieler-Configs",
+    "nav.modtools": "Mod Tools",
+    "nav.gameskin": "GameSkin & Glow",
+    "nav.philosophy": "Vision",
+    "nav.anatomy": "Race Stats",
+    "nav.sound_lab": "Fast Input",
+    "nav.gallery": "Galerie",
+    "nav.specs": "Module",
+    "nav.credits": "Credits",
+    "nav.download": "Download",
+
+    // Preloader
+    "preloader.status": "CLIENT WIRD GELADEN",
+
+    // Hero
+    "hero.badge": "ACLIENT // OPEN SOURCE · KOMPETITIVER CLIENT FÜR DDNET",
+    "hero.title1": "WENIGER LATENZ.",
+    "hero.title2": "MEHR PRÄZISION.",
+    "hero.desc": "AClient hebt DDNet auf das nächste Level: Fast-Input-Engines, Live-Race-Stats mit animiertem Ranking, Trainings-Tools, Asset-Editor und ein Menü für kompetitive Spieler.",
+    "hero.theme_label": "WEB-THEME:",
+    "hero.btn_racestats": "Race Stats ansehen",
+    "hero.btn_github": "Open Source auf GitHub",
+    "hero.btn_kofi": "Auf Ko-fi unterstützen",
+    "hero.btn_discord": "Discord-Community",
+    "hero.hint_rotate": "Um 360° drehen",
+    "hero.hud1_label": "Fast Input",
+    "hero.hud1_unit": "Engines",
+    "hero.hud1_sub": "aX30, aXv2, Fast, Best, Saiko, Delta, F und Cloud",
+    "hero.hud2_label": "Race Stats",
+    "hero.hud2_unit": "Kriterien",
+    "hero.hud2_sub": "Live-F1-Ranking mit Überhol-Animationen",
+    "hero.hud3_label": "Asset-Editor",
+    "hero.hud3_unit": "Modi",
+    "hero.hud3_sub": "TeeLike, Screen, Multiply und Overlay",
+    "hero.hud4_label": "Konfiguration",
+    "hero.hud4_unit": "isoliert",
+    "hero.hud4_sub": "eigene settings_aclient.cfg in AppData",
+
+    // Themes
+    "theme.default": "Violett // 01",
+    "theme.fuchsia": "Fuchsia // 02",
+    "theme.azure": "Cyan // 03",
+    "theme.gold": "Gold // 04",
+
+    // Marquee
+    "marquee.racestats": "LIVE RACE STATS",
+    "marquee.editor": "ASSET-EDITOR",
+    "marquee.profiles": "DDNET + KOG PROFILE",
+
+    // Mod Tools
+    "mod.eyebrow": "Mod Tools",
+    "mod.title": "REIBUNGSLOSE MODERATION",
+    "mod.desc": "Integrierte Moderatoren-Werkzeuge: Schnellaktionen für jeden Spieler und konfigurierbare Straf-Presets.",
+    "mod.card1_title": "Spielermenü",
+    "mod.card1_sub": "Spieler anklicken und sofort handeln",
+    "mod.card1_li1": "Zuschauen, Skin kopieren und Profile auf DDNet, DDNet Web oder KoG Web öffnen",
+    "mod.card1_li2": "Moderationsbereich mit <strong>Mute ID</strong>, <strong>Kick</strong> und <strong>Ban</strong>",
+    "mod.card1_li3": "Alles direkt im Menü ohne Konsolenbefehle",
+    "mod.card2_title": "Mod-Tab",
+    "mod.card2_sub": "Bearbeitbare Presets für jede Maßnahme",
+    "mod.card2_li1": "Automatische 3-Minuten-Demoaufnahme bei Kick oder Ban",
+    "mod.card2_li2": "Presets für <strong>Kick</strong>, <strong>Mute</strong> (Dauer & Gründe) und <strong>Ban</strong> (Minuten & Gründe)",
+    "mod.card2_li3": "Option zum Moderieren des eigenen Dummys (Testmodus) und Discord-Direktlink",
+    "mod.card2_li4": "Standardwerte mit einem Klick zurücksetzen",
+
+    // GameSkin Others
+    "gameskin.eyebrow": "Visuelle Innovation & Ästhetik",
+    "gameskin.title": "GETEILTE ASSETS & HOOK GLOW",
+    "gameskin.lead": "In Teeworlds und DDNet waren Waffen, Hooks und Entities historisch immer statische lokale Texturen. <span class=\"highlight\">AClient ist der erste Client in der Geschichte des Spiels mit geteilten GameSkins und Remote-Entities</span> in Echtzeit sowie Effekten wie Hook Glow.",
+    "gameskin.chip1": "Pionier in DDNet / Teeworlds",
+    "gameskin.chip2": "Cloud-GameSkins",
+    "gameskin.chip3": "Live-Remote-Entities",
+    "gameskin.chip4": "Dynamischer Hook Glow",
+    "gameskin.f1_badge": "Entwickelt von AClient",
+    "gameskin.f1_title": "Geteilte GameSkins (GameSkinOthers)",
+    "gameskin.f1_desc": "Wo früher jeder Spieler dieselbe lokale Textur sehen musste, bietet AClient Cloud-Synchronisation: Jeder Tee zeigt seine eigenen Waffen, Hooks und Hämmer live im Spiel mit automatischem Download.",
+    "gameskin.f2_badge": "Weltweit erster Client",
+    "gameskin.f2_title": "Remote- & Dynamische Entities",
+    "gameskin.f2_desc": "Echtzeit-Synchronisation von Entity-Ebenen zwischen Spielern. Entities und Tiles reagieren interaktiv und gemeinsam auf Hook und Aktionen jedes Tees auf dem Server.",
+    "gameskin.f3_badge": "Kompetitiver Effekt",
+    "gameskin.f3_title": "Anpassbarer Hook Glow",
+    "gameskin.f3_desc": "Leuchtender Schein und dynamischer Halo entlang des Hooks. Verbessert die Sichtbarkeit schneller Hooks bei Rennen und knappen Saves mit frei wählbaren Farben.",
+    "gameskin.caption_title": "Echtzeit-Synchronisation",
+    "gameskin.caption_sub": "Sieh die individuellen Skins und Assets jedes verbundenen AClient-Spielers",
+
+    // Vision
+    "vision.eyebrow": "Warum AClient",
+    "vision.title": "GEMACHT FÜR AMBITIONIERTE SPIELER",
+    "vision.lead": "Ein Client auf Basis von DDNet und TClient, der <span class=\"highlight\">Daten und Kontrolle in deine Hände legt</span>: Input, Statistiken, Training und Personalisierung.",
+    "vision.body": "Jedes Modul löst ein echtes Problem im Rennen: weniger Eingabeverzögerung, klare Teamanalyse, flüssiges Training und eine sauber getrennte Konfiguration mit Rückwärtskompatibilität für <code>tc_*</code>-Binds.",
+    "vision.chip1": "100% Open Source",
+    "vision.chip_base": "Basiert auf DDNet / TClient",
+    "vision.chip2": "Isolierte ac_-Konfiguration",
+    "vision.chip3": "ChaiScript-Engine",
+    "vision.card_title": "Input-Panel",
+    "vision.card_sub": "Modi, Offsets, adaptive Kompensation, Rand-Sicherheitsfilter und Interpolation",
+
+    // Race Stats
+    "stats.eyebrow": "Race Stats",
+    "stats.title": "ANALYSIERE JEDEN RUN",
+    "stats.desc": "Klicke auf die Markierungspunkte, um die Funktion jedes Bereichs zu sehen.",
+    "stats.pin1_tag": "VERLAUF",
+    "stats.pin1_title": "Gespeicherte Logs",
+    "stats.pin1_desc": "Jeder Run wird mit Map, Team, Zeit und Grund (Auto, Finish) gespeichert und ist jederzeit abrufbar.",
+    "stats.pin2_tag": "LIVE-TABELLE",
+    "stats.pin2_title": "Spieler-Statistiken",
+    "stats.pin2_desc": "Freezes, Hammer, Tode, Effizienz, Balance und Zeit pro Tee, sortierbar nach 8 Kriterien.",
+    "stats.pin3_tag": "AUTO-SPEICHERN",
+    "stats.pin3_title": "Automatisches Speichern",
+    "stats.pin3_desc": "Speichere vor /kill oder /team, beim Ziel oder nur bei Abschluss. Mindestdauer und Log-Limit frei einstellbar.",
+    "stats.pin4_tag": "TEILEN",
+    "stats.pin4_title": "PNG-Export",
+    "stats.pin4_desc": "Exportiere das Run-Ergebnis als sauberes Bild, um es mit deinem Team zu teilen.",
+
+    // Fast Input
+    "input.eyebrow": "Fast Input",
+    "input.title": "ACHT ENGINES, DEINE WAHL",
+    "input.desc": "Bewege den Mauszeiger über die Welle, um das Signal zu verformen, und wähle eine Engine zum Vergleichen. Eine interaktive Visualisierung der Eingabereaktion.",
+    "input.control_label": "FAST-INPUT-ENGINE:",
+    "input.btn_best": "Best",
+
+    // Gallery
+    "gallery.eyebrow": "In Aktion",
+    "gallery.title": "GALERIE",
+    "gallery.card1_tag": "PROFILE",
+    "gallery.card1_title": "Teams & fehlende Maps",
+    "gallery.card1_desc": "Suche Spieler auf DDNet oder KoG, erkenne dein Team automatisch und filtere gemeinsam fehlende Maps nach Schwierigkeit.",
+    "gallery.card2_tag": "SPIELER",
+    "gallery.card2_title": "Schnellmenü",
+    "gallery.card2_desc": "Zuschauen, Skin kopieren, Web-Profile öffnen und Moderationsaktionen mit einem Klick.",
+    "gallery.card3_tag": "MODERATION",
+    "gallery.card3_title": "Kick-, Mute- & Ban-Presets",
+    "gallery.card3_desc": "Fertige Gründe und Laufzeiten inklusive automatischer 3-Minuten-Demoaufnahme.",
+    "gallery.card4_tag": "RACE STATS",
+    "gallery.card4_title": "Run-Ergebnisse",
+    "gallery.card4_desc": "Vergleiche Teamkollegen direkt in einer Tabelle und exportiere sie als Grafik.",
+
+    // Modules
+    "modules.eyebrow": "Module",
+    "modules.title": "ALLES ENTHALTEN",
+    "modules.spec1_title": "Fast Input",
+    "modules.spec1_badge": "8 Engines",
+    "modules.spec1_desc": "aX30, aXv2, Fast, Best, Saiko, Delta, F und Cloud. Vorhersage-Margin & Offset, adaptive Kompensation, Randfilter, Interpolation (HE, 1:1, Kubisch), Sub-Tick-Aiming und Steuerung für andere Tees.",
+    "modules.spec2_title": "Race Stats & HUD",
+    "modules.spec2_badge": "8 Kriterien",
+    "modules.spec2_desc": "Hammer- & Hook-Save-Erkennung, animiertes F1-Ranking, anpassbare HUD-Größe, Position und Transparenz plus Auto-Save-Verlauf.",
+    "modules.spec3_title": "Fast Practice & Teams",
+    "modules.spec3_badge": "Ghost 0–100%",
+    "modules.spec3_desc": "Einstellbare Ghost-Transparenz, Auto-/spec zum Original, zeitgesteuertes Auto-Team-Lock sowie /invite all und /invite friends.",
+    "modules.spec4_title": "Game Assets Editor",
+    "modules.spec4_badge": "HSLA + 4 Modi",
+    "modules.spec4_desc": "Doppel-Canvas (Quelle/Ergebnis) für Entities, Game, HUD, Particles, Emotes und Extras. Bilineare Skalierung, HSLA-Färbung und PNG-Export mit Hot-Reload.",
+    "modules.spec5_title": "Chat & Hinweise",
+    "modules.spec5_badge": "Silent Typing",
+    "modules.spec5_desc": "Verstecke deine oder fremde Tipp-Blasen, steuere lokales Echo und erhalte Benachrichtigungen beim Entfrieren oder bei Bewegung im AFK-Modus.",
+    "modules.spec6_title": "Integrationen",
+    "modules.spec6_badge": "Discord + ChaiScript",
+    "modules.spec6_desc": "Discord Rich Presence mit Map & Status, .chai-Skripte für Makros, visuelle Extras (Trails, Rainbow, Pets) und eigene <code>ac_</code>-Konfiguration.",
+    "modules.spec7_title": "Skin Stealer",
+    "modules.spec7_badge": "Skins kopieren",
+    "modules.spec7_desc": "Kopiere den Skin eines beliebigen Spielers mit nur einem Klick.",
+    "modules.spec8_title": "Spiel-Audio",
+    "modules.spec8_badge": "Eigene Sounds",
+    "modules.spec8_desc": "Tausche Spielgeräusche ganz nach deinem Geschmack aus.",
+    "modules.spec9_title": "Geteilte GameSkins & Entities",
+    "modules.spec9_badge": "AClient-Pionier",
+    "modules.spec9_desc": "Erster Client in Teeworlds/DDNet mit Live-Synchronisation individueller Waffen, Hooks und dynamischer Remote-Entities.",
+    "modules.spec10_title": "Hook Glow",
+    "modules.spec10_badge": "Dynamischer Glow",
+    "modules.spec10_desc": "Konfigurierbares Leuchten entlang der Hook-Linie für bessere Übersicht und Optik bei jedem Schuss.",
+
+    // Credits
+    "credits.eyebrow": "DANKSAGUNG // COMMUNITY",
+    "credits.title": "CREDITS & ANERKENNUNG",
+    "credits.desc": "AClient entsteht dank der Innovationen und Entwicklungen aus der DDNet- und Teeworlds-Community.",
+    "credits.nova_badge": "Live HUD",
+    "credits.nova_desc": "Ursprünglicher Autor des Live-Statistik-Overlays für Freezes, Tode und Saves während des Runs.",
+    "credits.bestclient_badge": "Graphic Suite",
+    "credits.bestclient_desc": "Entwickler des integrierten Asset-Editors mit Doppel-Canvas und HSLA-Mischmodi (TeeLike, Screen, Multiply, Overlay).",
+    "credits.ddnet_badge": "Core Engine",
+    "credits.ddnet_desc": "Offizielle DDNet-Engine als Grundlage für Physik, Netcode und fairen Wettbewerb.",
+    "credits.tclient_badge": "Competitive Mod",
+    "credits.tclient_desc": "Inspiration und modulare Basis für kompetitive Einstellungen, Integrationen und Trainingsfunktionen.",
+
+    // CTA
+    "cta.title": "TESTE ACLIENT BEI DEINEM NÄCHSTEN RUN",
+    "cta.desc": "Die volle Power von DDNet mit den Werkzeugen, die dir gefehlt haben. Tritt der Community bei und bleib auf dem Laufenden.",
+    "cta.chip_os": "100% Open Source",
+    "cta.chip_tc": "Kompatible tc_*-Configs",
+    "cta.box_title": "CLIENT",
+    "cta.box_sub": "KOMPETITIV",
+
+    // Footer
+    "footer.desc": "Kompetitiver Trainings- und Race-Client für DDNet, entwickelt von und für die Community.",
+    "footer.col1": "Entdecken",
+    "footer.col2": "Funktionen",
+    "footer.col3": "Community",
+    "footer.nav_home": "Start",
+    "footer.get_aclient": "AClient holen",
+    "footer.bottom": "AClient · Open-Source-Community-Projekt auf Basis von DDNet und TClient.",
+    "footer.clock": "ORTSZEIT:"
   }
 };
 
+function detectBrowserLanguage() {
+  const saved = localStorage.getItem('aclient_lang');
+  if (saved && translations[saved]) {
+    return saved;
+  }
+
+  const langs = (Array.isArray(navigator.languages) && navigator.languages.length > 0)
+    ? navigator.languages
+    : [navigator.language || navigator.userLanguage || 'en'];
+
+  for (const entry of langs) {
+    if (!entry) continue;
+    const code = String(entry).toLowerCase().split('-')[0];
+    if (translations[code]) {
+      return code;
+    }
+  }
+  return 'en';
+}
+
 class I18nManager {
   constructor() {
-    this.currentLang = localStorage.getItem('aclient_lang') || 'es';
-    if (!translations[this.currentLang]) {
-      this.currentLang = 'es';
-    }
+    this.currentLang = detectBrowserLanguage();
     this.needsDomSync = false;
   }
 
@@ -726,7 +1189,7 @@ class I18nManager {
   }
 
   getTranslation(key) {
-    const dict = translations[this.currentLang] || translations.es;
+    const dict = translations[this.currentLang] || translations.en;
     return dict[key] || '';
   }
 }
