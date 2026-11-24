@@ -146,6 +146,7 @@
     .configs-action-btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 6px;
       padding: 9px 14px;
       border-radius: 10px;
@@ -386,7 +387,7 @@
       font-size: 1.2rem;
     }
 
-    /* Login Modal */
+    /* Modals */
     .auth-modal-backdrop {
       position: fixed;
       inset: 0;
@@ -405,7 +406,7 @@
 
     .auth-modal {
       width: 100%;
-      max-width: 410px;
+      max-width: 420px;
       border-radius: 18px;
       padding: 26px;
       background: #101320;
@@ -422,9 +423,68 @@
 
     .auth-modal-sub {
       color: var(--text-muted);
-      font-size: 0.88rem;
+      font-size: 0.87rem;
       margin-bottom: 18px;
       line-height: 1.5;
+    }
+
+    .btn-discord-auth {
+      width: 100%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 11px 16px;
+      border-radius: 11px;
+      border: 1px solid rgba(114, 137, 218, 0.65);
+      background: #5865F2;
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(88, 101, 242, 0.35);
+      transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+    }
+
+    .btn-discord-auth:hover {
+      background: #4752C4;
+      transform: translateY(-1px);
+      box-shadow: 0 12px 28px rgba(88, 101, 242, 0.48);
+    }
+
+    .auth-divider {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 18px 0 14px;
+      color: var(--text-dim);
+      font-size: 0.76rem;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .auth-divider::before,
+    .auth-divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--border-subtle);
+    }
+
+    .discord-verified-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(88, 101, 242, 0.18);
+      border: 1px solid rgba(88, 101, 242, 0.5);
+      color: #c7d2fe;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      margin-bottom: 14px;
     }
 
     .auth-field {
@@ -614,13 +674,23 @@
     <div id="stateBox" class="configs-state" style="display:none;"></div>
   </main>
 
-  <!-- Modal de Inicio de Sesion (solo cuando el usuario toca Me gusta o Iniciar sesion) -->
+  <!-- Modal 1: Iniciar sesion o Crear cuenta con Discord -->
   <div id="authModal" class="auth-modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="authModalTitle">
     <form id="authForm" class="auth-modal">
       <h2 id="authModalTitle">Iniciar sesión</h2>
       <p id="authModalSub" class="auth-modal-sub">
-        Ingresá tu usuario y contraseña para dar Me gusta. Si es tu primera vez, se crea automáticamente.
+        Iniciá sesión con tu cuenta o creá una nueva verificándote con Discord (protección anti-bots).
       </p>
+
+      <button id="discordLoginBtn" class="btn-discord-auth" type="button">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+        </svg>
+        <span>Crear cuenta / Entrar con Discord</span>
+      </button>
+
+      <div class="auth-divider">o con tu usuario ya creado</div>
+
       <div class="auth-field">
         <label for="authUserInput">Usuario</label>
         <input id="authUserInput" class="auth-input" type="text" maxlength="32" placeholder="Tu nombre de jugador" autocomplete="username" required>
@@ -628,14 +698,41 @@
       <div class="auth-field">
         <label for="authPassInput">Contraseña</label>
         <div class="auth-pass-row">
-          <input id="authPassInput" class="auth-input" type="password" minlength="4" maxlength="128" placeholder="Mínimo 4 caracteres" autocomplete="current-password" required>
+          <input id="authPassInput" class="auth-input" type="password" minlength="4" maxlength="128" placeholder="Tu contraseña" autocomplete="current-password" required>
           <button id="authTogglePassBtn" class="configs-action-btn" type="button">Ver</button>
         </div>
       </div>
       <div id="authError" class="auth-error"></div>
       <div class="auth-modal-actions">
         <button id="authCancelBtn" class="configs-action-btn" type="button">Cancelar</button>
-        <button id="authSubmitBtn" class="auth-submit-btn" type="submit">Continuar</button>
+        <button id="authSubmitBtn" class="auth-submit-btn" type="submit">Ingresar</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Modal 2: Completar usuario y contrasena tras verificar con Discord -->
+  <div id="registerModal" class="auth-modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="registerModalTitle">
+    <form id="registerForm" class="auth-modal">
+      <div id="discordVerifiedTag" class="discord-verified-tag">Discord verificado</div>
+      <h2 id="registerModalTitle">Creá tu contraseña</h2>
+      <p class="auth-modal-sub">
+        Elegí tu nombre de usuario y contraseña. Esta cuenta queda vinculada a tu Discord (1 por cuenta) y te sirve para votar acá y en AClient.
+      </p>
+      <div class="auth-field">
+        <label for="regUserInput">Usuario</label>
+        <input id="regUserInput" class="auth-input" type="text" maxlength="32" placeholder="Tu nombre de jugador" autocomplete="username" required>
+      </div>
+      <div class="auth-field">
+        <label for="regPassInput">Crear contraseña</label>
+        <div class="auth-pass-row">
+          <input id="regPassInput" class="auth-input" type="password" minlength="4" maxlength="128" placeholder="Mínimo 4 caracteres" autocomplete="new-password" required>
+          <button id="regTogglePassBtn" class="configs-action-btn" type="button">Ver</button>
+        </div>
+      </div>
+      <div id="regError" class="auth-error"></div>
+      <div class="auth-modal-actions">
+        <button id="regCancelBtn" class="configs-action-btn" type="button">Cancelar</button>
+        <button id="regSubmitBtn" class="auth-submit-btn" type="submit">Crear cuenta</button>
       </div>
     </form>
   </div>
@@ -649,6 +746,7 @@
     let approvedConfigs = [];
     let currentUser = sessionStorage.getItem("aclient_web_user") || "";
     let currentPass = sessionStorage.getItem("aclient_web_pass") || "";
+    let discordToken = sessionStorage.getItem("aclient_discord_token") || "";
     let likedKeys = new Set();
     let pendingLikeTargetKey = null;
     let busyLikeKey = null;
@@ -666,6 +764,7 @@
     const authForm = document.getElementById("authForm");
     const authModalTitle = document.getElementById("authModalTitle");
     const authModalSub = document.getElementById("authModalSub");
+    const discordLoginBtn = document.getElementById("discordLoginBtn");
     const authUserInput = document.getElementById("authUserInput");
     const authPassInput = document.getElementById("authPassInput");
     const authTogglePassBtn = document.getElementById("authTogglePassBtn");
@@ -673,11 +772,21 @@
     const authCancelBtn = document.getElementById("authCancelBtn");
     const authSubmitBtn = document.getElementById("authSubmitBtn");
 
+    const registerModal = document.getElementById("registerModal");
+    const registerForm = document.getElementById("registerForm");
+    const discordVerifiedTag = document.getElementById("discordVerifiedTag");
+    const regUserInput = document.getElementById("regUserInput");
+    const regPassInput = document.getElementById("regPassInput");
+    const regTogglePassBtn = document.getElementById("regTogglePassBtn");
+    const regError = document.getElementById("regError");
+    const regCancelBtn = document.getElementById("regCancelBtn");
+    const regSubmitBtn = document.getElementById("regSubmitBtn");
+
     function showToast(text) {
       toastEl.textContent = text;
       toastEl.classList.add("show");
       clearTimeout(toastEl._timer);
-      toastEl._timer = setTimeout(() => toastEl.classList.remove("show"), 2600);
+      toastEl._timer = setTimeout(() => toastEl.classList.remove("show"), 2800);
     }
 
     function escapeHtml(str) {
@@ -708,12 +817,13 @@
       return String(item.player_name_key || item.player_name || "").trim().toLowerCase();
     }
 
-    async function callRpc(fnName, payload) {
+    async function callRpc(fnName, payload, bearerToken = "") {
+      const token = bearerToken || SUPABASE_KEY;
       const res = await fetch(`${SUPABASE_URL}/rest/v1/rpc/${fnName}`, {
         method: "POST",
         headers: {
           "apikey": SUPABASE_KEY,
-          "Authorization": `Bearer ${SUPABASE_KEY}`,
+          "Authorization": `Bearer ${token}`,
           "Content-Type": "application/json"
         },
         body: JSON.stringify(payload)
@@ -730,7 +840,18 @@
     }
 
     function isLoggedIn() {
-      return currentUser.length > 0 && currentPass.length >= 4;
+      return currentUser.length > 0 && (currentPass.length >= 4 || discordToken.length > 0);
+    }
+
+    function clearSession() {
+      currentUser = "";
+      currentPass = "";
+      discordToken = "";
+      likedKeys.clear();
+      sessionStorage.removeItem("aclient_web_user");
+      sessionStorage.removeItem("aclient_web_pass");
+      sessionStorage.removeItem("aclient_discord_token");
+      sessionStorage.removeItem("aclient_pending_like");
     }
 
     function renderSessionArea() {
@@ -742,11 +863,7 @@
           </div>
         `;
         document.getElementById("logoutBtn").addEventListener("click", () => {
-          currentUser = "";
-          currentPass = "";
-          likedKeys.clear();
-          sessionStorage.removeItem("aclient_web_user");
-          sessionStorage.removeItem("aclient_web_pass");
+          clearSession();
           renderSessionArea();
           renderConfigs();
           showToast("Sesión cerrada");
@@ -768,19 +885,106 @@
       if (targetKey) {
         const target = approvedConfigs.find((x) => getItemKey(x) === targetKey);
         authModalTitle.textContent = target ? `Me gusta a ${target.player_name}` : "Iniciar sesión para dar Me gusta";
-        authModalSub.textContent = "Ingresá tu usuario y contraseña para votar. Si es tu primera vez, se crea automáticamente.";
+        authModalSub.textContent = "Si todavía no tenés cuenta, creala con Discord para evitar bots. Si ya tenés una, ingresá con tu usuario y contraseña.";
       } else {
         authModalTitle.textContent = "Iniciar sesión";
-        authModalSub.textContent = "Ingresá tu usuario y contraseña (podés usar la misma de AClient o crear una nueva).";
+        authModalSub.textContent = "Iniciá sesión con tu cuenta o creá tu usuario y contraseña verificándote con Discord.";
       }
 
       authModal.classList.remove("hidden");
-      setTimeout(() => (authUserInput.value ? authPassInput : authUserInput).focus(), 30);
     }
 
     function closeAuthModal() {
       pendingLikeTargetKey = null;
       authModal.classList.add("hidden");
+    }
+
+    function startDiscordOAuth() {
+      if (pendingLikeTargetKey) {
+        sessionStorage.setItem("aclient_pending_like", pendingLikeTargetKey);
+      } else {
+        sessionStorage.removeItem("aclient_pending_like");
+      }
+      const redirectTo = `${window.location.origin}${window.location.pathname}`;
+      const authUrl = `${SUPABASE_URL}/auth/v1/authorize?provider=discord&redirect_to=${encodeURIComponent(redirectTo)}`;
+      window.location.href = authUrl;
+    }
+
+    async function handleDiscordCallbackIfPresent() {
+      const hash = window.location.hash || "";
+      const search = window.location.search || "";
+
+      if (hash.includes("error=") || search.includes("error=")) {
+        const params = new URLSearchParams((hash.startsWith("#") ? hash.slice(1) : search.slice(1)));
+        const errDesc = params.get("error_description") || params.get("error") || "Error al autenticar con Discord";
+        history.replaceState(null, "", window.location.pathname);
+        showToast(errDesc);
+        return false;
+      }
+
+      if (!hash.includes("access_token=")) {
+        return false;
+      }
+
+      const params = new URLSearchParams(hash.slice(1));
+      const accessToken = params.get("access_token") || "";
+      history.replaceState(null, "", window.location.pathname);
+
+      if (!accessToken) return false;
+
+      discordToken = accessToken;
+      sessionStorage.setItem("aclient_discord_token", accessToken);
+
+      try {
+        // Leer nombre sugerido de Discord
+        let suggestedName = "";
+        const userRes = await fetch(`${SUPABASE_URL}/auth/v1/user`, {
+          headers: {
+            "apikey": SUPABASE_KEY,
+            "Authorization": `Bearer ${accessToken}`
+          }
+        });
+        if (userRes.ok) {
+          const u = await userRes.json().catch(() => null);
+          const meta = (u && u.user_metadata) || {};
+          suggestedName = meta.custom_claims?.global_name || meta.full_name || meta.name || meta.user_name || "";
+        }
+
+        const voterRes = await callRpc("get_my_discord_voter", {}, accessToken);
+        const savedPendingLike = sessionStorage.getItem("aclient_pending_like") || null;
+
+        if (voterRes && voterRes.registered) {
+          currentUser = voterRes.username || suggestedName;
+          likedKeys = new Set(Array.isArray(voterRes.liked_keys) ? voterRes.liked_keys : []);
+          sessionStorage.setItem("aclient_web_user", currentUser);
+          sessionStorage.removeItem("aclient_pending_like");
+          renderSessionArea();
+          renderConfigs();
+
+          if (savedPendingLike) {
+            await performToggleLike(savedPendingLike);
+          } else {
+            showToast(`Bienvenido, ${currentUser}`);
+          }
+        } else {
+          // Primera vez con Discord: pedirle crear usuario y contrasena
+          pendingLikeTargetKey = savedPendingLike;
+          discordVerifiedTag.textContent = suggestedName ? `Discord verificado: ${suggestedName}` : "Discord verificado";
+          regUserInput.value = suggestedName.slice(0, 32);
+          regPassInput.value = "";
+          regPassInput.type = "password";
+          regTogglePassBtn.textContent = "Ver";
+          regError.textContent = "";
+          registerModal.classList.remove("hidden");
+          setTimeout(() => (regUserInput.value ? regPassInput : regUserInput).focus(), 30);
+        }
+        return true;
+      } catch (err) {
+        clearSession();
+        renderSessionArea();
+        showToast(err.message);
+        return false;
+      }
     }
 
     function renderConfigs() {
@@ -866,11 +1070,21 @@
       busyLikeKey = targetKey;
       renderConfigs();
       try {
-        const res = await callRpc("toggle_player_config_like", {
-          p_target_player_key: targetKey,
-          p_username: currentUser,
-          p_password: currentPass
-        });
+        let res;
+        if (currentPass.length >= 4) {
+          res = await callRpc("toggle_player_config_like", {
+            p_target_player_key: targetKey,
+            p_username: currentUser,
+            p_password: currentPass
+          });
+        } else if (discordToken) {
+          res = await callRpc("toggle_player_config_like_discord", {
+            p_target_player_key: targetKey
+          }, discordToken);
+        } else {
+          openAuthModal(targetKey);
+          return;
+        }
 
         const item = approvedConfigs.find((x) => getItemKey(x) === targetKey);
         if (item && typeof res.likes_count === "number") {
@@ -884,6 +1098,11 @@
           showToast("Me gusta quitado");
         }
       } catch (err) {
+        if (String(err.message).toLowerCase().includes("expirada")) {
+          clearSession();
+          renderSessionArea();
+          openAuthModal(targetKey);
+        }
         showToast(err.message);
       } finally {
         busyLikeKey = null;
@@ -894,18 +1113,24 @@
     async function restoreSessionLikes() {
       if (!isLoggedIn()) return;
       try {
-        const res = await callRpc("web_login_voter", {
-          p_username: currentUser,
-          p_password: currentPass
-        });
-        currentUser = res.username || currentUser;
-        likedKeys = new Set(Array.isArray(res.liked_keys) ? res.liked_keys : []);
+        if (currentPass.length >= 4) {
+          const res = await callRpc("web_login_voter", {
+            p_username: currentUser,
+            p_password: currentPass
+          });
+          currentUser = res.username || currentUser;
+          likedKeys = new Set(Array.isArray(res.liked_keys) ? res.liked_keys : []);
+        } else if (discordToken) {
+          const res = await callRpc("get_my_discord_voter", {}, discordToken);
+          if (res && res.registered) {
+            currentUser = res.username || currentUser;
+            likedKeys = new Set(Array.isArray(res.liked_keys) ? res.liked_keys : []);
+          } else {
+            clearSession();
+          }
+        }
       } catch (_) {
-        currentUser = "";
-        currentPass = "";
-        likedKeys.clear();
-        sessionStorage.removeItem("aclient_web_user");
-        sessionStorage.removeItem("aclient_web_pass");
+        clearSession();
       }
       renderSessionArea();
       renderConfigs();
@@ -935,9 +1160,11 @@
       }
     }
 
+    // Events
     searchInput.addEventListener("input", renderConfigs);
     sortSelect.addEventListener("change", renderConfigs);
     refreshBtn.addEventListener("click", fetchApprovedConfigs);
+    discordLoginBtn.addEventListener("click", startDiscordOAuth);
 
     container.addEventListener("click", (e) => {
       const btn = e.target.closest("button[data-like-key]");
@@ -956,13 +1183,31 @@
       authTogglePassBtn.textContent = show ? "Ocultar" : "Ver";
     });
 
+    regTogglePassBtn.addEventListener("click", () => {
+      const show = regPassInput.type === "password";
+      regPassInput.type = show ? "text" : "password";
+      regTogglePassBtn.textContent = show ? "Ocultar" : "Ver";
+    });
+
     authCancelBtn.addEventListener("click", closeAuthModal);
     authModal.addEventListener("click", (e) => {
       if (e.target === authModal) closeAuthModal();
     });
+
+    regCancelBtn.addEventListener("click", () => {
+      registerModal.classList.add("hidden");
+      clearSession();
+      renderSessionArea();
+    });
+
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && !authModal.classList.contains("hidden")) {
-        closeAuthModal();
+      if (e.key === "Escape") {
+        if (!authModal.classList.contains("hidden")) closeAuthModal();
+        if (!registerModal.classList.contains("hidden")) {
+          registerModal.classList.add("hidden");
+          clearSession();
+          renderSessionArea();
+        }
       }
     });
 
@@ -991,9 +1236,11 @@
 
         currentUser = res.username || user;
         currentPass = pass;
+        discordToken = "";
         likedKeys = new Set(Array.isArray(res.liked_keys) ? res.liked_keys : []);
         sessionStorage.setItem("aclient_web_user", currentUser);
         sessionStorage.setItem("aclient_web_pass", currentPass);
+        sessionStorage.removeItem("aclient_discord_token");
 
         const targetToLike = pendingLikeTargetKey;
         closeAuthModal();
@@ -1009,12 +1256,66 @@
         authError.textContent = err.message;
       } finally {
         authSubmitBtn.disabled = false;
-        authSubmitBtn.textContent = "Continuar";
+        authSubmitBtn.textContent = "Ingresar";
+      }
+    });
+
+    registerForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      regError.textContent = "";
+      const user = regUserInput.value.trim();
+      const pass = regPassInput.value;
+
+      if (!user) {
+        regError.textContent = "Elegí un nombre de usuario.";
+        return;
+      }
+      if (pass.length < 4 || pass.length > 128) {
+        regError.textContent = "La contraseña debe tener entre 4 y 128 caracteres.";
+        return;
+      }
+
+      regSubmitBtn.disabled = true;
+      regSubmitBtn.textContent = "Creando...";
+      try {
+        const res = await callRpc("register_voter_with_discord", {
+          p_username: user,
+          p_password: pass
+        }, discordToken);
+
+        currentUser = res.username || user;
+        currentPass = pass;
+        likedKeys = new Set(Array.isArray(res.liked_keys) ? res.liked_keys : []);
+        sessionStorage.setItem("aclient_web_user", currentUser);
+        sessionStorage.setItem("aclient_web_pass", currentPass);
+        sessionStorage.removeItem("aclient_pending_like");
+
+        const targetToLike = pendingLikeTargetKey;
+        pendingLikeTargetKey = null;
+        registerModal.classList.add("hidden");
+        renderSessionArea();
+        renderConfigs();
+
+        if (targetToLike) {
+          await performToggleLike(targetToLike);
+        } else {
+          showToast(`Cuenta creada: ${currentUser}`);
+        }
+      } catch (err) {
+        regError.textContent = err.message;
+      } finally {
+        regSubmitBtn.disabled = false;
+        regSubmitBtn.textContent = "Crear cuenta";
       }
     });
 
     renderSessionArea();
-    fetchApprovedConfigs().then(restoreSessionLikes);
+    fetchApprovedConfigs().then(async () => {
+      const handledOAuth = await handleDiscordCallbackIfPresent();
+      if (!handledOAuth) {
+        await restoreSessionLikes();
+      }
+    });
   </script>
 </body>
 </html>
