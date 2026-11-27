@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DDNet Friends Widget (Windows) // AClient · Amigos en tu Bandeja</title>
+
+  <!-- SEO Primario -->
+  <meta name="description" content="DDNet Friends Widget para Windows: mirá qué amigos de DDNet están conectados desde la bandeja del sistema, recibí notificaciones y unite en 1 clic. Escrito en Rust (~3.2 MB).">
+  <meta name="keywords" content="DDNet Friends Widget, DDNet amigos Windows, widget bandeja DDNet, ddnet-friends.exe, AClient, Teeworlds friends tray, agusx30">
+  <meta name="author" content="AgusClient">
+  <meta name="application-name" content="DDNet Friends Widget">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://agusclient.github.io/friends-widget/">
+
+  <!-- Tema del Navegador -->
+  <meta name="theme-color" content="#8b5cf6">
+  <meta name="msapplication-TileColor" content="#0b0c13">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://agusclient.github.io/friends-widget/">
+  <meta property="og:title" content="DDNet Friends Widget (Windows) // AClient">
+  <meta property="og:description" content="Widget open source en Rust para la bandeja de Windows: mirá amigos conectados en DDNet, recibí alertas nativas y unite al servidor en 1 clic.">
+  <meta property="og:image" content="https://agusclient.github.io/assets/images/logo.png">
+  <meta property="og:site_name" content="AClient">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="DDNet Friends Widget (Windows) // AClient">
+  <meta name="twitter:description" content="Mirá qué amigos de DDNet están jugando directo desde la bandeja del reloj de Windows y unite con un clic.">
+  <meta name="twitter:image" content="https://agusclient.github.io/assets/images/logo.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../assets/images/logo.png">
+  <link rel="apple-touch-icon" href="../assets/images/logo.png">
+
+  <!-- Datos Estructurados JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "DDNet Friends Widget",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Windows",
+    "softwareVersion": "0.3.0",
+    "isAccessibleForFree": true,
+    "url": "https://agusclient.github.io/friends-widget/",
+    "downloadUrl": "https://github.com/agusx30/DDnet-Friends-Widget-Windows/releases/latest/download/ddnet-friends.exe",
+    "codeRepository": "https://github.com/agusx30/DDnet-Friends-Widget-Windows",
+    "programmingLanguage": "Rust",
+    "author": {
+      "@type": "Person",
+      "name": "agusx30",
+      "url": "https://github.com/agusx30"
+    },
+    "description": "Widget en la bandeja del sistema de Windows que muestra qué amigos de DDNet están conectados, con notificaciones nativas y unión directa al servidor en 1 clic."
+  }
+  </script>
+
+  <!-- Fuentes y Estilos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css?v=10">
+
+  <style>
+    .fw-main {
+      position: relative;
+      z-index: 2;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 124px 24px 80px;
+    }
+
+    .fw-hero {
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto 48px;
+    }
+
+    .fw-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      margin-bottom: 18px;
+    }
+
+    .fw-eyebrow .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #38bdf8;
+      box-shadow: 0 0 10px #38bdf8;
+    }
+
+    .fw-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.1rem, 5.2vw, 3.6rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      background: var(--accent-gradient-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 16px;
+    }
+
+    .fw-subtitle {
+      color: var(--text-muted);
+      font-size: clamp(0.98rem, 1.8vw, 1.12rem);
+      line-height: 1.65;
+      margin: 0 auto 28px;
+    }
+
+    .fw-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .fw-btn-download {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 26px;
+      border-radius: 999px;
+      background: var(--accent-gradient);
+      border: 1px solid rgba(196, 181, 253, 0.55);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 0.96rem;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 10px 30px var(--accent-glow);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .fw-btn-download:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 36px rgba(139, 92, 246, 0.55);
+    }
+
+    .fw-btn-github {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .fw-btn-github:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+    }
+
+    .fw-meta-strip {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 18px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+
+    /* Interactive Windows Tray Mockup */
+    .tray-showcase {
+      max-width: 520px;
+      margin: 0 auto 64px;
+      background: rgba(18, 21, 33, 0.92);
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      border-radius: 16px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(56, 189, 248, 0.08);
+      overflow: hidden;
+      backdrop-filter: blur(18px);
+    }
+
+    .tray-popup-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      background: rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .tray-popup-title {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-family: var(--font-display);
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #f8fafc;
+    }
+
+    .tray-dot-live {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #38bdf8;
+      box-shadow: 0 0 10px #38bdf8;
+    }
+
+    .tray-refresh-badge {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.12);
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+
+    .tray-friends-list {
+      display: flex;
+      flex-direction: column;
+      padding: 8px;
+      gap: 6px;
+    }
+
+    .tray-friend-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 11px 12px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .tray-friend-item:hover {
+      background: rgba(56, 189, 248, 0.1);
+      border-color: rgba(56, 189, 248, 0.35);
+    }
+
+    .tray-friend-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .tray-friend-name {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tray-clan {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent-text);
+      background: rgba(139, 92, 246, 0.15);
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+
+    .tray-friend-meta {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .tray-join-pill {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.14);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 5px 10px;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+
+    .tray-taskbar-sim {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 18px;
+      background: rgba(8, 10, 16, 0.95);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+
+    .tray-icons-cluster {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #e2e8f0;
+    }
+
+    /* Feature Grid */
+    .fw-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+      gap: 18px;
+      margin-bottom: 56px;
+    }
+
+    .fw-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 22px;
+      transition: transform var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .fw-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-glow);
+    }
+
+    .fw-card-icon {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .fw-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .fw-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Setup / Usage Guide */
+    .fw-guide {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: 28px;
+      margin-bottom: 40px;
+    }
+
+    .fw-guide h2 {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 18px;
+    }
+
+    .fw-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .fw-step {
+      background: rgba(5, 6, 8, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .fw-step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      background: var(--accent-gradient);
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .fw-step h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin-bottom: 6px;
+    }
+
+    .fw-step p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .fw-code-block {
+      background: rgba(5, 6, 8, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: #cbd5e1;
+      overflow-x: auto;
+      line-height: 1.6;
+    }
+
+    .fw-toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1000;
+      padding: 12px 18px;
+      border-radius: 12px;
+      background: rgba(15, 18, 28, 0.96);
+      border: 1px solid rgba(56, 189, 248, 0.55);
+      color: #f8fafc;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.55);
+      opacity: 0;
+      transform: translateY(12px);
+      pointer-events: none;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .fw-toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 640px) {
+      .fw-main {
+        padding: 96px 14px 56px;
+      }
+      .fw-btn-download,
+      .fw-btn-github {
+        width: 100%;
+      }
+      .fw-guide {
+        padding: 20px 16px;
+      }
+      .fw-toast {
+        left: 14px;
+        right: 14px;
+        bottom: 16px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient-light-container" aria-hidden="true">
+    <div class="ambient-orb ambient-orb-1"></div>
+    <div class="ambient-orb ambient-orb-2"></div>
+    <div class="ambient-orb ambient-orb-3"></div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header scrolled">
+    <div class="nav-container">
+      <a href="../" class="brand-logo">
+        <div class="logo-symbol"><picture><source srcset="../assets/images/logo.webp" type="image/webp"><img src="../assets/images/logo.png" alt="AClient" width="320" height="400" decoding="async"></picture></div>
+        <span class="logo-text">ACLIENT</span>
+        <span class="logo-badge">DDNET</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="../" class="nav-link">Inicio</a></li>
+          <li><a href="../configs-players/" class="nav-link">Configs Players</a></li>
+          <li><a href="../#credits" class="nav-link">Créditos</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="../configs-players/" class="btn-configs-nav">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="4" y1="21" x2="4" y2="14"></line>
+            <line x1="4" y1="10" x2="4" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12" y2="3"></line>
+            <line x1="20" y1="21" x2="20" y2="16"></line>
+            <line x1="20" y1="12" x2="20" y2="3"></line>
+            <line x1="1" y1="14" x2="7" y2="14"></line>
+            <line x1="9" y1="8" x2="15" y2="8"></line>
+            <line x1="17" y1="16" x2="23" y2="16"></line>
+          </svg>
+          <span>Configs Players</span>
+        </a>
+
+        <a href="https://github.com/agusx30/DDnet-Friends-Widget-Windows/releases/latest/download/ddnet-friends.exe" class="btn-primary-glow" download="ddnet-friends.exe">
+          <span class="btn-pill-icon"></span>
+          <span>Descargar Widget</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="fw-main">
+    <!-- HERO -->
+    <section class="fw-hero">
+      <div class="fw-eyebrow">
+        <span class="dot"></span>
+        Utilidad Open Source · Rust · Windows
+      </div>
+      <h1 class="fw-title">DDNet Friends Widget</h1>
+      <p class="fw-subtitle">
+        Un widget ultra liviano para la bandeja del sistema de Windows (junto al reloj) que te muestra qué amigos de DDNet están conectados sin tener que abrir el juego. Con alertas nativas y unión directa al servidor en 1 clic.
+      </p>
+
+      <div class="fw-cta-row">
+        <a href="https://github.com/agusx30/DDnet-Friends-Widget-Windows/releases/latest/download/ddnet-friends.exe" class="fw-btn-download" download="ddnet-friends.exe">
+          <span>⬇ Descargar ddnet-friends.exe (v0.3.0)</span>
+        </a>
+        <a href="https://github.com/agusx30/DDnet-Friends-Widget-Windows" class="fw-btn-github" target="_blank" rel="noopener noreferrer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          <span>Ver en GitHub</span>
+        </a>
+      </div>
+
+      <div class="fw-meta-strip">
+        <span>🦀 Escrito en Rust (~3.2 MB)</span>
+        <span>🔄 Actualiza cada 45s</span>
+        <span>🔒 Sin tokens ni contraseñas</span>
+      </div>
+    </section>
+
+    <!-- PREVIEW INTERACTIVO DE LA BANDEJA -->
+    <section class="tray-showcase" aria-label="Vista previa interactiva del widget en Windows">
+      <div class="tray-popup-header">
+        <div class="tray-popup-title">
+          <span class="tray-dot-live"></span>
+          <span>DDNet Friends (3 conectados)</span>
+        </div>
+        <span class="tray-refresh-badge">master1.ddnet.org</span>
+      </div>
+
+      <div class="tray-friends-list">
+        <div class="tray-friend-item" data-server="DDNet BRA · Kobra 4" data-friend="Dkz'">
+          <div class="tray-friend-info">
+            <div class="tray-friend-name">
+              <span>Dkz'</span>
+              <span class="tray-clan">AClient</span>
+            </div>
+            <div class="tray-friend-meta">Kobra 4 · DDNet BRA 2</div>
+          </div>
+          <span class="tray-join-pill">Unirse →</span>
+        </div>
+
+        <div class="tray-friend-item" data-server="DDNet GER · TeeRun 3" data-friend="agusx30">
+          <div class="tray-friend-info">
+            <div class="tray-friend-name">
+              <span>agusx30</span>
+              <span class="tray-clan">x30</span>
+            </div>
+            <div class="tray-friend-meta">TeeRun 3 · DDNet GER</div>
+          </div>
+          <span class="tray-join-pill">Unirse →</span>
+        </div>
+
+        <div class="tray-friend-item" data-server="DDNet CHL · Multeasymap" data-friend="Kurosaki">
+          <div class="tray-friend-info">
+            <div class="tray-friend-name">
+              <span>Kurosaki</span>
+            </div>
+            <div class="tray-friend-meta">Multeasymap · DDNet Chile</div>
+          </div>
+          <span class="tray-join-pill">Unirse →</span>
+        </div>
+      </div>
+
+      <div class="tray-taskbar-sim">
+        <span>Probá hacer clic en un amigo</span>
+        <div class="tray-icons-cluster">
+          <span title="Ícono celeste = Amigos conectados" style="color: #38bdf8;">●</span>
+          <span>🔊</span>
+          <span>12:45</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FUNCIONES -->
+    <section class="fw-grid" aria-label="Características del widget">
+      <article class="fw-card">
+        <span class="fw-card-icon">🔵</span>
+        <h3>Ícono Dinámico en la Bandeja</h3>
+        <p>Se muestra <strong>celeste</strong> cuando tenés amigos conectados y <strong>gris</strong> cuando no hay nadie jugando. Al pasar el mouse ves el tooltip directo con sus nombres.</p>
+      </article>
+
+      <article class="fw-card">
+        <span class="fw-card-icon">⚡</span>
+        <h3>Unión al Servidor en 1 Clic</h3>
+        <p>Abrí el menú del ícono para ver nombre, clan, mapa y servidor de cada amigo. Con un clic lanza tu <code>DDNet.exe</code> o AClient y te conecta automáticamente.</p>
+      </article>
+
+      <article class="fw-card">
+        <span class="fw-card-icon">🔔</span>
+        <h3>Notificaciones Nativas de Windows</h3>
+        <p>Te envía una notificación de Windows cuando un amigo se conecta (sin saturar en el arranque inicial) y consulta cada 45 segundos.</p>
+      </article>
+
+      <article class="fw-card">
+        <span class="fw-card-icon">📂</span>
+        <h3>Lee tu Lista de Amigos Real</h3>
+        <p>Toma automáticamente tus amigos desde <code>%APPDATA%\DDNet\settings_ddnet.cfg</code> (líneas <code>add_friend</code>) y autodetecta tu instalación en Steam o registro.</p>
+      </article>
+
+      <article class="fw-card">
+        <span class="fw-card-icon">🦀</span>
+        <h3>Ultra Liviano (~3.2 MB en Rust)</h3>
+        <p>Binario nativo compilado en Rust sin runtimes pesados ni consumo notable de RAM o CPU mientras está en segundo plano.</p>
+      </article>
+
+      <article class="fw-card">
+        <span class="fw-card-icon">🌐</span>
+        <h3>Sin Tokens ni Cuentas</h3>
+        <p>Consulta directamente la lista maestra pública <code>master1.ddnet.org</code>. No requiere iniciar sesión ni credenciales externas.</p>
+      </article>
+    </section>
+
+    <!-- GUÍA RÁPIDA -->
+    <section class="fw-guide">
+      <h2>Cómo usarlo e iniciarlo con Windows</h2>
+
+      <div class="fw-steps">
+        <div class="fw-step">
+          <div class="fw-step-num">1</div>
+          <h4>Descargá el ejecutable</h4>
+          <p>Bajá <code>ddnet-friends.exe</code> (v0.3.0) y ejecutalo. Si Windows oculta el ícono en la flechita <code>^</code> de la barra, arrastralo junto al reloj.</p>
+        </div>
+
+        <div class="fw-step">
+          <div class="fw-step-num">2</div>
+          <h4>Elegí tu cliente (opcional)</h4>
+          <p>Autodetecta <code>DDNet.exe</code> en Steam o registro, pero desde el menú podés elegir manualmente el ejecutable de tu <strong>AClient</strong>.</p>
+        </div>
+
+        <div class="fw-step">
+          <div class="fw-step-num">3</div>
+          <h4>Inicio automático</h4>
+          <p>Presioná <code>Win + R</code>, escribí <code>shell:startup</code> y pegá ahí un acceso directo a <code>ddnet-friends.exe</code> para que arranque solo.</p>
+        </div>
+      </div>
+
+      <div class="fw-code-block">
+        <div># Ruta personalizada de settings_ddnet.cfg:</div>
+        <div>ddnet-friends.exe "C:\ruta\settings_ddnet.cfg"</div>
+        <br>
+        <div># Compilar desde el código fuente (Rust):</div>
+        <div>cargo build --release</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-bottom">
+        <div>DDNet Friends Widget · Proyecto open source por <a href="https://github.com/agusx30" target="_blank" rel="noopener noreferrer" style="color: var(--accent-text);">agusx30</a> · Parte del ecosistema <a href="../" style="color: var(--accent-text);">AClient</a>.</div>
+        <div class="footer-status-pill">
+          <span class="status-dot"></span>
+          <span>WINDOWS SYSTEM TRAY · v0.3.0</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="fw-toast" class="fw-toast" role="status" aria-live="polite"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toast = document.getElementById('fw-toast');
+      let timer = null;
+      document.querySelectorAll('.tray-friend-item').forEach((item) => {
+        item.addEventListener('click', () => {
+          const friend = item.getAttribute('data-friend');
+          const server = item.getAttribute('data-server');
+          if (!toast) return;
+          toast.textContent = `🚀 Lanzando DDNet.exe → conectando con ${friend} (${server})`;
+          toast.classList.add('show');
+          clearTimeout(timer);
+          timer = setTimeout(() => toast.classList.remove('show'), 2600);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
