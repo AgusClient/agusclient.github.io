@@ -1840,8 +1840,65 @@ body {
 }
 
 @media (max-width: 768px) {
+  .site-header,
+  .site-header.scrolled {
+    padding: 0.75rem 0;
+  }
+  .nav-container {
+    padding: 0 14px;
+    gap: 8px;
+    min-width: 0;
+  }
+  .nav-container > nav,
   .nav-links {
     display: none; /* In mobile, clean layout */
+  }
+  .brand-logo {
+    margin-right: auto;
+    gap: 8px;
+    min-width: 0;
+  }
+  .logo-symbol {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+  }
+  .logo-text {
+    font-size: 1.05rem;
+    letter-spacing: 0.12em;
+  }
+  .nav-actions {
+    margin-left: 0;
+    gap: 6px;
+    flex-shrink: 1;
+    min-width: 0;
+  }
+  .btn-github-nav {
+    display: none;
+  }
+  .btn-configs-nav {
+    padding: 7px 11px;
+    font-size: 0.76rem;
+    gap: 5px;
+  }
+  .btn-primary-glow {
+    padding: 7px 12px;
+    font-size: 0.76rem;
+  }
+  .lang-toggle-btn {
+    padding: 7px 10px;
+    font-size: 0.75rem;
+    gap: 5px;
+  }
+  .bento-card-large, .bento-card-tall, .bento-card-medium {
+    height: auto;
+    min-height: 280px;
+  }
+  .credits-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  }
+  .credit-card {
+    padding: 1.5rem 1.25rem;
   }
   .hero-hud-bar {
     grid-template-columns: 1fr;
@@ -1860,6 +1917,55 @@ body {
   .btn-hero-opensource, .btn-hero-kofi, .btn-hero-discord {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-container {
+    padding: 0 12px;
+    gap: 6px;
+  }
+  .logo-badge {
+    display: none;
+  }
+  .logo-text {
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+  }
+  .nav-actions {
+    gap: 5px;
+  }
+  .btn-configs-nav {
+    padding: 6px 9px;
+    font-size: 0.72rem;
+    gap: 4px;
+  }
+  .btn-configs-nav svg {
+    width: 13px;
+    height: 13px;
+  }
+  .btn-primary-glow {
+    padding: 6px 9px;
+    font-size: 0.72rem;
+  }
+  .btn-primary-glow .btn-pill-icon {
+    display: none;
+  }
+  .lang-toggle-btn {
+    padding: 6px 8px;
+    font-size: 0.72rem;
+    gap: 4px;
+  }
+  .lang-globe-icon {
+    width: 13px;
+    height: 13px;
+  }
+  .btn-hero-opensource, .btn-hero-kofi, .btn-hero-discord {
+    padding: 13px 20px;
+    font-size: 0.92rem;
+    width: 100%;
+    max-width: 340px;
+    justify-content: center;
   }
 }
 

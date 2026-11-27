@@ -97,7 +97,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css?v=8">
+  <link rel="stylesheet" href="../css/style.css?v=9">
 
   <style>
     .configs-main {
@@ -490,7 +490,7 @@
 
     .configs-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
       gap: 18px;
     }
 
@@ -966,7 +966,46 @@
 
     @media (max-width: 640px) {
       .configs-main {
-        padding: 106px 16px 64px;
+        padding: 92px 14px 56px;
+      }
+      .configs-hero {
+        margin-bottom: 28px;
+      }
+      .configs-toolbar {
+        padding: 12px;
+        gap: 10px;
+      }
+      .configs-toolbar-left {
+        flex: 1 1 100%;
+        width: 100%;
+      }
+      .configs-search {
+        flex: 1 1 100%;
+        max-width: 100%;
+        width: 100%;
+      }
+      .configs-select {
+        width: 100%;
+      }
+      .configs-toolbar-right {
+        width: 100%;
+        gap: 8px;
+      }
+      .configs-add-btn,
+      .configs-how-btn,
+      .configs-action-btn,
+      .configs-download-btn {
+        font-size: 0.82rem;
+        padding: 8px 12px;
+      }
+      .player-card {
+        padding: 16px;
+        gap: 14px;
+      }
+      .player-card-head,
+      .player-card-foot {
+        flex-wrap: wrap;
+        gap: 8px;
       }
       .player-specs {
         grid-template-columns: repeat(2, 1fr);
@@ -978,6 +1017,18 @@
       .cfg-grid-3,
       .cfg-grid-2 {
         grid-template-columns: 1fr;
+      }
+      .auth-modal {
+        padding: 20px 16px;
+      }
+      .auth-pass-row {
+        flex-wrap: wrap;
+      }
+      .configs-toast {
+        left: 14px;
+        right: 14px;
+        bottom: 16px;
+        text-align: center;
       }
     }
   </style>
